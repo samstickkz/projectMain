@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project/main_page.dart';
 import 'home_page.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: HomePage(),
+      home: MainPage(),
     );
   }
 }
