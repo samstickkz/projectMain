@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project/home_page.dart';
 import 'package:project/login.dart';
 
+import 'home.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
@@ -17,9 +19,9 @@ class _MainPageState extends State<MainPage> {
       body: StreamBuilder<User?>(stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot){
         if (snapshot.hasData){
-          return HomePage();
+          return HomeMain();
         } else{
-          return LoginPage();
+          return HomePage();
         }
       },
       ),
