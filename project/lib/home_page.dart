@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'button/button_f.dart';
 import 'login.dart';
 
 class HomePage extends StatefulWidget {
@@ -65,19 +66,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()) );
                   },
-                  child: Container(
-                    width: 331,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: HexColor('1E232C'),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                        child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    )),
-                  ),
+                  child: ButtonF()
                 ),
 
                 SizedBox(

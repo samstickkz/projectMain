@@ -56,19 +56,54 @@ class _LoginPageState extends State<LoginPage> {
 
               TextField(
                 decoration: InputDecoration(
+                  fillColor: HexColor('F7F8F9'),
+                  filled: true,
 
-
-                  labelText: 'Enter your email',
+                  labelText: 'Enter  email',
                   border: OutlineInputBorder(
-
-
-
                   ),
-
-
                 ),
 
-              )
+              ),
+
+              SizedBox(height: 15,),
+              TextField(
+
+                decoration: InputDecoration(
+                  fillColor: HexColor('F7F8F9'),
+                  filled: true,
+
+                  labelText: 'Enter your password',
+                  border: OutlineInputBorder(
+
+                  ),
+                  suffixIcon: Icon(Icons.remove_red_eye_sharp),
+                ),
+
+              ),
+              SizedBox(height: 15,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text('Forgot Password?', style: TextStyle(
+                    color: HexColor('6A707C'),
+                  ),),
+                ],
+              ),
+             Container(
+          width: double.infinity,
+          height: 56,
+          decoration: BoxDecoration(
+            color: HexColor('1E232C'),
+            borderRadius: BorderRadius.circular(8),
+          ),
+                   child: Center(
+                       child: Text(
+                'Login',
+                style: TextStyle(color: Colors.white),
+              )),
+        ),
 
             ],
 
