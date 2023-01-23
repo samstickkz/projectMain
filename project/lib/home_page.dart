@@ -1,13 +1,13 @@
-import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 
 import 'button/button_f.dart';
 import 'login.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -31,13 +31,13 @@ class _HomePageState extends State<HomePage> {
                   width: 58,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'Sam\'s',
                       style: TextStyle(
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 43.97,
                 ),
 
@@ -66,10 +66,10 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()) );
                   },
-                  child: ButtonF()
+                  child: const ButtonF()
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Center(
+                    child: const Center(
                         child: Text(
                       'Register',
                       style: TextStyle(color: Colors.black),
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 55,
                 ),
 

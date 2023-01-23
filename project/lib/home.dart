@@ -13,19 +13,17 @@ class _HomeMainState extends State<HomeMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Image.asset('images/sam.JPG'),
-            Text('Welcome' + user.email!),
-            MaterialButton(onPressed: (){
-              FirebaseAuth.instance.signOut();
-            },
-            color: Colors.blueAccent,
-              child: Text('Sign Out'),
-            )
-          ],
-        )
+      body: Column(
+        children: [
+          Image.asset('images/sam.JPG'),
+          Text('Welcome${user.email!}'),
+          MaterialButton(onPressed: (){
+            FirebaseAuth.instance.signOut();
+          },
+          color: Colors.blueAccent,
+            child: const Text('Sign Out'),
+          )
+        ],
       ),
     );
   }

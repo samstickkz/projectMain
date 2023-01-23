@@ -18,7 +18,7 @@ class _ButtonFState extends State<ButtonF> {
         color: HexColor('1E232C'),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Center(
+      child: const Center(
           child: Text(
             'Login',
             style: TextStyle(color: Colors.white),

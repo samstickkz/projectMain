@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose(){
+    super.dispose();
     _passwordcontroller.dispose();
     _emailcontroller.dispose();
   }
@@ -46,19 +47,19 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: HexColor('E8ECF4'))
                       ),
-                      child: Icon(Icons.arrow_back),
+                      child: const Icon(Icons.arrow_back),
                     ),
                   ],
                 ),
 
-                SizedBox(height: 28,),
+                const SizedBox(height: 28,),
 
                 Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Welcome back! Glad', style: TextStyle(
+                      children: const [
+                        Text('Welcome Boss! Glad', style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
                         ),),
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                SizedBox(height: 32,),
+                const SizedBox(height: 32,),
 
                 TextField(
                   controller: _emailcontroller,
@@ -80,13 +81,13 @@ class _LoginPageState extends State<LoginPage> {
                     filled: true,
 
                     labelText: 'Enter  email',
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                     ),
                   ),
 
                 ),
 
-                SizedBox(height: 15,),
+                const SizedBox(height: 15,),
 
 
                 TextField(
@@ -98,14 +99,14 @@ class _LoginPageState extends State<LoginPage> {
                     filled: true,
 
                     labelText: 'Enter your password',
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
 
                     ),
-                    suffixIcon: Icon(Icons.remove_red_eye_sharp),
+                    suffixIcon: const Icon(Icons.remove_red_eye_sharp),
                   ),
 
                 ),
-                SizedBox(height: 15,),
+                const SizedBox(height: 15,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -124,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
               color: HexColor('1E232C'),
               borderRadius: BorderRadius.circular(8),
             ),
-                       child: Center(
+                       child: const Center(
                            child: Text(
                     'Login',
                     style: TextStyle(color: Colors.white),
