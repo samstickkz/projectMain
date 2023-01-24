@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project/home.dart';
+import 'package:project/home_main.dart';
 import 'package:project/home_page.dart';
+import 'package:project/wallet/wallet_home.dart';
 
 
 
@@ -20,7 +21,7 @@ class _MainPageState extends State<MainPage> {
       body: StreamBuilder<User?>(stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot){
         if (snapshot.hasData){
-          return const HomeMain();
+          return const WalletHome();
         } else{
           return const HomePage();
         }
