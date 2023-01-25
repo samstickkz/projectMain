@@ -248,7 +248,7 @@ class _SecondRouteState extends State<SecondRoute> {
                            ),
 
                            Container(
-                               height: 95,
+                               height: 73,
                                width: double.infinity,
                                decoration: BoxDecoration(
                                  borderRadius: BorderRadius.circular(12),
@@ -264,29 +264,43 @@ class _SecondRouteState extends State<SecondRoute> {
                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                        crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
-                                         Text('Bought ETH', style: TextStyle(
+                                         Text('Bitcoin', style: TextStyle(
                                            color: HexColor('E4E4F0'),
+                                           fontSize: 17,
                                          ),
 
                                          ),
-                                         Text('-\$812.10', style: TextStyle(
-                                           color: HexColor('A7A7CC'),
-                                         ),),
+                                         // Text('-\$812.10', style: TextStyle(
+                                         //   color: HexColor('A7A7CC'),
+                                         // ),),
 
-                                         Text('30 Jul 2022, 3.30 PM', style: TextStyle(
+                                         Text('BTC', style: TextStyle(
                                            color: HexColor('A7A7CC'),
                                          ),),
 
                                        ],
                                      ),
 
-                                     const SizedBox(width: 20,),
+                                     const SizedBox(width: 100,),
                                      Column(
-                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       crossAxisAlignment: CrossAxisAlignment.end,
+
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                        children: [
-                                         Text('+0.65 ETH', style: TextStyle(
+                                         Text('\$21,262.60', style: TextStyle(
                                            color: HexColor('E4E4F0'),
                                          ),),
+
+                                         Row(
+                                           // mainAxisAlignment: MainAxisAlignment.end,
+                                           children: [
+                                             Text('+0.54%', style: TextStyle(
+                                               color: HexColor('7878FA'),
+                                             ),),
+                                           ],
+                                         ),
+
+
                                        ],
                                      ),
                                    ],
@@ -296,7 +310,7 @@ class _SecondRouteState extends State<SecondRoute> {
                            ),
                            const SizedBox(height: 16,),
                            Container(
-                               height: 95,
+                               height: 73,
                                width: double.infinity,
                                decoration: BoxDecoration(
                                  borderRadius: BorderRadius.circular(12),
@@ -312,29 +326,43 @@ class _SecondRouteState extends State<SecondRoute> {
                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                        crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
-                                         Text('Bought ETH', style: TextStyle(
+                                         Text('Ethereum', style: TextStyle(
                                            color: HexColor('E4E4F0'),
+                                           fontSize: 17,
                                          ),
 
                                          ),
-                                         Text('-\$812.10', style: TextStyle(
-                                           color: HexColor('A7A7CC'),
-                                         ),),
+                                         // Text('-\$812.10', style: TextStyle(
+                                         //   color: HexColor('A7A7CC'),
+                                         // ),),
 
-                                         Text('30 Jul 2022, 3.30 PM', style: TextStyle(
+                                         Text('ETH', style: TextStyle(
                                            color: HexColor('A7A7CC'),
                                          ),),
 
                                        ],
                                      ),
 
-                                     const SizedBox(width: 20,),
+                                     const SizedBox(width: 100,),
                                      Column(
-                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       crossAxisAlignment: CrossAxisAlignment.end,
+
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                        children: [
-                                         Text('+0.65 ETH', style: TextStyle(
+                                         Text('\$1,225.85', style: TextStyle(
                                            color: HexColor('E4E4F0'),
                                          ),),
+
+                                         Row(
+
+                                           children: [
+                                             Text('+0.54%', style: TextStyle(
+                                               color: HexColor('7878FA'),
+                                             ),),
+                                           ],
+                                         ),
+
+
                                        ],
                                      ),
                                    ],
