@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:project/second_route.dart';
 
 import 'chip.dart';
 
@@ -131,27 +132,37 @@ class _GlassPageState extends State<GlassPage> {
                 SizedBox(
                   height: 61,
                 ),
+
                 /// button
                 Center(
-                  child: Container(
-                    height: 54,
-                    width: 327,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              HexColor('6262D9'),
-                              HexColor('9D62D9'),
-                            ])),
-                    child: Center(
-                      child: Text(
-                        'Get Started',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SecondRoute(),),
+                      );
+                    },
+                    child: Container(
+                      height: 54,
+                      width: 327,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                HexColor('6262D9'),
+                                HexColor('9D62D9'),
+                              ])),
+                      child: Center(
+                        child: Text(
+                          'Get Started',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
                     ),

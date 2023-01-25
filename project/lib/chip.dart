@@ -33,7 +33,7 @@ class _ChipPageState extends State<ChipPage> {
 
               SizedBox(height: 15,),
 
-              Text('\$2,000.00', style: TextStyle(
+              Text('\$2,000.0', style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.bold,
                 color: HexColor('D5D5E0'),
