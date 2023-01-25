@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
@@ -11,8 +9,7 @@ class ChipPage extends StatefulWidget {
 }
 
 class _ChipPageState extends State<ChipPage> {
-  // final degrees = 90;
-  // final angle =  degrees * pi / 180;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
