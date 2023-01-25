@@ -41,10 +41,10 @@ class _SecondRouteState extends State<SecondRoute> {
                         Text('Home', style: TextStyle(
                           color: HexColor('E4E4F0'),
                         ),),
-                        SizedBox(width: 40,)
+                        const SizedBox(width: 40,)
                       ],
                     ),
-                    SizedBox(height: 33,),
+                    const SizedBox(height: 33,),
 
                     Row(
                       children: [
@@ -55,7 +55,7 @@ class _SecondRouteState extends State<SecondRoute> {
                       ],
                     ),
 
-                    SizedBox(height: 4,),
+                    const SizedBox(height: 4,),
 
                     Row(
                       children: [
@@ -67,7 +67,7 @@ class _SecondRouteState extends State<SecondRoute> {
                       ],
                     ),
 
-                    SizedBox(height: 45,),
+                    const SizedBox(height: 45,),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -138,7 +138,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Icon(Icons.minimize_rounded, color: HexColor('F2F2FA'),),
-                                SizedBox(height: 5,),
+                                const SizedBox(height: 5,),
                                 Text('Top Up', style: TextStyle(
                                   color: HexColor('F2F2FA'),
                                   fontSize: 15,
@@ -156,143 +156,204 @@ class _SecondRouteState extends State<SecondRoute> {
               ),
             ),
 
-           Padding(
-             padding: const EdgeInsets.all(24.0),
-             child: Column(
+           Expanded(
+             child: ListView(
                children: [
+                 Padding(
+                   padding: const EdgeInsets.all(24.0),
+                   child: Column(
+                     children: [
 
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Text('Transactions', style: TextStyle(
-                       color: HexColor('E4E4F0'),
-                       fontSize: 17,
-                     ),),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           Text('Transactions', style: TextStyle(
+                             color: HexColor('E4E4F0'),
+                             fontSize: 17,
+                           ),),
 
-                     Text('See all', style: TextStyle(
-                       fontSize: 17,
-                       color: HexColor('7878FA'),
-                     ),),
-                   ],
+                           Text('See all', style: TextStyle(
+                             fontSize: 17,
+                             color: HexColor('7878FA'),
+                           ),),
+                         ],
 
+                       ),
+
+                       const SizedBox(height: 13,),
+
+                       Column(
+                         children: [
+                           Container(
+                               height: 95,
+                               width: double.infinity,
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(12),
+                                 color: HexColor('232336'),
+                               ),
+                               child: Padding(
+                                 padding: const EdgeInsets.all(12.0),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                     Image.asset('images/Ethereum icon.png', height: 32, width: 32,),
+                                     Column(
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('Bought ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),
+
+                                         ),
+                                         Text('-\$812.10', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                         Text('30 Jul 2022, 3.30 PM', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                       ],
+                                     ),
+
+                                     const SizedBox(width: 20,),
+                                     Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('+0.65 ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),),
+                                       ],
+                                     ),
+                                   ],
+                                 ),
+                               )
+
+                           ),
+                           const SizedBox(height: 30,),
+
+
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                               Text('Watchlist', style: TextStyle(
+                                 color: HexColor('E4E4F0'),
+                                 fontSize: 17,
+                               ),),
+
+
+                             ],
+
+                           ),
+
+                           Container(
+                               height: 95,
+                               width: double.infinity,
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(12),
+                                 color: HexColor('232336'),
+                               ),
+                               child: Padding(
+                                 padding: const EdgeInsets.all(12.0),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                     Image.asset('images/Bitcoin.png', height: 32, width: 32,),
+                                     Column(
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('Bought ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),
+
+                                         ),
+                                         Text('-\$812.10', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                         Text('30 Jul 2022, 3.30 PM', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                       ],
+                                     ),
+
+                                     const SizedBox(width: 20,),
+                                     Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('+0.65 ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),),
+                                       ],
+                                     ),
+                                   ],
+                                 ),
+                               )
+
+                           ),
+                           const SizedBox(height: 16,),
+                           Container(
+                               height: 95,
+                               width: double.infinity,
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(12),
+                                 color: HexColor('232336'),
+                               ),
+                               child: Padding(
+                                 padding: const EdgeInsets.all(12.0),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                     Image.asset('images/Ethereum icon.png', height: 32, width: 32,),
+                                     Column(
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('Bought ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),
+
+                                         ),
+                                         Text('-\$812.10', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                         Text('30 Jul 2022, 3.30 PM', style: TextStyle(
+                                           color: HexColor('A7A7CC'),
+                                         ),),
+
+                                       ],
+                                     ),
+
+                                     const SizedBox(width: 20,),
+                                     Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         Text('+0.65 ETH', style: TextStyle(
+                                           color: HexColor('E4E4F0'),
+                                         ),),
+                                       ],
+                                     ),
+                                   ],
+                                 ),
+                               )
+
+                           ),
+
+
+                         ],
+
+                       ),
+
+
+                     ],
+                   ),
                  ),
-
-                SizedBox(height: 13,),
-
-                Expanded(
-                  child: ListView(
-
-                    children: [
-                      Container(
-                          height: 95,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: HexColor('232336'),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Image.asset('images/Ethereum icon.png', height: 32, width: 32,),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Bought ETH', style: TextStyle(
-                                      color: HexColor('E4E4F0'),
-                                    ),
-
-                                    ),
-                                    Text('-\$812.10', style: TextStyle(
-                                      color: HexColor('A7A7CC'),
-                                    ),),
-
-                                    Text('30 Jul 2022, 3.30 PM', style: TextStyle(
-                                      color: HexColor('A7A7CC'),
-                                    ),),
-
-                                  ],
-                                ),
-
-                                SizedBox(width: 20,),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('+0.65 ETH', style: TextStyle(
-                                      color: HexColor('E4E4F0'),
-                                    ),),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-
-                      ),
-                      SizedBox(height: 30,),
-
-
-
-
-                      // Container(
-                      //     height: 95,
-                      //     width: double.infinity,
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(12),
-                      //       color: HexColor('232336'),
-                      //     ),
-                      //     child: Padding(
-                      //       padding: const EdgeInsets.all(12.0),
-                      //       child: Row(
-                      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //         children: [
-                      //           Image.asset('images/Ethereum icon.png', height: 32, width: 32,),
-                      //           Column(
-                      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //             crossAxisAlignment: CrossAxisAlignment.start,
-                      //             children: [
-                      //               Text('Bought ETH', style: TextStyle(
-                      //                 color: HexColor('E4E4F0'),
-                      //               ),
-                      //
-                      //               ),
-                      //               Text('-\$812.10', style: TextStyle(
-                      //                 color: HexColor('A7A7CC'),
-                      //               ),),
-                      //
-                      //               Text('30 Jul 2022, 3.30 PM', style: TextStyle(
-                      //                 color: HexColor('A7A7CC'),
-                      //               ),),
-                      //
-                      //             ],
-                      //           ),
-                      //
-                      //           SizedBox(width: 20,),
-                      //           Column(
-                      //             crossAxisAlignment: CrossAxisAlignment.start,
-                      //             children: [
-                      //               Text('+0.65 ETH', style: TextStyle(
-                      //                 color: HexColor('E4E4F0'),
-                      //               ),),
-                      //             ],
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     )
-                      //
-                      // ),
-
-
-                    ],
-
-
-
-                  ),
-                ),
-
-
                ],
+
              ),
            )
 
