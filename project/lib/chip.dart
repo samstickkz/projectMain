@@ -28,7 +28,7 @@ class _ChipPageState extends State<ChipPage> {
 
               ),
 
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
 
               Text('\$2,000.0', style: TextStyle(
                 fontSize: 34,

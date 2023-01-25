@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/second_route.dart';
 
@@ -40,7 +40,7 @@ class _GlassPageState extends State<GlassPage> {
                         HexColor('6262D9'),
                         HexColor('9D62D9'),
                       ])),
-              child: ChipPage(),
+              child: const ChipPage(),
             ),
           ),
         ),
@@ -77,7 +77,7 @@ class _GlassPageState extends State<GlassPage> {
                                   HexColor('FFFFFF').withOpacity(0.1),
                                   HexColor('BEBEBE').withOpacity(0.1),
                                 ])),
-                        child: ChipPage(),
+                        child: const ChipPage(),
                       ),
                     )
                   ],
@@ -89,87 +89,87 @@ class _GlassPageState extends State<GlassPage> {
 
         Padding(
           padding: const EdgeInsets.only(top: 535.0),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
-                  child: Text(
-                    'Seamless trading',
-                    style: TextStyle(
-                      color: HexColor('D5D5E0'),
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
-                    ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 24.0),
+                child: Text(
+                  'Seamless trading',
+                  style: TextStyle(
+                    color: HexColor('D5D5E0'),
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
 
-                SizedBox(
-                  height: 12,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
-                  child: Text(
-                    'Buy, sell and exchange',
-                    style: TextStyle(
-                      color: HexColor('A7A7CC'),
-                      fontSize: 22,
-                    ),
+              const SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24.0),
+                child: Text(
+                  'Buy, sell and exchange',
+                  style: TextStyle(
+                    color: HexColor('A7A7CC'),
+                    fontSize: 22,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
-                  child: Text(
-                    'cryptocurrencies.',
-                    style: TextStyle(
-                      color: HexColor('A7A7CC'),
-                      fontSize: 22,
-                    ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24.0),
+                child: Text(
+                  'cryptocurrencies.',
+                  style: TextStyle(
+                    color: HexColor('A7A7CC'),
+                    fontSize: 22,
                   ),
                 ),
+              ),
 
-                SizedBox(
-                  height: 61,
-                ),
+              const SizedBox(
+                height: 61,
+              ),
 
-                /// button
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SecondRoute(),),
-                      );
-                    },
-                    child: Container(
-                      height: 54,
-                      width: 327,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                HexColor('6262D9'),
-                                HexColor('9D62D9'),
-                              ])),
-                      child: Center(
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                          ),
+              /// button
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SecondRoute(),),
+                    );
+                  },
+                  child: Container(
+                    height: 54,
+                    width: 327,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              HexColor('6262D9'),
+                              HexColor('9D62D9'),
+                            ])
+
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Get Started',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
                         ),
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         )
       ],

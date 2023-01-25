@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hex_color/flutter_hex_color.dart';
+
 import 'package:project/glass.dart';
 
 class WalletHome extends StatefulWidget {
@@ -24,7 +24,7 @@ class _WalletHomeState extends State<WalletHome> {
               sigmaX: 2,
               sigmaY: 2,
             )),
-            GlassPage(),
+            const GlassPage(),
 
             ///purple container
 
