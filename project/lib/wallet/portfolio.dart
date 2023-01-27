@@ -419,7 +419,7 @@ class _PortFolioState extends State<PortFolio> {
           ),
         ),
         bottomNavigationBar: GNav(
-        tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
+        // tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
             curve: Curves.easeOutExpo, // tab animation curves
             duration:
                 const Duration(milliseconds: 900), // tab animation duration
