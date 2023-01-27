@@ -146,25 +146,7 @@ class _PortFolioState extends State<PortFolio> {
                         padding: const EdgeInsets.all(0.0),
                         child: Column(
                           children: [
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //   children: [
-                            //     Text(
-                            //       'Transactions',
-                            //       style: TextStyle(
-                            //         color: HexColor('E4E4F0'),
-                            //         fontSize: 17,
-                            //       ),
-                            //     ),
-                            //     Text(
-                            //       'See all',
-                            //       style: TextStyle(
-                            //         fontSize: 17,
-                            //         color: HexColor('7878FA'),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
+
                             const SizedBox(
                               height: 13,
                             ),
@@ -308,9 +290,6 @@ class _PortFolioState extends State<PortFolio> {
                                                   fontSize: 17,
                                                 ),
                                               ),
-                                              // Text('-\$812.10', style: TextStyle(
-                                              //   color: HexColor('A7A7CC'),
-                                              // ),),
 
                                               Text(
                                                 'BTC',
@@ -440,23 +419,17 @@ class _PortFolioState extends State<PortFolio> {
           ),
         ),
         bottomNavigationBar: GNav(
-            // // rippleColor: Colors.grey, // tab button ripple color when pressed
-            // // hoverColor: Colors.grey, // tab button hover color
-            // haptic: true, // haptic feedback
-            // tabBorderRadius: 15,
-            //  tabActiveBorder: Border.all(color: Colors.black, width: 1), // tab button border
-            //  tabBorder: Border.all(color: Colors.grey, width: 1), // tab button border
-            //   tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
+        tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
             curve: Curves.easeOutExpo, // tab animation curves
             duration:
                 const Duration(milliseconds: 900), // tab animation duration
-            // // gap: 8, // the tab button gap between icon and text
+
             color: Colors.grey, // unselected icon color
             activeColor: Colors.purple, // selected icon and text color
             iconSize: 24, // tab button icon size
             tabBackgroundColor:
                 Colors.purple.withOpacity(0.1), // selected tab background color
-            // // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5), // navigation bar padding
+            
             tabs: const [
               GButton(
                 icon: LineIcons.home,
