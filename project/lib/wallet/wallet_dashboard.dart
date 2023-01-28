@@ -26,8 +26,6 @@ class _WalletHomeState extends State<WalletHome> {
             )),
             const GlassPage(),
 
-            ///purple container
-
           ],
 
         ),

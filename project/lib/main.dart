@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:project/main_page.dart';
+import 'package:project/login_verification_route.dart';
 
 
 void main() async {

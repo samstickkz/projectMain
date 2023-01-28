@@ -4,6 +4,9 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../creditcard.dart';
+import '../creditcard/credit_card.dart';
+
 class PortFolio extends StatefulWidget {
   const PortFolio({Key? key}) : super(key: key);
 
@@ -157,7 +160,7 @@ class _PortFolioState extends State<PortFolio> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const PortFolio(),
+                                        builder: (context) => MySample(),
                                       ),
                                     );
                                   },
