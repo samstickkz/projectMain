@@ -3,6 +3,9 @@ import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:project/wallet/portfolio.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -12,6 +15,42 @@ class SecondRoute extends StatefulWidget {
 }
 
 class _SecondRouteState extends State<SecondRoute> {
+  late Timer _timer;
+  late Map<String, dynamic> _cryptoPriceData;
+  bool _isLoading = true;
+
+  Future<void> fetchCryptoPrice() async {
+    final response = await http.get(Uri.parse(
+        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        _cryptoPriceData = json.decode(response.body);
+        _isLoading = false;
+      });
+    } else {
+      throw Exception('Failed to fetch crypto prices');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch the crypto price data when the widget is first created
+    fetchCryptoPrice();
+
+    // Set up a timer to refresh the crypto price data every 5 minutes
+    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+      fetchCryptoPrice();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // Cancel the timer when the widget is disposed to avoid memory leaks
+    _timer.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +260,8 @@ class _SecondRouteState extends State<SecondRoute> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const PortFolio(),),
+                                      builder: (context) => const PortFolio(),
+                                    ),
                                   );
                                 },
                                 child: Container(
@@ -331,7 +371,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Bitcoin',
+                                              "Bitcoin",
                                               style: TextStyle(
                                                 color: HexColor('E4E4F0'),
                                                 fontSize: 17,
@@ -358,12 +398,17 @@ class _SecondRouteState extends State<SecondRoute> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              '\$21,262.60',
-                                              style: TextStyle(
-                                                color: HexColor('E4E4F0'),
-                                              ),
-                                            ),
+                                            _isLoading
+                                                ? CircularProgressIndicator(
+                                                    color:
+                                                        Colors.deepPurpleAccent,
+                                                  )
+                                                : Text(
+                                                    '\$${_cryptoPriceData['bitcoin']['usd'].toStringAsFixed(2)}',
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.white),
+                                                  ),
                                             Row(
                                               // mainAxisAlignment: MainAxisAlignment.end,
                                               children: [
@@ -436,7 +481,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              '\$1,225.85',
+                                              '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
                                               style: TextStyle(
                                                 color: HexColor('E4E4F0'),
                                               ),
@@ -476,7 +521,8 @@ class _SecondRouteState extends State<SecondRoute> {
             //  tabBorder: Border.all(color: Colors.grey, width: 1), // tab button border
             //   tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
             curve: Curves.easeOutExpo, // tab animation curves
-            duration: const Duration(milliseconds: 900), // tab animation duration
+            duration:
+                const Duration(milliseconds: 900), // tab animation duration
             // // gap: 8, // the tab button gap between icon and text
             color: Colors.grey, // unselected icon color
             activeColor: Colors.purple, // selected icon and text color
@@ -492,17 +538,11 @@ class _SecondRouteState extends State<SecondRoute> {
                 icon: LineIcons.wallet,
               ),
               GButton(
-
-
                 icon: LineIcons.barChart,
               ),
               GButton(
-
                 icon: LineIcons.user,
-
               )
-            ])
-
-    );
+            ]));
   }
 }
