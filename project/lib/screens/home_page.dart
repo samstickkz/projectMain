@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor('16171A'),
         body: Stack(
       children: [
         // Image.asset('images/bglogin.png'),
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 Image.asset(
-                  'images/logo icon.png',
+                  'images/logobird.png',
                   height: 58,
                   width: 58,
                 ),
@@ -42,16 +43,18 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       'Sam\'s',
                       style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
                     SizedBox(
-                      width: 1,
+                      width: 3,
                     ),
                     Text(
-                      'flowry',
+                      'Wallet',
                       style: TextStyle(
+                        color: Colors.white,
                         fontSize: 18,
                       ),
                     ),
@@ -79,15 +82,20 @@ class _HomePageState extends State<HomePage> {
                     width: 331,
                     height: 56,
                     decoration: BoxDecoration(
-                      border: Border.all(),
-                      // color: HexColor('1E232C'),
+
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+
                       borderRadius: BorderRadius.circular(8),
+
                     ),
                     child:  Center(
                         child: GestureDetector(
                           child: Text(
+
                       'Register',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                         )),
                   ),
@@ -97,12 +105,22 @@ class _HomePageState extends State<HomePage> {
                   height: 55,
                 ),
 
-                Text(
-                  'Continue as guest',
-                  style: TextStyle(
-                    color: HexColor('35C2C1'),
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Continue as',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 4,),
+
+                    Text('guest', style: TextStyle(
+                      color: HexColor('9D62D9')
+                    ),)
+                  ],
                 )
               ],
             ),
