@@ -2,9 +2,11 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:project/screens/home_page.dart';
+import 'package:project/screens/login_register_page.dart';
 import 'package:project/authentication/login_verification_route.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'creditcard/get_started.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: HomePage()),
+          nextScreen: GlassPage()),
     );
   }
 }

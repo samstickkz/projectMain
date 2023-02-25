@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:project/creditcard/glass.dart';
+import 'package:project/creditcard/get_started.dart';
 
 class WalletHome extends StatefulWidget {
   const WalletHome({Key? key}) : super(key: key);

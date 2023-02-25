@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
-import '../screens/home_page.dart';
+import '../screens/login_register_page.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
