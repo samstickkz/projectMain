@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:project/authentication/register.dart';
 import 'package:project/screens/login_register_page.dart';
+
+import '../screens/second_route.dart';
+import '../wallet/wallet_dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   // final VoidCallback showRegisterPage;
@@ -145,6 +149,13 @@ class _LoginPageState extends State<LoginPage> {
                   height: 15,
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SecondRoute(),),
+                    );
+                  },
                   // onTap: signIn,
                   child: Container(
                     width: double.infinity,
@@ -169,32 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                // GestureDetector(
-                //   // onTap: signIn,
-                //   child: Container(
-                //     width: double.infinity,
-                //     height: 56,
-                //     decoration: BoxDecoration(
-                //
-                //
-                //       borderRadius: BorderRadius.circular(8),
-                //       border: Border.all(
-                //         color: Colors.deepPurpleAccent,
-                //       )
-                //     ),
-                //     child:  Center(
-                //         child: GestureDetector(
-                //           // onTap: widget.showRegisterPage,
-                //           child: Text(
-                //             'register',
-                //             style: TextStyle(color: Colors.black),
-                //           ),
-                //         )),
-                //   ),
-                // ),
 
                 SizedBox(
-                  height: 200,
+                  height: 180,
                 ),
                 Row(
 
@@ -211,12 +199,21 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      'click here to register ?',
-                      style: TextStyle(
-                        color: Colors.deepPurpleAccent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>  RegisterPage(),),
+                        );
+                      },
+                      child: Text(
+                        'click here to register ?',
+                        style: TextStyle(
+                          color: Colors.deepPurpleAccent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],

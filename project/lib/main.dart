@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:project/screens/login_register_page.dart';
 import 'package:project/authentication/login_verification_route.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:project/wallet/wallet_dashboard.dart';
 
 import 'creditcard/get_started.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: GlassPage()),
+          nextScreen: WalletHome()),
     );
   }
 }

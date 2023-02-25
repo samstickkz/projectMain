@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/screens/second_route.dart';
 
+import '../screens/login_register_page.dart';
 import 'chip.dart';
 
 class GlassPage extends StatefulWidget {
@@ -139,7 +140,7 @@ class _GlassPageState extends State<GlassPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SecondRoute(),),
+                          builder: (context) => const HomePage(),),
                     );
                   },
                   child: Container(

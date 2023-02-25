@@ -92,6 +92,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child:  Center(
                         child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  RegisterPage()) );
+                          },
+
                           child: Text(
 
                       'Register',
