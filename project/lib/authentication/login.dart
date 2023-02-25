@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:project/screens/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback showRegisterPage;
+  const LoginPage({Key? key, required this.showRegisterPage,}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -40,14 +42,19 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Row(
                   children: [
-                    Container(
-                      height: 41,
-                      width: 41,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: HexColor('E8ECF4'))
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()) );
+                      },
+                      child: Container(
+                        height: 41,
+                        width: 41,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: HexColor('E8ECF4'))
+                        ),
+                        child: const Icon(Icons.arrow_back),
                       ),
-                      child: const Icon(Icons.arrow_back),
                     ),
                   ],
                 ),
@@ -132,6 +139,26 @@ class _LoginPageState extends State<LoginPage> {
                   )),
         ),
                ),
+
+                GestureDetector(
+                  onTap: signIn,
+                  child: Container(
+                    width: double.infinity,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: HexColor('1E232C'),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child:  Center(
+                        child: GestureDetector(
+                          onTap: widget.showRegisterPage,
+                          child: Text(
+                            'register',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )),
+                  ),
+                ),
 
               ],
 

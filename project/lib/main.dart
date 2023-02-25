@@ -1,8 +1,10 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:project/login_verification_route.dart';
-
+import 'package:project/screens/home_page.dart';
+import 'package:project/authentication/login_verification_route.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,11 +18,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+        duration: 2000,
+          splashTransition: SplashTransition.fadeTransition,
 
-      home: MainPage(),
+
+          splash: Center(
+            child: Column(
+              children: [
+               Icon(Icons.home),
+              ],
+            ),
+          ),
+          nextScreen: HomePage()),
     );
   }
 }
-

@@ -15,7 +15,13 @@ class _ButtonFState extends State<ButtonF> {
       width: 331,
       height: 56,
       decoration: BoxDecoration(
-        color: HexColor('1E232C'),
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                HexColor('6262D9'),
+                HexColor('9D62D9'),
+              ]),
         borderRadius: BorderRadius.circular(8),
       ),
       child: const Center(

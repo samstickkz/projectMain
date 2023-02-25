@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:project/authentication/register.dart';
 
 
-import 'button/button_f.dart';
-import 'login.dart';
+import '../button/button_f.dart';
+import '../authentication/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Stack(
       children: [
-        Image.asset('images/bglogin.png'),
+        // Image.asset('images/bglogin.png'),
         Padding(
           padding: const EdgeInsets.only(top: 448.0),
           child: Center(
@@ -64,8 +65,7 @@ class _HomePageState extends State<HomePage> {
                 /// buton
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()) );
-                  },
+                    },
                   child: const ButtonF()
                 ),
 
@@ -73,7 +73,8 @@ class _HomePageState extends State<HomePage> {
                   height: 15,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                     },
                   child: Container(
                     width: 331,
                     height: 56,
@@ -82,11 +83,13 @@ class _HomePageState extends State<HomePage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Center(
-                        child: Text(
+                    child:  Center(
+                        child: GestureDetector(
+                          child: Text(
                       'Register',
                       style: TextStyle(color: Colors.black),
-                    )),
+                    ),
+                        )),
                   ),
                 ),
 

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:project/second_route.dart';
+import 'package:project/screens/second_route.dart';
 
 import 'chip.dart';
 
