@@ -16,7 +16,8 @@ class SecondRoute extends StatefulWidget {
 
 class _SecondRouteState extends State<SecondRoute> {
   late Timer _timer;
-  late Map<String, dynamic> _cryptoPriceData;
+  Map<String, dynamic> _cryptoPriceData = {};
+
   bool _isLoading = true;
 
   Future<void> fetchCryptoPrice() async {
