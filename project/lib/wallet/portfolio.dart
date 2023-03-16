@@ -431,7 +431,7 @@ class _PortFolioState extends State<PortFolio> {
             iconSize: 24, // tab button icon size
             tabBackgroundColor:
                 Colors.purple.withOpacity(0.1), // selected tab background color
-            
+
             tabs: const [
               GButton(
                 icon: LineIcons.home,

@@ -221,10 +221,18 @@ class _LoginPageState extends State<LoginPage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Center(
-                        child: Text(
-                          'Resgister',
-                          style: TextStyle(color: Colors.white),
+                    child:  Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          child: Text(
+                            'Resgister',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         )),
                   ),
                 ),
