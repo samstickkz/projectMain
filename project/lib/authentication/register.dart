@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 import '../screens/login_register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   // final VoidCallback showLoginPage;
@@ -14,13 +15,39 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
+  final _confirmpasswordcontroller = TextEditingController();
 
   @override
-  void dispose(){
+  void dispose() {
     _passwordcontroller.dispose();
     _emailcontroller.dispose();
+    _confirmpasswordcontroller.dispose();
+
     super.dispose();
   }
+
+  Future signUp() async {
+    bool passwordconfirmed(){
+      if (_passwordcontroller.text.trim() == _confirmpasswordcontroller.text.trim()){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    if (passwordconfirmed()){
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailcontroller.text.trim(),
+        password: _passwordcontroller.text.trim(),
+      );
+
+    }
+
+
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,29 +57,33 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.all(22.0),
           child: SingleChildScrollView(
             child: Column(
-
               children: [
                 Row(
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()) );
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()));
                       },
                       child: Container(
                         height: 41,
                         width: 41,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: HexColor('E8ECF4'))
+                            border: Border.all(color: HexColor('E8ECF4'))),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
                         ),
-                        child: const Icon(Icons.arrow_back, color: Colors.white,),
                       ),
                     ),
                   ],
                 ),
-
-                const SizedBox(height: 28,),
-
+                const SizedBox(
+                  height: 28,
+                ),
                 Row(
                   children: [
                     Column(
@@ -77,43 +108,48 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-
                 const SizedBox(
                   height: 32,
                 ),
-
                 TextField(
-                  // controller: _emailcontroller,
+                  controller: _emailcontroller,
                   decoration: InputDecoration(
                     fillColor: HexColor('A7A7CC'),
                     filled: true,
                     labelText: 'Enter  email',
-                    border: const OutlineInputBorder(
-
-                    ),
+                    border: const OutlineInputBorder(),
                   ),
                 ),
-
                 const SizedBox(
                   height: 20,
                 ),
-
                 TextField(
-
-                  // controller: _passwordcontroller,
-
+                  controller: _passwordcontroller,
                   decoration: InputDecoration(
                     fillColor: HexColor('A7A7CC'),
                     filled: true,
                     labelText: 'Enter your password',
                     border: const OutlineInputBorder(),
-
                   ),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
 
+                // confirm password
+
+                TextField(
+                  controller: _confirmpasswordcontroller,
+                  decoration: InputDecoration(
+                    fillColor: HexColor('A7A7CC'),
+                    filled: true,
+                    labelText: 'Enter your password',
+                    border: const OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -125,7 +161,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: 15,
                 ),
@@ -146,11 +181,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Center(
-                        child: Text(
-                          'Resgister',
-                          style: TextStyle(color: Colors.white),
-                        )),
+                    child: Center(
+                        child: GestureDetector(
+                      onTap: signUp,
+                      child: Text(
+                        'Resgister',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )),
                   ),
                 ),
                 SizedBox(
@@ -173,28 +211,30 @@ class _RegisterPageState extends State<RegisterPage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child:  Center(
+                    child: Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('images/Google.png',width: 18,height: 18,),
-                            SizedBox(width: 10,),
-                            Text(
-                              'SignUp with Google ',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        )),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'images/Google.png',
+                          width: 18,
+                          height: 18,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'SignUp with Google ',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    )),
                   ),
                 ),
-
-
                 SizedBox(
                   height: 180,
                 ),
                 Row(
-
-
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -212,7 +252,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>  RegisterPage(),),
+                            builder: (context) => RegisterPage(),
+                          ),
                         );
                       },
                       child: Text(
@@ -227,7 +268,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
               ],
-
             ),
           ),
         ),

@@ -5,7 +5,7 @@ import 'package:project/authentication/register.dart';
 
 import '../screens/login_register_page.dart';
 import '../screens/second_route.dart';
-import '../wallet/wallet_dashboard.dart';
+// import '../wallet/wallet_dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -33,12 +33,12 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       // user is logged in
-      print('User ${userCredential.user?.email} is logged in');
+      // print('User ${userCredential.user?.email} is logged in');
 
       // Navigate to the home page
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SecondRoute()),
+        MaterialPageRoute(builder: (context) => const SecondRoute()),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
 
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
 
@@ -144,11 +144,11 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
 
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       TextFormField(
                         controller: _passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           labelText: 'Password',
@@ -161,9 +161,9 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       if (_isLoading)
-                        CircularProgressIndicator()
+                        const CircularProgressIndicator()
                       else
                         ElevatedButton(
                           onPressed: () {
@@ -171,14 +171,14 @@ class _LoginPageState extends State<LoginPage> {
                               _login();
                             }
                           },
-                          child: Text('Login'),
+                          child: const Text('Login'),
                         ),
                       if (_errorMessage != null)
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: Text(
                             _errorMessage,
-                            style: TextStyle(color: Colors.red),
+                            style: const TextStyle(color: Colors.red),
                           ),
                         ),
                     ],
@@ -192,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
+                    const Text(
                       'Forgot Password?',
                       style: TextStyle(
                         color: Colors.white,
@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
@@ -228,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
@@ -253,8 +253,8 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset('images/Google.png',width: 18,height: 18,),
-                            SizedBox(width: 10,),
-                            Text(
+                            const SizedBox(width: 10,),
+                            const Text(
                               'SignUp with Google ',
                               style: TextStyle(color: Colors.white),
                             ),
@@ -264,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
 
-                SizedBox(
+                const SizedBox(
                   height: 180,
                 ),
                 Row(
@@ -272,14 +272,14 @@ class _LoginPageState extends State<LoginPage> {
 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Dont have an account ?',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     TextButton(
@@ -290,7 +290,7 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) =>  RegisterPage(),),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'click here to register ?',
                         style: TextStyle(
                           color: Colors.deepPurpleAccent,
