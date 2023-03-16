@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 
-
-import '../button/button_f.dart';
+import '../button/login_button.dart';
 import '../authentication/login_main.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,119 +16,114 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('16171A'),
+        backgroundColor: HexColor('16171A'),
         body: Stack(
-      children: [
-        // Image.asset('images/bglogin.png'),
-        Padding(
-          padding: const EdgeInsets.only(top: 448.0),
-          child: Center(
-            child: Column(
-              children: [
-                Image.asset(
-                  'images/logobird.png',
-                  height: 58,
-                  width: 58,
-                ),
-
-                const SizedBox(
-                  height: 8,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Sam\'s',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Text(
-                      'Wallet',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(
-                  height: 43.97,
-                ),
-
-                /// buton
-                GestureDetector(
-                  onTap: () {
-                    },
-                  child: const ButtonF()
-                ),
-
-                const SizedBox(
-                  height: 15,
-                ),
-                GestureDetector(
-                  onTap: () {
-                     },
-                  child: Container(
-                    width: 331,
-                    height: 56,
-                    decoration: BoxDecoration(
-
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-
-                      borderRadius: BorderRadius.circular(8),
-
-                    ),
-                    child:  Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  RegisterPage()) );
-                          },
-
-                          child: Text(
-
-                      'Register',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                        )),
-                  ),
-                ),
-
-                const SizedBox(
-                  height: 55,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Image.asset('images/bglogin.png'),
+            Padding(
+              padding: const EdgeInsets.only(top: 448.0),
+              child: Center(
+                child: Column(
                   children: [
-                    Text(
-                      'Continue as',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    Image.asset(
+                      'images/logobird.png',
+                      height: 58,
+                      width: 58,
+                    ),
+
+                    const SizedBox(
+                      height: 8,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Sam\'s',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 3,
+                        ),
+                        Text(
+                          'Wallet',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: 43.97,
+                    ),
+
+                    /// buton
+                    GestureDetector(onTap: () {}, child: const LoginButton()),
+
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: 331,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.white,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                            child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          child: Text(
+                            'Register',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )),
                       ),
                     ),
-                    SizedBox(width: 4,),
 
-                    Text('guest', style: TextStyle(
-                      color: HexColor('9D62D9')
-                    ),)
+                    const SizedBox(
+                      height: 55,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Continue as',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          'guest',
+                          style: TextStyle(color: HexColor('9D62D9')),
+                        )
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
-          ),
-        )
-      ],
-    ));
+                ),
+              ),
+            )
+          ],
+        ));
   }
 }
