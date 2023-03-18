@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:project/screens/second_route.dart';
+import 'package:project/wallet/main_wallet_dashbaord.dart';
 
-import '../screens/login_register_page.dart';
-import 'chip.dart';
+import '../authentication/login_register_page.dart';
+import '../creditcard/chip.dart';
 
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);

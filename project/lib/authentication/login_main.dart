@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 
-import '../screens/login_register_page.dart';
-import '../screens/second_route.dart';
-// import '../wallet/wallet_dashboard.dart';
+import 'login_register_page.dart';
+import '../wallet/main_wallet_dashbaord.dart';
+// import '../wallet/main_onboarding.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -324,8 +324,8 @@ class _LoginPageState extends State<LoginPage> {
 // import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 //
-// import '../screens/second_route.dart';
-// import '../wallet/wallet_dashboard.dart';
+// import '../screens/main_wallet_dashbaord.dart';
+// import '../wallet/main_onboarding.dart';
 //
 // class LoginPage extends StatefulWidget {
 //   @override

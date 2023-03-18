@@ -3,7 +3,7 @@ import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 
 import '../button/login_button.dart';
-import '../authentication/login_main.dart';
+import 'login_main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
