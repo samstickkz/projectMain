@@ -129,35 +129,45 @@ class _SecondRouteState extends State<SecondRoute> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white.withOpacity(0.3),
-                            ),
-                            width: 98.33,
-                            height: 101,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 21.0, vertical: 21),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.arrow_upward_outlined,
-                                    color: HexColor('F2F2FA'),
-                                  ),
-                                  Text(
-                                    'Top Up',
-                                    style: TextStyle(
+
+                          /// top up button
+                          GestureDetector(
+                            onTap: (){
+
+                            },
+
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white.withOpacity(0.3),
+                              ),
+                              width: 98.33,
+                              height: 101,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 21.0, vertical: 21),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.arrow_upward_outlined,
                                       color: HexColor('F2F2FA'),
-                                      fontSize: 15,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      'Top Up',
+                                      style: TextStyle(
+                                        color: HexColor('F2F2FA'),
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
+
+                          // buy button
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
@@ -187,6 +197,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               ),
                             ),
                           ),
+                          /// top ip button
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),

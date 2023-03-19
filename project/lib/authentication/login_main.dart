@@ -167,6 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                       else
                         ElevatedButton(
                           onPressed: () {
+                            print('login button pressed');
                             if (_formKey.currentState?.validate() ?? false) {
                               _login();
                             }
