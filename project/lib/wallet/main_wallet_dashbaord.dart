@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
@@ -55,6 +56,10 @@ class _SecondRouteState extends State<SecondRoute> {
 
   @override
   Widget build(BuildContext context) {
+    var now = DateTime.now();
+    var formatter = DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(now);
+
     return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
@@ -90,15 +95,18 @@ class _SecondRouteState extends State<SecondRoute> {
                               color: HexColor('E4E4F0'),
                             ),
                           ),
-                          const SizedBox(
-                            width: 40,
-                          )
+                          Text(formattedDate  ,style: TextStyle(
+                              color: HexColor('D5D5E0'),
+                              fontSize: 12,
+
+                              fontWeight: FontWeight.bold),),
                         ],
                       ),
                       const SizedBox(
                         height: 33,
                       ),
                       Row(
+
                         children: [
                           Text(
                             'Your Balance',
@@ -107,6 +115,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               fontSize: 22,
                             ),
                           ),
+
                         ],
                       ),
                       const SizedBox(
@@ -121,10 +130,18 @@ class _SecondRouteState extends State<SecondRoute> {
                                 fontSize: 34,
                                 fontWeight: FontWeight.bold),
                           ),
+
+
+                        ],
+                      ),
+                      SizedBox(height: 2,),
+                      Row(
+                        children: [
+
                         ],
                       ),
                       const SizedBox(
-                        height: 45,
+                        height: 39,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
