@@ -22,7 +22,7 @@ class _SecondRouteState extends State<SecondRoute> {
 
   Future<void> fetchCryptoPrice() async {
     final response = await http.get(Uri.parse(
-        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'));
+        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -129,13 +129,9 @@ class _SecondRouteState extends State<SecondRoute> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           /// top up button
                           GestureDetector(
-                            onTap: (){
-
-                            },
-
+                            onTap: () {},
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
@@ -197,6 +193,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               ),
                             ),
                           ),
+
                           /// top ip button
                           Container(
                             decoration: BoxDecoration(
@@ -290,7 +287,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Image.asset(
-                                            'images/Ethereum icon.png',
+                                            'images/ADA 1.png',
                                             height: 32,
                                             width: 32,
                                           ),
@@ -301,15 +298,15 @@ class _SecondRouteState extends State<SecondRoute> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Bought ETH',
+                                                'Bought ADA',
                                                 style: TextStyle(
                                                   color: HexColor('E4E4F0'),
                                                 ),
                                               ),
                                               Text(
-                                                '-\$812.10',
+                                                '\$${_cryptoPriceData['cardano']['usd'].toStringAsFixed(2)}',
                                                 style: TextStyle(
-                                                  color: HexColor('A7A7CC'),
+                                                  color: HexColor('E4E4F0'),
                                                 ),
                                               ),
                                               Text(
