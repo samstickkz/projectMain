@@ -1,5 +1,3 @@
-// import 'package:example/app_colors.dart';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
@@ -7,9 +5,11 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 
-void main() => runApp(MySample());
+void main() => runApp(const MySample());
 
 class MySample extends StatefulWidget {
+  const MySample({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return MySampleState();
@@ -212,8 +212,8 @@ class MySampleState extends State<MySample> {
                                   HexColor('6262D9'),
                                   HexColor('9D62D9'),
                                 ],
-                                begin: Alignment(-1, -4),
-                                end: Alignment(1, 4),
+                                begin: const Alignment(-1, -4),
+                                end: const Alignment(1, 4),
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
-
 import '../button/login_button.dart';
-import 'login_main.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -86,9 +85,9 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => RegisterPage()));
+                                    builder: (context) => const RegisterPage()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Register',
                             style: TextStyle(color: Colors.white),
                           ),
@@ -103,14 +102,14 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Continue as',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 4,
                         ),
                         Text(

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
+
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../creditcard/credit_card.dart';
-import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
+
 
 class PortFolio extends StatefulWidget {
   const PortFolio({Key? key}) : super(key: key);
@@ -159,7 +158,7 @@ class _PortFolioState extends State<PortFolio> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => MySample(),
+                                        builder: (context) => const MySample(),
                                       ),
                                     );
                                   },
@@ -420,31 +419,33 @@ class _PortFolioState extends State<PortFolio> {
             ),
           ),
         ),
-        bottomNavigationBar: GNav(
-        // tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
-            curve: Curves.easeOutExpo, // tab animation curves
-            duration:
-                const Duration(milliseconds: 900), // tab animation duration
+        // bottomNavigationBar: GNav(
+        // // tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
+        //     curve: Curves.easeOutExpo, // tab animation curves
+        //     duration:
+        //         const Duration(milliseconds: 900), // tab animation duration
+        //
+        //     color: Colors.grey, // unselected icon color
+        //     activeColor: Colors.purple, // selected icon and text color
+        //     iconSize: 24, // tab button icon size
+        //     tabBackgroundColor:
+        //         Colors.purple.withOpacity(0.1), // selected tab background color
+        //
+        //     tabs: const [
+        //       GButton(
+        //         icon: LineIcons.home,
+        //       ),
+        //       GButton(
+        //         icon: LineIcons.wallet,
+        //       ),
+        //       GButton(
+        //         icon: LineIcons.barChart,
+        //       ),
+        //       GButton(
+        //         icon: LineIcons.user,
+        //       )
+        //     ])
 
-            color: Colors.grey, // unselected icon color
-            activeColor: Colors.purple, // selected icon and text color
-            iconSize: 24, // tab button icon size
-            tabBackgroundColor:
-                Colors.purple.withOpacity(0.1), // selected tab background color
-
-            tabs: const [
-              GButton(
-                icon: LineIcons.home,
-              ),
-              GButton(
-                icon: LineIcons.wallet,
-              ),
-              GButton(
-                icon: LineIcons.barChart,
-              ),
-              GButton(
-                icon: LineIcons.user,
-              )
-            ]));
+    );
   }
 }

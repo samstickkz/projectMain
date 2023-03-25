@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:project/authentication/login_main.dart';
-
-import '../onboarding/main_onboarding.dart';
-
+import 'package:project/authentication/login_main_to_dashboard.dart';
 class LoginButton extends StatefulWidget {
   const LoginButton({Key? key}) : super(key: key);
 
@@ -17,7 +14,7 @@ class _LoginButtonState extends State<LoginButton> {
     return  GestureDetector(
       // Within the `FirstRoute` widget
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>  LoginPage()) );
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>  const LoginPage()) );
 
       },
       child: Container(

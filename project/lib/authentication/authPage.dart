@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:project/authentication/register.dart';
 //
-// import 'login_main.dart';
+// import 'login_main_to_dashboard.dart';
 //
 // class AuthPage extends StatefulWidget {
 //   const AuthPage({Key? key}) : super(key: key);

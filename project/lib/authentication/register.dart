@@ -5,6 +5,8 @@ import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   // final VoidCallback showLoginPage;
   // const RegisterPage({Key? key, required this.showLoginPage,}) : super(key: key);
 
@@ -152,8 +154,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
+                  children: const [
+                    const Text(
                       'Forgot Password?',
                       style: TextStyle(
                         color: Colors.white,
@@ -161,7 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
@@ -184,14 +186,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Center(
                         child: GestureDetector(
                       onTap: signUp,
-                      child: Text(
+                      child: const Text(
                         'Resgister',
                         style: TextStyle(color: Colors.white),
                       ),
                     )),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 GestureDetector(
@@ -220,10 +222,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           width: 18,
                           height: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
-                        Text(
+                        const Text(
                           'SignUp with Google ',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -231,20 +233,20 @@ class _RegisterPageState extends State<RegisterPage> {
                     )),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 180,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Dont have an account ?',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     TextButton(
@@ -252,11 +254,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RegisterPage(),
+                            builder: (context) => const RegisterPage(),
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'click here to register ?',
                         style: TextStyle(
                           color: Colors.deepPurpleAccent,

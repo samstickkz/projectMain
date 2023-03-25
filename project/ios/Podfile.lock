@@ -49,6 +49,8 @@ PODS:
   - GoogleUtilities/Reachability (7.11.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.1.0)
+  - local_auth_ios (0.0.1):
+    - Flutter
   - OrderedSet (5.0.0)
   - PromisesObjC (2.1.1)
   - Toast (4.0.0)
@@ -61,6 +63,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
@@ -86,6 +89,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  local_auth_ios:
+    :path: ".symlinks/plugins/local_auth_ios/ios"
   webview_flutter_wkwebview:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
@@ -101,6 +106,7 @@ SPEC CHECKSUMS:
   fluttertoast: eb263d302cc92e04176c053d2385237e9f43fad0
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
+  local_auth_ios: c6cf091ded637a88f24f86a8875d8b0f526e2605
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
