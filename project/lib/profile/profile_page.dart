@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import '../screens/nav.dart';
+import 'Flutter developer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -25,9 +26,9 @@ class _ProfilePageState extends State<ProfilePage> {
             Center(
               child: Column(children: [
                 Image.asset(
-                  'images/Group 2.png',
+                  'images/Group 3.png',
                   width: 300,
-                  height: 500,
+                  height: 466,
                 ),
               ]),
             ),
@@ -211,13 +212,24 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
 
                               // button
-                              Container(
-                                width: 50,
-                                height: 50,
-                                child: Icon(Icons.arrow_right_alt),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const FlutterDeveloper(),
+                                    ),
+                                  );
+                                },
+
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  child: Icon(Icons.arrow_right_alt),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
                                 ),
                               )
                             ],
