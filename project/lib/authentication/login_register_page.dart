@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
+import 'package:project/wallet/main_wallet_dashbaord.dart';
 import '../button/login_button.dart';
+import '../screens/nav.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -112,9 +114,19 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 4,
                         ),
-                        Text(
-                          'guest',
-                          style: TextStyle(color: HexColor('9D62D9')),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const NavPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'guest',
+                            style: TextStyle(color: HexColor('9D62D9')),
+                          ),
                         )
                       ],
                     )

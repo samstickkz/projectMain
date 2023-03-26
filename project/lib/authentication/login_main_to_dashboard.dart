@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
-import '../wallet/nav.dart';
+import '../screens/nav.dart';
 import 'login_register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -31,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-
 
       Navigator.push(
         context,
@@ -185,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
-                     Text(
+                    Text(
                       'Forgot Password?',
                       style: TextStyle(
                         color: Colors.white,

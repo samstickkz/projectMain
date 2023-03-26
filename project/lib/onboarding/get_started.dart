@@ -1,12 +1,10 @@
+import 'package:flutter_hex_color/flutter_hex_color.dart';
+import '../authentication/login_register_page.dart';
+import 'package:flutter/material.dart';
+import '../creditcard/chip.dart';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_hex_color/flutter_hex_color.dart';
-
-
-import '../authentication/login_register_page.dart';
-import '../creditcard/chip.dart';
+import '../profile/profile_page.dart';
 
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);
@@ -29,10 +27,6 @@ class _GlassPageState extends State<GlassPage> {
               height: 302,
               width: 220,
               decoration: BoxDecoration(
-                  // image: DecorationImage(
-                  //     image: AssetImage('images/sam.JPG')
-                  // ),
-
                   borderRadius: BorderRadius.circular(32),
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -140,7 +134,8 @@ class _GlassPageState extends State<GlassPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomePage(),),
+                        builder: (context) => const HomePage(),
+                      ),
                     );
                   },
                   child: Container(
@@ -154,9 +149,7 @@ class _GlassPageState extends State<GlassPage> {
                             colors: [
                               HexColor('6262D9'),
                               HexColor('9D62D9'),
-                            ])
-
-                    ),
+                            ])),
                     child: const Center(
                       child: Text(
                         'Get Started',

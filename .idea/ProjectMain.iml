@@ -41,6 +41,18 @@
       <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/webview_flutter_wkwebview/build" />
       <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/webview_flutter_wkwebview/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/webview_flutter_wkwebview/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/project/windows/flutter/ephemeral/.plugin_symlinks/local_auth_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project/ios/.symlinks/plugins/local_auth_ios/example/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

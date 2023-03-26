@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../creditcard/credit_card.dart';
+import '../card/credit_card.dart';
 
 
 class PortFolio extends StatefulWidget {
