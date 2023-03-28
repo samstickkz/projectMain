@@ -63,9 +63,7 @@ class _SecondRouteState extends State<SecondRoute> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body:
-
-          SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             Container(
@@ -85,9 +83,12 @@ class _SecondRouteState extends State<SecondRoute> {
                     top: 50.0, left: 16, right: 16, bottom: 13),
                 child: Column(
                   children: [
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
+
                         Icon(
                           Icons.menu,
                           color: HexColor('A7A7CC'),
@@ -138,9 +139,9 @@ class _SecondRouteState extends State<SecondRoute> {
                     const SizedBox(
                       height: 2,
                     ),
-                    Row(
-                      children: const [],
-                    ),
+                    // Row(
+                    //   children: const [],
+                    // ),
                     const SizedBox(
                       height: 39,
                     ),
@@ -401,10 +402,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          // Text('-\$812.10', style: TextStyle(
-                                          //   color: HexColor('A7A7CC'),
-                                          // ),),
-
                                           Text(
                                             'BTC',
                                             style: TextStyle(
@@ -434,7 +431,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                                       color: Colors.white),
                                                 ),
                                           Row(
-                                            // mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               Text(
                                                 '+0.54%',
@@ -483,10 +479,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          // Text('-\$812.10', style: TextStyle(
-                                          //   color: HexColor('A7A7CC'),
-                                          // ),),
-
                                           Text(
                                             'ETH',
                                             style: TextStyle(

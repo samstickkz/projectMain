@@ -15,12 +15,7 @@ class NavPage extends StatefulWidget {
 }
 
 int selectedIndex = 0;
-// final _pageOptions = [
-//   const SecondRoute(),
-//   const MySample(),
-//   const PortFolio(),
-//   const ProfilePage(),
-// ];
+
 
  const List<Widget> _pageOptions = <Widget>[
    const SecondRoute(),
@@ -79,6 +74,8 @@ class _NavPageState extends State<NavPage> {
               setState(() {
                 selectedIndex = index;
               });
-            }));
+            }
+
+            ));
   }
 }

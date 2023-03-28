@@ -53,6 +53,7 @@ dependencies:
   flutterwave_standard: 1.0.7
   intl: ^0.17.0
   local_auth: ^2.1.6
+  
 
 
 
