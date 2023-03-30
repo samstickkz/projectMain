@@ -5,7 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:project/onboarding/main_onboarding.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -18,24 +17,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return
-
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: AnimatedSplashScreen(
-            duration: 2000,
-            splashTransition: SplashTransition.fadeTransition,
-
-
-            splash: Center(
-              child: Column(
-                children: const [
-                  Icon(Icons.home),
-                ],
-              ),
+    return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+        elevation: 0,
+        color: Colors.deepPurpleAccent.shade200,
+      )),
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+          duration: 2000,
+          splashTransition: SplashTransition.fadeTransition,
+          splash: Center(
+            child: Column(
+              children: const [
+                Icon(Icons.home),
+              ],
             ),
-            // nextScreen: WalletHome()),
-            nextScreen: const WalletHome()),
-      );
+          ),
+          // nextScreen: WalletHome()),
+          nextScreen: const WalletHome()),
+    );
   }
 }
