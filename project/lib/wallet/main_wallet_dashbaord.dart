@@ -62,18 +62,68 @@ class _SecondRouteState extends State<SecondRoute> {
     String formattedDate = formatter.format(now);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text('Home'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0, right: 25),
+            child: Text(formattedDate),
+          )
+        ],
+      ),
       drawer: Drawer(
+        backgroundColor: Colors.black,
         elevation: 0,
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.black,
               ),
-              child: Text('Drawer Header'),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Image.asset(
+                      'images/sam.JPG',
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Samuel Joseph',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'samstickkz@gmail.com',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             ListTile(
               title: const Text('Item 1'),
@@ -106,13 +156,17 @@ class _SecondRouteState extends State<SecondRoute> {
                       borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(32),
                           bottomRight: Radius.circular(32)),
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            HexColor('6262D9'),
-                            HexColor('9D62D9'),
-                          ]),
+                      color: Colors.deepPurpleAccent.shade200,
+                      // gradient: LinearGradient(
+                      //     begin: Alignment.topLeft,
+                      //     end: Alignment.bottomRight,
+                      //     colors:
+                      //
+                      //     [
+                      //       HexColor('6262D9'),
+                      //       HexColor('9D62D9'),
+                      //     ]
+                      // ),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(

@@ -96,7 +96,7 @@ class _PortFolioState extends State<PortFolio> {
                 ),
 
                 ///ring
-                Container(
+                SizedBox(
                   height: 285,
                   width: 285,
                   child: CircularPercentIndicator(

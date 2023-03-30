@@ -16,10 +16,10 @@ class NavPage extends StatefulWidget {
 int selectedIndex = 0;
 
 const List<Widget> _pageOptions = <Widget>[
-  const SecondRoute(),
-  const MySample(),
-  const PortFolio(),
-  const ProfilePage(),
+  SecondRoute(),
+  MySample(),
+  PortFolio(),
+  ProfilePage(),
 ];
 
 class _NavPageState extends State<NavPage> {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
 import 'dart:ui';
 
-import '../profile/profile_page.dart';
+
 
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);

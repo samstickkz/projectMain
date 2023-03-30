@@ -111,7 +111,7 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const Padding(
@@ -152,13 +152,13 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
                         child: Row(
-                          children: [
+                          children: const [
                             Text(
                               'coorem Ipsum available, samuel',
                               style: TextStyle(
@@ -230,11 +230,11 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                             child: Container(
                               width: 50,
                               height: 50,
-                              child: Icon(Icons.arrow_right_alt),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                               ),
+                              child: const Icon(Icons.arrow_right_alt),
                             ),
                           )
                         ],

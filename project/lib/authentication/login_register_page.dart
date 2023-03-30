@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
-import 'package:project/wallet/main_wallet_dashbaord.dart';
 import '../button/login_button.dart';
 import '../screens/nav.dart';
 

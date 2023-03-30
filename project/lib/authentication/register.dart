@@ -155,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
-                    const Text(
+                    Text(
                       'Forgot Password?',
                       style: TextStyle(
                         color: Colors.white,

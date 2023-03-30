@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import '../screens/nav.dart';
-import 'Flutter developer.dart';
+import 'flutter_developer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -51,133 +51,131 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 30.0, right: 30),
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Joseph',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Joseph',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text(
+                              'Samuel Joseph',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Actively Looking',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white54,
+                                  ),
                                 ),
-                              ),
-                              const Text(
-                                'Samuel Joseph',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                                Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Checkbox(
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                    shape: const CircleBorder(),
+                                    checkColor: Colors.black,
+                                    fillColor: MaterialStateProperty.all(
+                                        HexColor('DCA9E4')),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                children: [
-                                  const Text(
-                                    'Actively Looking',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white54,
+
+                                /// job stats starts here
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                /// built
+                                Column(
+                                  children: const [
+                                    Text(
+                                      'Applied',
+                                      style: TextStyle(
+                                        color: Colors.white54,
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    decoration: const BoxDecoration(),
-                                    child: Checkbox(
-                                      value: isChecked,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          isChecked = value!;
-                                        });
-                                      },
-                                      shape: const CircleBorder(),
-                                      checkColor: Colors.black,
-                                      fillColor: MaterialStateProperty.all(
-                                          HexColor('DCA9E4')),
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                  ),
+                                    Text(
+                                      '200',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
 
-                                  /// job stats starts here
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  /// built
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        'Applied',
-                                        style: TextStyle(
-                                          color: Colors.white54,
-                                        ),
+                                /// review
+                                Column(
+                                  children: const [
+                                    Text(
+                                      'Reviewed',
+                                      style: TextStyle(
+                                        color: Colors.white54,
                                       ),
-                                      SizedBox(
-                                        height: 10,
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Text(
+                                      '98',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
                                       ),
-                                      Text(
-                                        '200',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
+                                ),
 
-                                  /// review
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        'Reviewed',
-                                        style: TextStyle(
-                                          color: Colors.white54,
-                                        ),
+                                /// collabo
+                                Column(
+                                  children: const [
+                                    Text(
+                                      'collabo',
+                                      style: TextStyle(
+                                        color: Colors.white54,
                                       ),
-                                      SizedBox(
-                                        height: 8,
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Text(
+                                      '80',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
                                       ),
-                                      Text(
-                                        '98',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                  /// collabo
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        'collabo',
-                                        style: TextStyle(
-                                          color: Colors.white54,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        '80',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                       Container(
@@ -225,11 +223,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Container(
                                   width: 50,
                                   height: 50,
-                                  child: Icon(Icons.arrow_right_alt),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.white,
                                   ),
+                                  child: const Icon(Icons.arrow_right_alt),
                                 ),
                               )
                             ],
