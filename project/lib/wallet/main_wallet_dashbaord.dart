@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import 'package:project/wallet/portfolio.dart';
@@ -84,6 +85,7 @@ class _SecondRouteState extends State<SecondRoute> {
               ),
               child: Row(
                 children: [
+                  //profile
                   Container(
                     height: 50,
                     width: 50,
@@ -98,9 +100,13 @@ class _SecondRouteState extends State<SecondRoute> {
                       fit: BoxFit.cover,
                     ),
                   ),
+
+                  //Profile picture ends here
+
                   const SizedBox(
                     width: 10,
                   ),
+
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,18 +128,174 @@ class _SecondRouteState extends State<SecondRoute> {
                       ),
                     ],
                   ),
+
+                  //Profile ends here
                 ],
               ),
             ),
+
+            //calender
             ListTile(
-              title: const Text('Item 1'),
+              leading: const Icon(
+                Icons.calendar_month,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Calendar',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              trailing: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                  color: HexColor('8BC185'),
+                ),
+                child: const Center(
+                    child: Text(
+                  '4',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+              ),
               onTap: () {
                 // Update the state of the app.
                 // ...
               },
             ),
+            //rewards
             ListTile(
-              title: const Text('Item 2'),
+              leading: const Icon(
+                Icons.money_outlined,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Rewards',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              trailing: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                  color: HexColor('8BC185'),
+                ),
+                child: const Center(
+                    child: Text(
+                  '11',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            //Address
+            ListTile(
+              leading: const Icon(
+                Icons.account_balance_wallet_rounded,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Address',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              trailing: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                  color: Colors.deepPurpleAccent.shade200,
+                ),
+                child: const Center(
+                    child: Text(
+                  '1',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            //Payments
+            ListTile(
+              leading: const Icon(
+                Icons.settings_sharp,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Payments Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              trailing: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                child: const Center(
+                    child: Text(
+                  '22',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                )),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            SizedBox(
+              height: 280,
+            ),
+            ListTile(
+              leading: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: Colors.white),
+                ),
+                child: const Icon(
+                  Icons.question_mark,
+                  color: Colors.white,
+                ),
+              ),
+              title: const Text(
+                'Payments Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              // trailing: Container(
+              //   height: 20,
+              //   width: 20,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(3),
+              //     color: Colors.lightBlue,
+              //   ),
+              //   child: const Center(
+              //       child: Text(
+              //         '22',
+              //         style: TextStyle(
+              //           color: Colors.black,
+              //         ),
+              //       )),
+              // ),
               onTap: () {
                 // Update the state of the app.
                 // ...
