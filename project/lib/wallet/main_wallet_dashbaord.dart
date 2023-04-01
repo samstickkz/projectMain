@@ -8,6 +8,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+import '../calculator/calculator.dart';
+
+
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
 
@@ -136,6 +139,7 @@ class _SecondRouteState extends State<SecondRoute> {
 
             //calender
             ListTile(
+
               leading: const Icon(
                 Icons.calendar_month,
                 color: Colors.white,
@@ -162,8 +166,16 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                // and update the UI
+                setState(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CalculatorPage(),
+                    ),
+                  );
+
+                });
               },
             ),
             //rewards
@@ -261,7 +273,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 // ...
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 280,
             ),
             ListTile(
@@ -894,6 +906,8 @@ class _SecondRouteState extends State<SecondRoute> {
                       ],
                     ),
                   ),
+
+
                 ],
               ),
             )

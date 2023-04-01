@@ -54,6 +54,7 @@ dependencies:
   intl: ^0.17.0
   local_auth: ^2.1.6
   flutter_screenutil: ^5.7.0
+  nfc_manager: ^3.2.0
   
 
 
