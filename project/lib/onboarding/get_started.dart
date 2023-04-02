@@ -1,10 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import '../authentication/login_register_page.dart';
 import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
 import 'dart:ui';
-
-
 
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);
@@ -89,13 +88,24 @@ class _GlassPageState extends State<GlassPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 24.0),
-                child: Text(
-                  'Seamless trading',
-                  style: TextStyle(
-                    color: HexColor('D5D5E0'),
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Seamless trading!',
+                      curve: Curves.bounceInOut,
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      speed: const Duration(milliseconds: 100),
+                    ),
+                  ],
+                  isRepeatingAnimation: true,
+                  totalRepeatCount: 100,
+                  pause: const Duration(milliseconds: 200),
+                  displayFullTextOnTap: true,
+                  stopPauseOnTap: true,
                 ),
               ),
 
@@ -142,22 +152,19 @@ class _GlassPageState extends State<GlassPage> {
                     height: 54,
                     width: 327,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              HexColor('6262D9'),
-                              HexColor('9D62D9'),
-                            ])),
-                    child: const Center(
-                      child: Text(
-                        'Get Started',
-                        style: TextStyle(
-                          color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: TextLiquidFill(
+                        text: 'Get Started',
+                        waveColor: Colors.white,
+                        boxBackgroundColor: Colors.deepPurpleAccent,
+                        textStyle: const TextStyle(
+                          fontSize: 17.0,
                           fontWeight: FontWeight.bold,
-                          fontSize: 17,
                         ),
+                        boxHeight: 50.0,
+                        loadDuration: const Duration(seconds: 10000),
                       ),
                     ),
                   ),
