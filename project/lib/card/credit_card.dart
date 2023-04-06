@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-
 
 void main() => runApp(const MySample());
 
@@ -50,10 +48,6 @@ class MySampleState extends State<MySample> {
         resizeToAvoidBottomInset: false,
         body: Container(
           decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //   image: ExactAssetImage('images/gauravdeep-singh-bansal--11Q1miT5Qc-unsplash.jpg'),
-            //   fit: BoxFit.fill,
-            // ),
             color: Colors.black,
           ),
           child: SafeArea(
@@ -64,23 +58,23 @@ class MySampleState extends State<MySample> {
                 ),
                 CreditCardWidget(
                   glassmorphismConfig:
-                  useGlassMorphism ? Glassmorphism.defaultConfig() : null,
+                      useGlassMorphism ? Glassmorphism.defaultConfig() : null,
                   cardNumber: cardNumber,
                   expiryDate: expiryDate,
                   cardHolderName: cardHolderName,
                   cvvCode: cvvCode,
                   bankName: 'Sams Bank',
                   frontCardBorder:
-                  !useGlassMorphism ? Border.all(color: Colors.grey) : null,
+                      !useGlassMorphism ? Border.all(color: Colors.grey) : null,
                   backCardBorder:
-                  !useGlassMorphism ? Border.all(color: Colors.grey) : null,
+                      !useGlassMorphism ? Border.all(color: Colors.grey) : null,
                   showBackView: isCvvFocused,
                   obscureCardNumber: true,
                   obscureCardCvv: false,
                   isHolderNameVisible: true,
-                  cardBgColor: Colors.deepPurple.shade300,
+                  cardBgColor: Colors.deepPurple,
                   backgroundImage:
-                  useBackgroundImage ? 'assets/card_bg.png' : null,
+                      useBackgroundImage ? 'assets/card_bg.png' : null,
                   isSwipeGestureEnabled: true,
                   onCreditCardWidgetChange:
                       (CreditCardBrand creditCardBrand) {},
@@ -207,7 +201,7 @@ class MySampleState extends State<MySample> {
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             decoration: BoxDecoration(
-                              gradient:  LinearGradient(
+                              gradient: LinearGradient(
                                 colors: <Color>[
                                   HexColor('6262D9'),
                                   HexColor('9D62D9'),
