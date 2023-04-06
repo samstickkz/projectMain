@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:project/stripe.dart';
 
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
@@ -9,7 +10,6 @@ import 'dart:convert';
 import 'dart:async';
 
 import '../calculator/calculator.dart';
-
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -43,6 +43,7 @@ class _SecondRouteState extends State<SecondRoute> {
   @override
   void initState() {
     super.initState();
+
     // Fetch the crypto price data when the widget is first created
     fetchCryptoPrice();
 
@@ -139,7 +140,6 @@ class _SecondRouteState extends State<SecondRoute> {
 
             //calender
             ListTile(
-
               leading: const Icon(
                 Icons.calendar_month,
                 color: Colors.white,
@@ -174,7 +174,6 @@ class _SecondRouteState extends State<SecondRoute> {
                       builder: (context) => const CalculatorPage(),
                     ),
                   );
-
                 });
               },
             ),
@@ -293,25 +292,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   color: Colors.white,
                 ),
               ),
-              // trailing: Container(
-              //   height: 20,
-              //   width: 20,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(3),
-              //     color: Colors.lightBlue,
-              //   ),
-              //   child: const Center(
-              //       child: Text(
-              //         '22',
-              //         style: TextStyle(
-              //           color: Colors.black,
-              //         ),
-              //       )),
-              // ),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
             ),
           ],
         ), // Populate the Drawer in the next step.
@@ -331,16 +311,6 @@ class _SecondRouteState extends State<SecondRoute> {
                           bottomLeft: Radius.circular(32),
                           bottomRight: Radius.circular(32)),
                       color: Colors.deepPurpleAccent.shade200,
-                      // gradient: LinearGradient(
-                      //     begin: Alignment.topLeft,
-                      //     end: Alignment.bottomRight,
-                      //     colors:
-                      //
-                      //     [
-                      //       HexColor('6262D9'),
-                      //       HexColor('9D62D9'),
-                      //     ]
-                      // ),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -419,32 +389,43 @@ class _SecondRouteState extends State<SecondRoute> {
                               ),
 
                               // buy button
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white.withOpacity(0.3),
-                                ),
-                                width: 98.33,
-                                height: 101,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 21.0, vertical: 21),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.add,
-                                        color: HexColor('F2F2FA'),
-                                      ),
-                                      Text(
-                                        'Buy',
-                                        style: TextStyle(
+                              GestureDetector(
+                                // onTap: () {
+                                //   Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => const (),
+                                //     ),
+                                //   );
+                                // },
+
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.white.withOpacity(0.3),
+                                  ),
+                                  width: 98.33,
+                                  height: 101,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 21.0, vertical: 21),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.add,
                                           color: HexColor('F2F2FA'),
-                                          fontSize: 15,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'Buy',
+                                          style: TextStyle(
+                                            color: HexColor('F2F2FA'),
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -556,7 +537,16 @@ class _SecondRouteState extends State<SecondRoute> {
                                               ),
                                             ),
                                             Text(
-                                              '\$${_cryptoPriceData['cardano']['usd'].toStringAsFixed(5)}',
+                                              _cryptoPriceData != null &&
+                                                      _cryptoPriceData[
+                                                              'cardano'] !=
+                                                          null &&
+                                                      _cryptoPriceData[
+                                                                  'cardano']
+                                                              ['usd'] !=
+                                                          null
+                                                  ? '\$${_cryptoPriceData['cardano']['usd'].toStringAsFixed(5)}'
+                                                  : '',
                                               style: TextStyle(
                                                 color: HexColor('E4E4F0'),
                                               ),
@@ -640,7 +630,15 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
+                                            _cryptoPriceData != null &&
+                                                    _cryptoPriceData[
+                                                            'cardano'] !=
+                                                        null &&
+                                                    _cryptoPriceData['cardano']
+                                                            ['usd'] !=
+                                                        null
+                                                ? '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}'
+                                                : '',
                                             style: TextStyle(
                                               color: HexColor('E4E4F0'),
                                             ),
@@ -726,17 +724,20 @@ class _SecondRouteState extends State<SecondRoute> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          _isLoading
-                                              ? const CircularProgressIndicator(
-                                                  color:
-                                                      Colors.deepPurpleAccent,
-                                                )
-                                              : Text(
-                                                  '\$${_cryptoPriceData['bitcoin']['usd'].toStringAsFixed(2)}',
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
-                                                ),
+                                          Text(
+                                            _cryptoPriceData != null &&
+                                                    _cryptoPriceData[
+                                                            'cardano'] !=
+                                                        null &&
+                                                    _cryptoPriceData['cardano']
+                                                            ['usd'] !=
+                                                        null
+                                                ? '\$${_cryptoPriceData['bitcoin']['usd'].toStringAsFixed(2)}'
+                                                : '',
+                                            style: TextStyle(
+                                              color: HexColor('E4E4F0'),
+                                            ),
+                                          ),
                                           Row(
                                             children: [
                                               Text(
@@ -804,7 +805,15 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
+                                            _cryptoPriceData != null &&
+                                                    _cryptoPriceData[
+                                                            'cardano'] !=
+                                                        null &&
+                                                    _cryptoPriceData['cardano']
+                                                            ['usd'] !=
+                                                        null
+                                                ? '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}'
+                                                : '',
                                             style: TextStyle(
                                               color: HexColor('E4E4F0'),
                                             ),
@@ -875,17 +884,20 @@ class _SecondRouteState extends State<SecondRoute> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          _isLoading
-                                              ? const CircularProgressIndicator(
-                                                  color:
-                                                      Colors.deepPurpleAccent,
-                                                )
-                                              : Text(
-                                                  '\$${_cryptoPriceData['bitcoin']['usd'].toStringAsFixed(2)}',
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white),
-                                                ),
+                                          Text(
+                                            _cryptoPriceData != null &&
+                                                    _cryptoPriceData[
+                                                            'cardano'] !=
+                                                        null &&
+                                                    _cryptoPriceData['cardano']
+                                                            ['usd'] !=
+                                                        null
+                                                ? '\$${_cryptoPriceData['bitcoin']['usd'].toStringAsFixed(2)}'
+                                                : '',
+                                            style: TextStyle(
+                                              color: HexColor('E4E4F0'),
+                                            ),
+                                          ),
                                           Row(
                                             children: [
                                               Text(
@@ -906,8 +918,6 @@ class _SecondRouteState extends State<SecondRoute> {
                       ],
                     ),
                   ),
-
-
                 ],
               ),
             )

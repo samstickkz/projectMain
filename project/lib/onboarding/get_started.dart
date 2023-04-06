@@ -92,7 +92,7 @@ class _GlassPageState extends State<GlassPage> {
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'Seamless trading!',
-                      curve: Curves.bounceInOut,
+                      curve: Curves.bounceIn,
                       textStyle: const TextStyle(
                         color: Colors.white,
                         fontSize: 34,

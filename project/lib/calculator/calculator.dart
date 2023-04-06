@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'buttons.dart';
 
 class CalculatorPage extends StatefulWidget {
@@ -130,16 +132,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                 userAnswer = '';
                               } else if (buttons[index] == '+') {
                                 // Add all inputted items
-                                List<String> items =
-                                    userQuestion.split(new RegExp(r'[-/x+%]'));
-                                for (String item in items) {
-                                  if (int.tryParse(item) != null) {
-                                    userAnswer +=
-                                        int.parse(item).toString() + '+';
-                                  }
-                                }
-                                userAnswer = userAnswer.substring(
-                                    0, userAnswer.length - 1);
+
                               } else if (buttons[index] == '=') {
                                 // Evaluate userQuestion
                                 if (userQuestion.isNotEmpty) {
@@ -170,6 +163,15 @@ class _CalculatorPageState extends State<CalculatorPage> {
       ),
     );
   }
-
+  // void equalPresed (){
+  //   String finalQuestion = userQuestion;
+  //
+  //   Parser p = Parser();
+  //   Expression exp = p.parse(finalQuestion);
+  //   ContextModel cm = ContextModel();
+  //   double eval = exp.evaluate(EvaluationType.REAL, cm);
+  //   userAnswer = eval.toString();
+  //
+  // }
 
 }

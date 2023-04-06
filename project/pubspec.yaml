@@ -55,6 +55,7 @@ dependencies:
   local_auth: ^2.1.6
   flutter_screenutil: ^5.7.0
   animated_text_kit: ^4.2.2
+
   
 
 
