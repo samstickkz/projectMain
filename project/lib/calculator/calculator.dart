@@ -129,7 +129,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                 userAnswer = '';
                               } else if (buttons[index] == '=') {
                                 // Evaluate userQuestion
-                                 equalPressed();
+                                equalPressed();
                                 if (userQuestion.isNotEmpty) {
                                   // Evaluate expression
                                   // ...
