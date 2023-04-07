@@ -124,12 +124,23 @@ class _GlassPageState extends State<GlassPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 24.0),
-                child: Text(
-                  'cryptocurrencies.',
-                  style: TextStyle(
-                    color: HexColor('A7A7CC'),
-                    fontSize: 22,
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      'cryptocurrencies.',
+                      style: TextStyle(
+                        color: HexColor('A7A7CC'),
+                        fontSize: 22,
+                      ),
+                    ),
+                    Text(
+                      '.',
+                      style: TextStyle(
+                        color: HexColor('8BC185'),
+                        fontSize: 22,
+                      ),
+                    ),
+                  ],
                 ),
               ),
 

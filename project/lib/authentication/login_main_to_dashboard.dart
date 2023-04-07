@@ -160,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                       else
                         ElevatedButton(
                           onPressed: () {
-                            print('login button pressed');
+
                             if (_formKey.currentState?.validate() ?? false) {
                               _login();
                             }
@@ -274,7 +274,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Dont have an account ?',
+                      'Don\'t have an account ?',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,

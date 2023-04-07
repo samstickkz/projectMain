@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import '../screens/nav.dart';
+import 'package:flutter/material.dart';
 import 'flutter_developer.dart';
+import '../screens/nav.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -105,8 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 20,
                             ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 /// built
                                 Column(
@@ -215,11 +214,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const FlutterDeveloper(),
+                                      builder: (context) =>
+                                          const FlutterDeveloper(),
                                     ),
                                   );
                                 },
-
                                 child: Container(
                                   width: 50,
                                   height: 50,

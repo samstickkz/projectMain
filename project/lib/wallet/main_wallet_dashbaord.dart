@@ -138,14 +138,14 @@ class _SecondRouteState extends State<SecondRoute> {
               ),
             ),
 
-            //calender
+            //calender starts here
             ListTile(
               leading: const Icon(
-                Icons.calendar_month,
+                Icons.calculate_sharp,
                 color: Colors.white,
               ),
               title: const Text(
-                'Calendar',
+                'Calculator',
                 style: TextStyle(
                   color: Colors.white,
                 ),

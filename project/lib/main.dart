@@ -1,10 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
-import 'package:firebase_core/firebase_core.dart';
-
 import 'package:project/onboarding/main_onboarding.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

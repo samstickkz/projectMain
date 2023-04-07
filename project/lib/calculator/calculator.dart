@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'package:math_expressions/math_expressions.dart';
 
 import 'buttons.dart';
 
@@ -126,15 +127,9 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                 // Clear everything
                                 userQuestion = '';
                                 userAnswer = '';
-                              } else if (buttons[index] == 'x') {
-                                // Clear everything
-                                userQuestion = '';
-                                userAnswer = '';
-                              } else if (buttons[index] == '+') {
-                                // Add all inputted items
-
                               } else if (buttons[index] == '=') {
                                 // Evaluate userQuestion
+                                 equalPressed();
                                 if (userQuestion.isNotEmpty) {
                                   // Evaluate expression
                                   // ...
@@ -163,15 +158,14 @@ class _CalculatorPageState extends State<CalculatorPage> {
       ),
     );
   }
-  // void equalPresed (){
-  //   String finalQuestion = userQuestion;
-  //
-  //   Parser p = Parser();
-  //   Expression exp = p.parse(finalQuestion);
-  //   ContextModel cm = ContextModel();
-  //   double eval = exp.evaluate(EvaluationType.REAL, cm);
-  //   userAnswer = eval.toString();
-  //
-  // }
 
+  void equalPressed() {
+    String finalQuestion = userQuestion;
+    finalQuestion = finalQuestion.replaceAll('x', '*');
+    Parser p = Parser();
+    Expression exp = p.parse(finalQuestion);
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+    userAnswer = eval.toString();
+  }
 }
