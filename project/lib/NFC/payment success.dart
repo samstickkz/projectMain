@@ -17,7 +17,7 @@ class PaymentSuccess extends StatelessWidget {
                 "https://res.cloudinary.com/iamvictorsam/image/upload/v1671834054/Capture_inlcff.png",
                 height: MediaQuery.of(context).size.height * 0.4, //40%
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Text(message,
                   style: const TextStyle(
                     fontSize: 25,

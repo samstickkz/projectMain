@@ -42,11 +42,11 @@ class _PaymentPageState extends State<PaymentPage> {
     if (response.status == true) {
       message = 'Payment was successful. Ref: ${response.reference}';
       if (mounted) {}
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => PaymentSuccess(message: message)),
-      //     ModalRoute.withName('/'));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PaymentSuccess(message: message)),
+          ModalRoute.withName('/'));
     } else {
       print(response.message);
     }
@@ -75,7 +75,6 @@ class _PaymentPageState extends State<PaymentPage> {
                 },
                 decoration: const InputDecoration(
                   prefix: Text('NGN: '),
-
                   hintText: 'Enter Amount',
                   labelText: 'Amount',
                   border: OutlineInputBorder(),
