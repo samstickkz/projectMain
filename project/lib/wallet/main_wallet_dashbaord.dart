@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+import '../NFC/nfc.dart';
 import '../calculator/calculator.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -390,14 +391,14 @@ class _SecondRouteState extends State<SecondRoute> {
 
                               // buy button
                               GestureDetector(
-                                // onTap: () {
-                                //   Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //       builder: (context) => const (),
-                                //     ),
-                                //   );
-                                // },
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentPage(),
+                                    ),
+                                  );
+                                },
 
                                 child: Container(
                                   decoration: BoxDecoration(

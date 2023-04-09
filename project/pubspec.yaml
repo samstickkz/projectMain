@@ -56,6 +56,7 @@ dependencies:
   flutter_screenutil: ^5.7.0
   animated_text_kit: ^4.2.2
   math_expressions: ^2.4.0
+  flutter_paystack: ^1.0.7
 
   
 

@@ -1,5 +1,6 @@
 import 'package:math_expressions/math_expressions.dart';
 import 'package:flutter/material.dart';
+import '../NFC/nfc.dart';
 import '../screens/nav.dart';
 import 'buttons.dart';
 
@@ -13,7 +14,12 @@ class CalculatorPage extends StatefulWidget {
 var userQuestion = '';
 var userAnswer = '';
 
-
+void navigateToNewScreen(BuildContext context) {
+  // Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => ()),
+  // );
+}
 
 final List<String> buttons = [
   'C',
@@ -154,6 +160,9 @@ class _CalculatorPageState extends State<CalculatorPage> {
                             // Clear everything
                             userQuestion = '';
                             userAnswer = '';
+                          }  else if (buttons[index] == 'News') {
+                            print('news');
+                            navigateToNewScreen;
                           } else if (buttons[index] == '=') {
                             // Evaluate userQuestion
                             equalPressed();
