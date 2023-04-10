@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/nav.dart';
 import '../wallet/main_wallet_dashbaord.dart';
 
 class PaymentSuccess extends StatelessWidget {
@@ -68,7 +69,7 @@ class PaymentSuccess extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SecondRoute(),
+                          builder: (context) => const NavPage(),
                         ),
                       );
                     },
