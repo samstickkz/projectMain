@@ -1,6 +1,6 @@
 import 'package:math_expressions/math_expressions.dart';
 import 'package:flutter/material.dart';
-import '../NFC/nfc.dart';
+
 import '../screens/nav.dart';
 import 'buttons.dart';
 

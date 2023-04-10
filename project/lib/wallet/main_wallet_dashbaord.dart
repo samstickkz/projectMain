@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:project/stripe.dart';
 
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import '../NFC/nfc.dart';
 import '../calculator/calculator.dart';
+import '../payment/payment_page.dart';
+
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
