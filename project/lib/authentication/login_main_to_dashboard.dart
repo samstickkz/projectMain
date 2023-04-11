@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
+import 'package:project/authentication/services.dart';
 import '../screens/nav.dart';
 import 'login_register_page.dart';
 
@@ -248,23 +249,28 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Center(
-                        child: Row(
+                        child: GestureDetector(
+                          onTap: (){
+                            // AuthService().singInWithGoogle();
+                          },
+                          child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          'images/Google.png',
-                          width: 18,
-                          height: 18,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'SignUp with Google ',
-                          style: TextStyle(color: Colors.white),
-                        ),
+                          Image.asset(
+                            'images/Google.png',
+                            width: 18,
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Text(
+                            'SignUp in Google ',
+                            style: TextStyle(color: Colors.white),
+                          ),
                       ],
-                    )),
+                    ),
+                        )),
                   ),
                 ),
                 const SizedBox(
