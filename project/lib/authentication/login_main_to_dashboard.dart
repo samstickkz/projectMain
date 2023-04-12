@@ -4,16 +4,22 @@ import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 import 'package:project/authentication/services.dart';
 import '../screens/nav.dart';
+import 'local_auth.dart';
 import 'login_register_page.dart';
+import 'package:local_auth/local_auth.dart';
 
 class LoginPage extends StatefulWidget {
+
   const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
+
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -53,6 +59,8 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = false;
     });
   }
+
+bool authenticated = false;
 
   @override
   Widget build(BuildContext context) {
@@ -213,6 +221,8 @@ class _LoginPageState extends State<LoginPage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
+
+
                     child: Center(
                         child: GestureDetector(
                       onTap: () {
@@ -274,7 +284,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 180,
+                  height: 100,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -306,8 +316,22 @@ class _LoginPageState extends State<LoginPage> {
                           fontSize: 14,
                         ),
                       ),
+
+
                     ),
+
                   ],
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final authenticate = await LocalAuthAPI.authenticate();
+                    setState(() {
+                      authenticated = authenticate;
+                    });
+
+
+                  },
+                  child: const Text('Auth'),
                 ),
               ],
             ),
