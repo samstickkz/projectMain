@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/profile/profile_page.dart';
+import 'package:flutter/material.dart';
 
 class FlutterDeveloper extends StatefulWidget {
   const FlutterDeveloper({Key? key}) : super(key: key);

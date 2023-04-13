@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:intl/intl.dart';
-
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'dart:async';
-
+import 'package:flutter/material.dart';
 import '../calculator/calculator.dart';
 import '../payment/payment_page.dart';
-
+import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'dart:async';
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -25,7 +22,6 @@ class _SecondRouteState extends State<SecondRoute> {
   bool _isLoading = true;
 
   // index for navbar
-
   Future<void> fetchCryptoPrice() async {
     final response = await http.get(Uri.parse(
         'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
@@ -104,13 +100,10 @@ class _SecondRouteState extends State<SecondRoute> {
                       fit: BoxFit.cover,
                     ),
                   ),
-
                   //Profile picture ends here
-
                   const SizedBox(
                     width: 10,
                   ),
-
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,12 +125,10 @@ class _SecondRouteState extends State<SecondRoute> {
                       ),
                     ],
                   ),
-
                   //Profile ends here
                 ],
               ),
             ),
-
             //calender starts here
             ListTile(
               leading: const Icon(
@@ -204,10 +195,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+              onTap: () {},
             ),
             //Address
             ListTile(
@@ -236,10 +224,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+              onTap: () {},
             ),
             //Payments
             ListTile(
@@ -267,10 +252,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+              onTap: () {},
             ),
             const SizedBox(
               height: 280,
@@ -345,9 +327,6 @@ class _SecondRouteState extends State<SecondRoute> {
                           const SizedBox(
                             height: 2,
                           ),
-                          // Row(
-                          //   children: const [],
-                          // ),
                           const SizedBox(
                             height: 39,
                           ),
@@ -398,7 +377,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                     ),
                                   );
                                 },
-
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16),

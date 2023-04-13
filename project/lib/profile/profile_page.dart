@@ -197,7 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: const [
                                   Text(
-                                    'Complehshjte Profile',
+                                    'Complete Profile',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,

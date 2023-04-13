@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 ApiData apiDataFromJson(String str) => ApiData.fromJson(json.decode(str));

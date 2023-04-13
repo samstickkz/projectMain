@@ -4,8 +4,6 @@ import 'package:project/onboarding/main_onboarding.dart';
 import 'home_main.dart';
 
 
-
-
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 

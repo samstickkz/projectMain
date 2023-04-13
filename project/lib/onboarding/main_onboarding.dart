@@ -1,8 +1,7 @@
+import 'package:project/onboarding/get_started.dart';
+import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
-
-import 'package:project/onboarding/get_started.dart';
 
 class WalletHome extends StatefulWidget {
   const WalletHome({Key? key}) : super(key: key);

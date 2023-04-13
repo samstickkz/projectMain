@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          // nextScreen: WalletHome()),
           nextScreen: const WalletHome()),
     );
   }

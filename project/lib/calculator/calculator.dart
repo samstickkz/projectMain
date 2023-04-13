@@ -160,7 +160,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                             // Clear everything
                             userQuestion = '';
                             userAnswer = '';
-                          }  else if (buttons[index] == 'News') {
+                          } else if (buttons[index] == 'News') {
                             print('news');
                             navigateToNewScreen;
                           } else if (buttons[index] == '=') {
