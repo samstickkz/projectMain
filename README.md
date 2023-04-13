@@ -1,12 +1,16 @@
-# Crypto wallet with Virtual Card
+# Portfolio Project
 
-the video below gives a good preview of what the app looks like
+features
+1. Authentication with firebase
+2. Calculator
+3. Crypto wallet
+4. Paystack Card payment - test
+5. Local Auth for biometric authentication
+7. Porfolio page
 
 
 
 https://youtu.be/2OnQot6jvzY
-
-
 
 
 Click the link above to see latest versioin of the app
