@@ -7,6 +7,7 @@ features
 4. Paystack Card payment - test
 5. Local Auth for biometric authentication
 7. Porfolio page
+8. State management: Getx
 
 
 
