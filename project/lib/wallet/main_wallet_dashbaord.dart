@@ -1,10 +1,12 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import '../calculator/calculator.dart';
 import '../payment/payment_page.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
@@ -159,12 +161,7 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () {
                 // and update the UI
                 setState(() {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CalculatorPage(),
-                    ),
-                  );
+                  Get.to(CalculatorPage());
                 });
               },
             ),
@@ -370,12 +367,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               // buy button
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PaymentPage(),
-                                    ),
-                                  );
+                                  Get.to(PaymentPage());
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -477,12 +469,7 @@ class _SecondRouteState extends State<SecondRoute> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const PortFolio(),
-                                  ),
-                                );
+                                Get.to(PortFolio());
                               },
                               child: Container(
                                   height: 95,

@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
@@ -151,13 +153,11 @@ class _PortFolioState extends State<PortFolio> {
                           Column(
                             children: [
                               GestureDetector(
+
+
+
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const MySample(),
-                                    ),
-                                  );
+                                  Get.to(MySample());
                                 },
                                 child: Container(
                                     height: 73,

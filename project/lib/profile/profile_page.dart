@@ -1,5 +1,7 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'flutter_developer.dart';
 import '../screens/nav.dart';
 
@@ -211,13 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               // button
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const FlutterDeveloper(),
-                                    ),
-                                  );
+                                  Get.to(FlutterDeveloper());
                                 },
                                 child: Container(
                                   width: 50,
