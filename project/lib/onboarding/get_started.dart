@@ -1,9 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../authentication/login_register_page.dart';
 import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
 import 'dart:ui';
+
 
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);
@@ -16,10 +18,11 @@ class _GlassPageState extends State<GlassPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+
       children: [
         ///purple container
         Padding(
-          padding: const EdgeInsets.only(top: 152.0, left: 30),
+          padding: const EdgeInsets.only(top: 152, left: 30),
           child: Transform.rotate(
             angle: -69,
             child: Container(
