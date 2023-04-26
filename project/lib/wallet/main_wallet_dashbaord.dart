@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../screens/nav.dart';
+
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
 
@@ -280,166 +282,169 @@ class _SecondRouteState extends State<SecondRoute> {
       body: SafeArea(
         child: Column(
           children: [
+            Container(
+              height: 231,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(32),
+                    bottomRight: Radius.circular(32)),
+                color: Colors.deepPurpleAccent.shade200,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 5.0, left: 16, right: 16, bottom: 13),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Your Balance',
+                          style: TextStyle(
+                            color: HexColor('D5D5E0'),
+                            fontSize: 22,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          '\$2600.50',
+                          style: TextStyle(
+                              color: HexColor('D5D5E0'),
+                              fontSize: 34,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const SizedBox(
+                      height: 39,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// top up button
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Colors.white.withOpacity(0.3),
+                            ),
+                            width: 98.33,
+                            height: 101,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 21.0, vertical: 21),
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.arrow_upward_outlined,
+                                    color: HexColor('F2F2FA'),
+                                  ),
+                                  Text(
+                                    'Top Up',
+                                    style: TextStyle(
+                                      color: HexColor('F2F2FA'),
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // buy button
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(const PaymentPage());
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Colors.white.withOpacity(0.3),
+                            ),
+                            width: 98.33,
+                            height: 101,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 21.0, vertical: 21),
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.add,
+                                    color: HexColor('F2F2FA'),
+                                  ),
+                                  Text(
+                                    'Buy',
+                                    style: TextStyle(
+                                      color: HexColor('F2F2FA'),
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        /// top ip button
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          width: 98.33,
+                          height: 101,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 21.0, vertical: 21),
+                            child: Column(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.minimize_rounded,
+                                  color: HexColor('F2F2FA'),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Top Up',
+                                  style: TextStyle(
+                                    color: HexColor('F2F2FA'),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+
+
             Expanded(
               child: ListView(
                 children: [
-                  Container(
-                    height: 231,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(32),
-                          bottomRight: Radius.circular(32)),
-                      color: Colors.deepPurpleAccent.shade200,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 5.0, left: 16, right: 16, bottom: 13),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Your Balance',
-                                style: TextStyle(
-                                  color: HexColor('D5D5E0'),
-                                  fontSize: 22,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '\$2600.50',
-                                style: TextStyle(
-                                    color: HexColor('D5D5E0'),
-                                    fontSize: 34,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 2,
-                          ),
-                          const SizedBox(
-                            height: 39,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              /// top up button
-                              GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Colors.white.withOpacity(0.3),
-                                  ),
-                                  width: 98.33,
-                                  height: 101,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 21.0, vertical: 21),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Icon(
-                                          Icons.arrow_upward_outlined,
-                                          color: HexColor('F2F2FA'),
-                                        ),
-                                        Text(
-                                          'Top Up',
-                                          style: TextStyle(
-                                            color: HexColor('F2F2FA'),
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
 
-                              // buy button
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(const PaymentPage());
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Colors.white.withOpacity(0.3),
-                                  ),
-                                  width: 98.33,
-                                  height: 101,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 21.0, vertical: 21),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Icon(
-                                          Icons.add,
-                                          color: HexColor('F2F2FA'),
-                                        ),
-                                        Text(
-                                          'Buy',
-                                          style: TextStyle(
-                                            color: HexColor('F2F2FA'),
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              /// top ip button
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white.withOpacity(0.3),
-                                ),
-                                width: 98.33,
-                                height: 101,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 21.0, vertical: 21),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.minimize_rounded,
-                                        color: HexColor('F2F2FA'),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Top Up',
-                                        style: TextStyle(
-                                          color: HexColor('F2F2FA'),
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Column(
@@ -884,7 +889,11 @@ class _SecondRouteState extends State<SecondRoute> {
             )
           ],
         ),
+
+
       ),
+
+
     );
   }
 }

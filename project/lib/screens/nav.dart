@@ -40,7 +40,7 @@ class _NavPageState extends State<NavPage> {
                 //   tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
                 curve: Curves.easeOutExpo, // tab animation curves
                 duration:
-                    const Duration(milliseconds: 900), // tab animation duration
+                    const Duration(milliseconds: 00), // tab animation duration
                 // // gap: 8, // the tab button gap between icon and text
                 color: Colors.grey, // unselected icon color
                 activeColor: Colors.purple, // selected icon and text color
@@ -64,7 +64,7 @@ class _NavPageState extends State<NavPage> {
                 ],
                 selectedIndex: selectedIndex,
                 onTabChange: (index) {
-                  print(index);
+
                   setState(() {
                     selectedIndex = index;
                   });

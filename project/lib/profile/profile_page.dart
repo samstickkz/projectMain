@@ -1,6 +1,7 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project/wallet/main_wallet_dashbaord.dart';
 import 'flutter_developer.dart';
 import '../screens/nav.dart';
 
@@ -238,7 +239,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const NavPage(),
+                    builder: (context) => const SecondRoute(),
                   ),
                 );
               },
