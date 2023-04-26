@@ -161,7 +161,9 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () {
                 // and update the UI
                 setState(() {
-                  Get.to(CalculatorPage());
+
+                  Get.to(() => CalculatorPage());
+                  // Get.to(CalculatorPage());
                 });
               },
             ),
