@@ -1,5 +1,4 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -162,7 +161,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 // and update the UI
                 setState(() {
 
-                  Get.to(() => CalculatorPage());
+                  Get.to(() => const CalculatorPage());
                   // Get.to(CalculatorPage());
                 });
               },
@@ -369,7 +368,7 @@ class _SecondRouteState extends State<SecondRoute> {
                               // buy button
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(PaymentPage());
+                                  Get.to(const PaymentPage());
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -471,7 +470,7 @@ class _SecondRouteState extends State<SecondRoute> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.to(PortFolio());
+                                Get.to(const PortFolio());
                               },
                               child: Container(
                                   height: 95,
@@ -504,8 +503,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                               ),
                                             ),
                                             Text(
-                                              _cryptoPriceData != null &&
-                                                      _cryptoPriceData[
+                                              _cryptoPriceData[
                                                               'cardano'] !=
                                                           null &&
                                                       _cryptoPriceData[
@@ -597,8 +595,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData != null &&
-                                                    _cryptoPriceData[
+                                            _cryptoPriceData[
                                                             'cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
@@ -692,8 +689,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData != null &&
-                                                    _cryptoPriceData[
+                                            _cryptoPriceData[
                                                             'cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
@@ -772,8 +768,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData != null &&
-                                                    _cryptoPriceData[
+                                            _cryptoPriceData[
                                                             'cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
@@ -852,8 +847,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData != null &&
-                                                    _cryptoPriceData[
+                                            _cryptoPriceData[
                                                             'cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']

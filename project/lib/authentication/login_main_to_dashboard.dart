@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
-import 'package:project/authentication/services.dart';
 import '../screens/nav.dart';
 import 'local_auth.dart';
 import 'login_register_page.dart';
-import 'package:local_auth/local_auth.dart';
 
 class LoginPage extends StatefulWidget {
 

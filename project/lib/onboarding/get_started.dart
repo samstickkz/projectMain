@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../authentication/login_register_page.dart';
 import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
