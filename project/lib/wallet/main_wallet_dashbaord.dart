@@ -1,13 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+
+
 import '../calculator/calculator.dart';
+import '../coinpage_api/coinpage.dart';
+import '../news/home.dart';
 import '../payment/payment_page.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
+import 'package:get/get.dart';
 
 import '../screens/nav.dart';
 
@@ -27,7 +33,7 @@ class _SecondRouteState extends State<SecondRoute> {
   // index for navbar
   Future<void> fetchCryptoPrice() async {
     final response = await http.get(Uri.parse(
-        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
+        'https://api.dart.coingecko.com/api.dart/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -38,6 +44,8 @@ class _SecondRouteState extends State<SecondRoute> {
       throw Exception('Failed to fetch crypto prices');
     }
   }
+
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
@@ -162,7 +170,6 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () {
                 // and update the UI
                 setState(() {
-
                   Get.to(() => const CalculatorPage());
                   // Get.to(CalculatorPage());
                 });
@@ -175,7 +182,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 color: Colors.white,
               ),
               title: const Text(
-                'Rewards',
+                'news',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -195,7 +202,9 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.to(NewsPage());
+              },
             ),
             //Address
             ListTile(
@@ -233,7 +242,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 color: Colors.white,
               ),
               title: const Text(
-                'Payments Settings',
+                'Settings',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -268,12 +277,26 @@ class _SecondRouteState extends State<SecondRoute> {
                   color: Colors.white,
                 ),
               ),
-              title: const Text(
-                'Payments Settings',
-                style: TextStyle(
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    print('signout');
+                    FirebaseAuth.instance.signOut();
+                  });
+                },
+                child: const Text(
+                  'Log Out',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
+              onTap: () {
+                setState(() {
+                  print('signout');
+                  FirebaseAuth.instance.signOut();
+                });
+              },
             ),
           ],
         ), // Populate the Drawer in the next step.
@@ -345,7 +368,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   horizontal: 21.0, vertical: 21),
                               child: Column(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Icon(
                                     Icons.arrow_upward_outlined,
@@ -367,7 +390,9 @@ class _SecondRouteState extends State<SecondRoute> {
                         // buy button
                         GestureDetector(
                           onTap: () {
-                            Get.to(const PaymentPage());
+                            // Get.to(const PaymentPage());
+                            // Get.to(const Bbal());
+                            Get.to(() => Bbal());
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -381,7 +406,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   horizontal: 21.0, vertical: 21),
                               child: Column(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Icon(
                                     Icons.add,
@@ -412,8 +437,7 @@ class _SecondRouteState extends State<SecondRoute> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 21.0, vertical: 21),
                             child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Icon(
                                   Icons.minimize_rounded,
@@ -439,12 +463,9 @@ class _SecondRouteState extends State<SecondRoute> {
                 ),
               ),
             ),
-
-
             Expanded(
               child: ListView(
                 children: [
-
                   Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Column(
@@ -508,8 +529,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                               ),
                                             ),
                                             Text(
-                                              _cryptoPriceData[
-                                                              'cardano'] !=
+                                              _cryptoPriceData['cardano'] !=
                                                           null &&
                                                       _cryptoPriceData[
                                                                   'cardano']
@@ -560,71 +580,84 @@ class _SecondRouteState extends State<SecondRoute> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(12.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Image.asset(
-                                        'images/Ethereum icon.png',
-                                        height: 32,
-                                        width: 32,
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Ethereum',
-                                            style: TextStyle(
-                                              color: HexColor('E4E4F0'),
-                                              fontSize: 17,
-                                            ),
-                                          ),
-                                          Text(
-                                            'ETH',
-                                            style: TextStyle(
-                                              color: HexColor('A7A7CC'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        width: 100,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            _cryptoPriceData[
-                                                            'cardano'] !=
-                                                        null &&
-                                                    _cryptoPriceData['cardano']
-                                                            ['usd'] !=
-                                                        null
-                                                ? '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}'
-                                                : '',
-                                            style: TextStyle(
-                                              color: HexColor('E4E4F0'),
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '+0.54%',
-                                                style: TextStyle(
-                                                  color: HexColor('7878FA'),
-                                                ),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      print('eth');
+                                      Get.to(() => const Bbal());
+                                      // and update the UI
+                                      // setState(() {
+                                      //
+                                      //
+                                      //
+                                      //   // Get.to(CalculatorPage());
+                                      // });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image.asset(
+                                          'images/Ethereum icon.png',
+                                          height: 32,
+                                          width: 32,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Ethereum',
+                                              style: TextStyle(
+                                                color: HexColor('E4E4F0'),
+                                                fontSize: 17,
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            ),
+                                            Text(
+                                              'ETH',
+                                              style: TextStyle(
+                                                color: HexColor('A7A7CC'),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          width: 100,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              _cryptoPriceData['cardano'] !=
+                                                          null &&
+                                                      _cryptoPriceData[
+                                                                  'cardano']
+                                                              ['usd'] !=
+                                                          null
+                                                  ? '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}'
+                                                  : '',
+                                              style: TextStyle(
+                                                color: HexColor('E4E4F0'),
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  '+0.54%',
+                                                  style: TextStyle(
+                                                    color: HexColor('7878FA'),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 )),
                             const SizedBox(
@@ -694,8 +727,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData[
-                                                            'cardano'] !=
+                                            _cryptoPriceData['cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
                                                             ['usd'] !=
@@ -773,8 +805,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData[
-                                                            'cardano'] !=
+                                            _cryptoPriceData['cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
                                                             ['usd'] !=
@@ -852,8 +883,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            _cryptoPriceData[
-                                                            'cardano'] !=
+                                            _cryptoPriceData['cardano'] !=
                                                         null &&
                                                     _cryptoPriceData['cardano']
                                                             ['usd'] !=
@@ -889,11 +919,7 @@ class _SecondRouteState extends State<SecondRoute> {
             )
           ],
         ),
-
-
       ),
-
-
     );
   }
 }

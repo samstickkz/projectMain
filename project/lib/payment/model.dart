@@ -7,7 +7,7 @@ String apiDataToJson(ApiData data) => json.encode(data.toJson());
 class ApiData {
   ApiData({
     required this.results,
-    required this.info,
+    required this.info, required id,
   });
 
   List<Result> results;
@@ -15,7 +15,7 @@ class ApiData {
 
   factory ApiData.fromJson(Map<String, dynamic> json) => ApiData(
     results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
-    info: Info.fromJson(json["info"]),
+    info: Info.fromJson(json["info"]), id: null,
   );
 
   Map<String, dynamic> toJson() => {
