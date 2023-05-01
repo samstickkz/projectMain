@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
+import 'package:project/authentication/reset_password.dart';
 import '../screens/nav.dart';
 import 'local_auth.dart';
 import 'login_register_page.dart';
@@ -190,11 +191,20 @@ bool authenticated = false;
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Colors.white,
+                  children:  [
+                    GestureDetector(
+                      //reset password wit firebase
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ResetPassword()));
+                      },
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

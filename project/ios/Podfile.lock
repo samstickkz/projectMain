@@ -8,7 +8,7 @@ PODS:
     - Firebase/Auth (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.9.0):
+  - firebase_core (2.10.0):
     - Firebase/CoreOnly (= 10.7.0)
     - Flutter
   - FirebaseAuth (10.7.0):
@@ -54,7 +54,7 @@ PODS:
   - local_auth_ios (0.0.1):
     - Flutter
   - OrderedSet (5.0.0)
-  - PromisesObjC (2.1.1)
+  - PromisesObjC (2.2.0)
   - Toast (4.0.0)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
@@ -102,7 +102,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
   firebase_auth: 5984ebaf5463319e304ab1c0966b06994bd1c69a
-  firebase_core: d85432877e814811e040e7659f9c82faeab66e04
+  firebase_core: 18d44f087248303a4a8f05d0099a000c46e3c77a
   FirebaseAuth: dd64c01631df724b09f33e584625775c52f7d71f
   FirebaseCore: e317665b9d744727a97e623edbbed009320afdd7
   FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
   local_auth_ios: c6cf091ded637a88f24f86a8875d8b0f526e2605
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
-  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 

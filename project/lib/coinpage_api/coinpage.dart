@@ -44,11 +44,11 @@ class _BbalState extends State<Bbal> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+
         child: FutureBuilder(
           future: getTeams(),
           builder: (context, snapshot) {

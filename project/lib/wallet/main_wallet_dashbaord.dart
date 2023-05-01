@@ -3,19 +3,13 @@ import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
-
 import '../calculator/calculator.dart';
 import '../coinpage_api/coinpage.dart';
 import '../news/home.dart';
-import '../payment/payment_page.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
-import 'package:get/get.dart';
-
-import '../screens/nav.dart';
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -24,6 +18,7 @@ class SecondRoute extends StatefulWidget {
   State<SecondRoute> createState() => _SecondRouteState();
 }
 
+// final FirebaseAuth _auth = FirebaseAuth.instance;
 class _SecondRouteState extends State<SecondRoute> {
   late Timer _timer;
   Map<String, dynamic> _cryptoPriceData = {};
@@ -32,16 +27,21 @@ class _SecondRouteState extends State<SecondRoute> {
 
   // index for navbar
   Future<void> fetchCryptoPrice() async {
-    final response = await http.get(Uri.parse(
-        'https://api.dart.coingecko.com/api.dart/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
+    try {
+      final response = await http.get(Uri.parse(
+          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
 
-    if (response.statusCode == 200) {
-      setState(() {
-        _cryptoPriceData = json.decode(response.body);
-        _isLoading = false;
-      });
-    } else {
-      throw Exception('Failed to fetch crypto prices');
+      if (response.statusCode == 200) {
+        setState(() {
+          _cryptoPriceData = json.decode(response.body);
+          _isLoading = false;
+        });
+      } else {
+        throw Exception('Failed to fetch crypto prices');
+      }
+    } catch (e) {
+      // handle the exception here
+      print('Error fetching crypto prices: $e');
     }
   }
 
@@ -51,11 +51,8 @@ class _SecondRouteState extends State<SecondRoute> {
   void initState() {
     super.initState();
 
-    // Fetch the crypto price data when the widget is first created
-    fetchCryptoPrice();
-
     // Set up a timer to refresh the crypto price data every 5 minutes
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       fetchCryptoPrice();
     });
   }
@@ -277,25 +274,32 @@ class _SecondRouteState extends State<SecondRoute> {
                   color: Colors.white,
                 ),
               ),
-              title: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    print('signout');
-                    FirebaseAuth.instance.signOut();
-                  });
-                },
-                child: const Text(
-                  'Log Out',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+              title: const Text(
+                'Log Out',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
-              onTap: () {
-                setState(() {
-                  print('signout');
-                  FirebaseAuth.instance.signOut();
-                });
+              onTap: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                } catch (e) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Error signing out'),
+                        content: Text('$e'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
             ),
           ],
@@ -584,13 +588,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                     onTap: () {
                                       print('eth');
                                       Get.to(() => const Bbal());
-                                      // and update the UI
-                                      // setState(() {
-                                      //
-                                      //
-                                      //
-                                      //   // Get.to(CalculatorPage());
-                                      // });
                                     },
                                     child: Row(
                                       mainAxisAlignment:
