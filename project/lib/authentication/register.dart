@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
   final _confirmpasswordcontroller = TextEditingController();
+  bool success = false;
 
   @override
   void dispose() {
@@ -152,6 +154,34 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 15,
                 ),
+
+                FlutterPwValidator(
+                  controller: _confirmpasswordcontroller,
+                  minLength: 8,
+                  uppercaseCharCount: 2,
+                  numericCharCount: 3,
+                  specialCharCount: 1,
+                  normalCharCount: 3,
+                  width: 400,
+                  height: 150,
+                  onSuccess: () {
+                    setState(() {
+                      success = true;
+                    });
+                    print("MATCHED");
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text("Password is Strong")));
+                  },
+                  onFail: () {
+                    setState(() {
+                      success = false;
+                    });
+                    print("NOT MATCHED");
+                  },
+                ),
+
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
