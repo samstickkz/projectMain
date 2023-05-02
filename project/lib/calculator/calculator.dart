@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:math_expressions/math_expressions.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../screens/nav.dart';
 import 'buttons.dart';
@@ -9,6 +12,7 @@ class CalculatorPage extends StatefulWidget {
 
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
+
 }
 
 var userQuestion = '';
@@ -22,26 +26,7 @@ void navigateToNewScreen(BuildContext context) {
 }
 
 final List<String> buttons = [
-  'C',
-  'DEL',
-  '%',
-  '/',
-  '9',
-  '8',
-  '7',
-  'x',
-  '6',
-  '5',
-  '4',
-  '-',
-  '3',
-  '2',
-  '1',
-  '+',
-  '0',
-  '.',
-  'News',
-  '=',
+  'C', 'DEL', '%', '/', '9', '8', '7', 'x', '6', '5', '4', '-', '3', '2', '1', '+', '0', '.', 'News', '=',
 ];
 
 bool isOperator(String x) {
@@ -63,6 +48,17 @@ bool isBtn(String x) {
   }
   return false;
 }
+Future<String> fetchBitcoinPrice() async {
+  var response = await http.get(Uri.parse('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'));
+  if (response.statusCode == 200) {
+    var json = jsonDecode(response.body);
+    var price = json['bitcoin']['usd'].toString();
+    return '\$' + price;
+  } else {
+    return 'Error fetching price';
+  }
+}
+
 
 class _CalculatorPageState extends State<CalculatorPage> {
   @override
@@ -98,13 +94,46 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                 color: Colors.white,
                               ),
                             ),
-                            const Text(
-                              'BTC: \$26,000 ',
-                              style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 12,
-                              ),
+                            FutureBuilder<String>(
+                              future: fetchBitcoinPrice(),
+                              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                                if (snapshot.hasData) {
+                                  return Row(
+                                    children: [
+                                      const Text('Bitcoin: ', style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),),
+                                      Text(
+                                        snapshot.data!,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return const Text(
+                                    'Error fetching price',
+                                    style: TextStyle(
+                                      color: Colors.orange,
+                                      fontSize: 12,
+                                    ),
+                                  );
+                                } else {
+                                  return const SizedBox(
+                                    width: 12,
+                                    height: 12,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.orange,
+                                      strokeWidth: 2,
+                                    ),
+                                  );
+                                }
+                              },
                             ),
+
                           ],
                         ),
                       ),
@@ -202,6 +231,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
     Expression exp = p.parse(finalQuestion);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
-    userAnswer = eval.toString();
+    int resultAsInt = eval.toInt();
+    userAnswer = resultAsInt == eval ? '$resultAsInt' : '$eval';
   }
+
 }

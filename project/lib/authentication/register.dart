@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+// import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,15 +31,20 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future signUp() async {
-    bool passwordconfirmed(){
+    Future<bool> passwordconfirmed() async {
       if (_passwordcontroller.text.trim() == _confirmpasswordcontroller.text.trim()){
+        User? user = FirebaseAuth.instance.currentUser;
+
+        if (user!= null && !user.emailVerified) {
+          await user.sendEmailVerification();
+        }
         return true;
       }else{
         return false;
       }
     }
 
-    if (passwordconfirmed()){
+    if (await passwordconfirmed()){
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailcontroller.text.trim(),
         password: _passwordcontroller.text.trim(),
@@ -155,31 +160,31 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
 
-                FlutterPwValidator(
-                  controller: _confirmpasswordcontroller,
-                  minLength: 8,
-                  uppercaseCharCount: 2,
-                  numericCharCount: 3,
-                  specialCharCount: 1,
-                  normalCharCount: 3,
-                  width: 400,
-                  height: 150,
-                  onSuccess: () {
-                    setState(() {
-                      success = true;
-                    });
-                    print("MATCHED");
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text("Password is Strong")));
-                  },
-                  onFail: () {
-                    setState(() {
-                      success = false;
-                    });
-                    print("NOT MATCHED");
-                  },
-                ),
+                // FlutterPwValidator(
+                //   controller: _confirmpasswordcontroller,
+                //   minLength: 8,
+                //   uppercaseCharCount: 2,
+                //   numericCharCount: 3,
+                //   specialCharCount: 1,
+                //   normalCharCount: 3,
+                //   width: 400,
+                //   height: 150,
+                //   onSuccess: () {
+                //     setState(() {
+                //       success = true;
+                //     });
+                //     print("MATCHED");
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(
+                //             content: Text("Password is Strong")));
+                //   },
+                //   onFail: () {
+                //     setState(() {
+                //       success = false;
+                //     });
+                //     print("NOT MATCHED");
+                //   },
+                // ),
 
 
                 Row(

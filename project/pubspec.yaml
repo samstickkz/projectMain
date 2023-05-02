@@ -58,7 +58,6 @@ dependencies:
   math_expressions: ^2.4.0
   flutter_paystack: ^1.0.7
   get: ^4.6.5
-  flutter_pw_validator: ^1.5.0
 
 
 

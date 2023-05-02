@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Image.asset(
-                          'images/Group 24.png',
+                          'images/image 18.png',
                           height: 423,
                           width: 423,
                         ),
