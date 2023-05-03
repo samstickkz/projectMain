@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../shimmer.dart';
+
 // Define a model class for the data
 class Post {
   final int id;
@@ -47,7 +49,19 @@ class NewsPage extends StatelessWidget {
         ),
         body:
 
+
         Center(
+          child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              skeleton(
+                height: 200,
+                width: 20,
+              ),
+            ],
+
+          ),
 
 
           // child: FutureBuilder<List<Post>>(

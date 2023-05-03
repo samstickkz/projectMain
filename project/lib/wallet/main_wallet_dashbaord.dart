@@ -11,6 +11,8 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../shimmer.dart';
+
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
 
@@ -565,6 +567,16 @@ class _SecondRouteState extends State<SecondRoute> {
                                               style: TextStyle(
                                                 color: HexColor('E4E4F0'),
                                               ),
+                                            ),
+
+                                            _isLoading
+                                                ? const skeleton(
+                                              height: 12,
+                                              width: 50,
+                                            )
+                                                : Text(
+                                              '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
+                                              style: const TextStyle(fontSize: 12.0),
                                             ),
                                           ],
                                         ),
