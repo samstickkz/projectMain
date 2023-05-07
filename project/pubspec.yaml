@@ -59,6 +59,8 @@ dependencies:
   flutter_paystack: ^1.0.7
   get: ^4.6.5
   shimmer_animation: ^2.1.0+1
+  flutter_fortune_wheel: ^1.2.0
+  rxdart: ^0.27.7
 
 
 

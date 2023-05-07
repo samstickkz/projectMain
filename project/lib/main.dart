@@ -25,8 +25,11 @@ class MyApp extends StatelessWidget {
     splitScreenMode: true,
     builder: (context , child) {
       return GetMaterialApp(
+
         theme: ThemeData(
+          primaryColor: Colors.deepPurpleAccent,
             appBarTheme: AppBarTheme(
+
           elevation: 0,
           color: Colors.deepPurpleAccent.shade200,
         )),

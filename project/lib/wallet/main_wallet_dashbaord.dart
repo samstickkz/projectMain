@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -237,11 +238,11 @@ class _SecondRouteState extends State<SecondRoute> {
             //Payments
             ListTile(
               leading: const Icon(
-                Icons.settings_sharp,
+                Icons.wind_power,
                 color: Colors.white,
               ),
               title: const Text(
-                'Settings',
+                'Raffle',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -260,7 +261,10 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.to(SpinWheel(),);
+
+              },
             ),
             const SizedBox(
               height: 280,
