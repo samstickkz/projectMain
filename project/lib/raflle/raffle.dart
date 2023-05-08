@@ -14,7 +14,7 @@ class _SpinWheelState extends State<SpinWheel> {
   int rewards = 0;
 
   List<int> items = [
-    100, 200, 500, 1000, 100, 200, 500, 1000, 100, 200, 500, 1000, 100,
+    100, 200, 500, 1000,
   ];
 
   @override
@@ -68,9 +68,11 @@ class _SpinWheelState extends State<SpinWheel> {
               child: Container(
                 height: 40,
                 width: 120,
-                color: Colors.redAccent,
-                child: Center(
-                  child: Text("SPIN"),
+                color: Colors.blueAccent,
+                child: const Center(
+                  child: Text("SPIN",style: TextStyle(
+                    color: Colors.white
+                  ),),
                 ),
               ),
             ),

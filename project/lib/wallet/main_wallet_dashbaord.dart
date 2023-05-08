@@ -203,7 +203,10 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                Get.to(NewsPage());
+                Get.to(() => NewsPage());
+
+
+                // Get.to(NewsPage());
               },
             ),
             //Address

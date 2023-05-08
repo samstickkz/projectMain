@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     builder: (context , child) {
       return GetMaterialApp(
 
+
         theme: ThemeData(
           primaryColor: Colors.deepPurpleAccent,
             appBarTheme: AppBarTheme(

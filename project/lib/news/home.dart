@@ -42,48 +42,50 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fetch Data Example',
+      title: 'News App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Fetch Data Example'),
+          title: Text('News App'),
         ),
         body:
 
 
         Center(
-          child:
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              skeleton(
-                height: 200,
-                width: 20,
-              ),
-            ],
 
-          ),
-
-
-          // child: FutureBuilder<List<Post>>(
-          //   future: fetchPosts(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       List<Post>? posts = snapshot.data;
-          //       return ListView.builder(
-          //         itemCount: posts!.length,
-          //         itemBuilder: (context, index) {
-          //           return ListTile(
-          //             title: Text(posts[index].title),
-          //             subtitle: Text(posts[index].body),
-          //           );
-          //         },
-          //       );
-          //     } else if (snapshot.hasError) {
-          //       return Text('${snapshot.error}');
-          //     }
-          //     return CircularProgressIndicator();
-          //   },
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     skeleton(
+          //       height: 200,
+          //       width: 20,
+          //     ),
+          //   ],
+          //
           // ),
+
+
+          child: FutureBuilder<List<Post>>(
+            future: fetchPosts(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Post>? posts = snapshot.data;
+                return ListView.builder(
+                  itemCount: posts!.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(posts[index].title,style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold,
+                      ),),
+                      subtitle: Text(posts[index].body),
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              return CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );
