@@ -1,11 +1,10 @@
 //Now let's create the article details page
-
-
 import 'package:flutter/material.dart';
-
 import 'models/article_model.dart';
 
 class ArticlePage extends StatelessWidget {
+
+  bool _isLoading = true;
   final Article article;
 
   ArticlePage({required this.article});
@@ -42,8 +41,9 @@ class ArticlePage extends StatelessWidget {
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(30.0),
               ),
-              child: Text(
-                article.source.name,
+              child: Text('sam',
+                // article.source.name,
+
                 style: TextStyle(
                   color: Colors.white,
                 ),

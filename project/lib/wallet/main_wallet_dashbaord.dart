@@ -44,7 +44,7 @@ class _SecondRouteState extends State<SecondRoute> {
       }
     } catch (e) {
       // handle the exception here
-      print('Error fetching crypto prices: $e');
+      // print('Error fetching crypto prices: $e');
     }
   }
 
@@ -205,7 +205,6 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () {
                 Get.to(() => NewsPage());
 
-
                 // Get.to(NewsPage());
               },
             ),
@@ -265,8 +264,9 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                Get.to(SpinWheel(),);
-
+                Get.to(
+                  const SpinWheel(),
+                );
               },
             ),
             const SizedBox(
@@ -388,7 +388,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                     color: HexColor('F2F2FA'),
                                   ),
                                   Text(
-                                    'Top Up',
+                                    'Buy',
                                     style: TextStyle(
                                       color: HexColor('F2F2FA'),
                                       fontSize: 15,
@@ -405,7 +405,7 @@ class _SecondRouteState extends State<SecondRoute> {
                           onTap: () {
                             // Get.to(const PaymentPage());
                             // Get.to(const Bbal());
-                            Get.to(() => Bbal());
+                            Get.to(() => const Bbal());
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -426,7 +426,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                     color: HexColor('F2F2FA'),
                                   ),
                                   Text(
-                                    'Buy',
+                                    'Sell',
                                     style: TextStyle(
                                       color: HexColor('F2F2FA'),
                                       fontSize: 15,
@@ -575,16 +575,16 @@ class _SecondRouteState extends State<SecondRoute> {
                                                 color: HexColor('E4E4F0'),
                                               ),
                                             ),
-
                                             _isLoading
                                                 ? const skeleton(
-                                              height: 12,
-                                              width: 50,
-                                            )
+                                                    height: 12,
+                                                    width: 50,
+                                                  )
                                                 : Text(
-                                              '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
-                                              style: const TextStyle(fontSize: 12.0),
-                                            ),
+                                                    '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
+                                                    style: const TextStyle(
+                                                        fontSize: 12.0),
+                                                  ),
                                           ],
                                         ),
                                       ],
@@ -605,7 +605,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   padding: const EdgeInsets.all(12.0),
                                   child: GestureDetector(
                                     onTap: () {
-                                      print('eth');
+
                                       Get.to(() => const Bbal());
                                     },
                                     child: Row(

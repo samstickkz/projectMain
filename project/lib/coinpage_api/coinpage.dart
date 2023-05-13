@@ -10,7 +10,9 @@ class Bbal extends StatefulWidget {
   @override
   State<Bbal> createState() => _BbalState();
 }
+
 Timer? timer;
+
 class _BbalState extends State<Bbal> {
   List<Team> teams = [];
 
@@ -19,23 +21,27 @@ class _BbalState extends State<Bbal> {
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en'));
     var jsonData = jsonDecode(response.body);
 
-    for (var eachTeam in jsonData) {
-      final team = Team(
-        id: eachTeam['id'],
-        symbol: eachTeam['symbol'],
-        name: eachTeam['name'],
-        currentPrice: eachTeam['current_price']?.toDouble() ?? 0.0,
-      );
-      teams.add(team);
+    if (jsonData is List) { // check if jsonData is a List
+      for (var eachTeam in jsonData) {
+        final team = Team(
+          id: eachTeam['id'],
+          symbol: eachTeam['symbol'],
+          name: eachTeam['name'],
+          currentPrice: eachTeam['current_price']?.toDouble() ?? 0.0,
+        );
+        teams.add(team);
+      }
+      print(jsonData);
+    } else {
+      // print('jsonData is not a List');
     }
-
-    print(jsonData);
   }
+
 
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => getTeams());
+    timer = Timer.periodic(const Duration(seconds: 5), (Timer t) => getTeams());
   }
 
   @override
@@ -47,8 +53,12 @@ class _BbalState extends State<Bbal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Crypto Market'
+        ),
+      ),
       body: SafeArea(
-
         child: FutureBuilder(
           future: getTeams(),
           builder: (context, snapshot) {
@@ -65,24 +75,20 @@ class _BbalState extends State<Bbal> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: ListTile(
-
                         title: Text(teams[index].id),
-
-                          trailing:  Text('\$${teams[index].currentPrice
-                                  .toStringAsFixed(2)}'),
+                        trailing: Text(
+                            '\$${teams[index].currentPrice.toStringAsFixed(2)}'),
                       ),
                     ),
                   );
                 },
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),
       ),
     );
   }
-
-
 }
