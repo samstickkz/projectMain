@@ -10,9 +10,7 @@ class Bbal extends StatefulWidget {
   @override
   State<Bbal> createState() => _BbalState();
 }
-
 Timer? timer;
-
 class _BbalState extends State<Bbal> {
   List<Team> teams = [];
 
@@ -20,6 +18,7 @@ class _BbalState extends State<Bbal> {
     var response = await http.get(Uri.parse(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en'));
     var jsonData = jsonDecode(response.body);
+    print(response.body);
 
     if (jsonData is List) { // check if jsonData is a List
       for (var eachTeam in jsonData) {
@@ -33,7 +32,7 @@ class _BbalState extends State<Bbal> {
       }
       print(jsonData);
     } else {
-      // print('jsonData is not a List');
+      print('jsonData is not a List');
     }
   }
 
@@ -41,7 +40,7 @@ class _BbalState extends State<Bbal> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 5), (Timer t) => getTeams());
+    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => getTeams());
   }
 
   @override
@@ -54,11 +53,10 @@ class _BbalState extends State<Bbal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Crypto Market'
-        ),
+        title: Text('Crypto Price'),
       ),
       body: SafeArea(
+
         child: FutureBuilder(
           future: getTeams(),
           builder: (context, snapshot) {
@@ -75,20 +73,24 @@ class _BbalState extends State<Bbal> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: ListTile(
+
                         title: Text(teams[index].id),
-                        trailing: Text(
-                            '\$${teams[index].currentPrice.toStringAsFixed(2)}'),
+
+                          trailing:  Text('\$${teams[index].currentPrice
+                                  .toStringAsFixed(2)}'),
                       ),
                     ),
                   );
                 },
               );
             } else {
-              return const Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             }
           },
         ),
       ),
     );
   }
+
+
 }
