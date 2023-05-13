@@ -1,37 +1,41 @@
 // To parse this JSON data, do
 //
-//     final beams = beamsFromJson(jsonString);
+//     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Beams> beamsFromJson(String str) => List<Beams>.from(json.decode(str).map((x) => Beams.fromJson(x)));
+List<Welcome> welcomeFromJson(String str) => List<Welcome>.from(json.decode(str).map((x) => Welcome.fromJson(x)));
 
-String beamsToJson(List<Beams> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String welcomeToJson(List<Welcome> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Beams {
-  int userId;
+class Welcome {
+  int albumId;
   int id;
   String title;
-  String body;
+  String url;
+  String thumbnailUrl;
 
-  Beams({
-    required this.userId,
+  Welcome({
+    required this.albumId,
     required this.id,
     required this.title,
-    required this.body,
+    required this.url,
+    required this.thumbnailUrl,
   });
 
-  factory Beams.fromJson(Map<String, dynamic> json) => Beams(
-    userId: json["userId"],
+  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+    albumId: json["albumId"],
     id: json["id"],
     title: json["title"],
-    body: json["body"],
+    url: json["url"],
+    thumbnailUrl: json["thumbnailUrl"],
   );
 
   Map<String, dynamic> toJson() => {
-    "userId": userId,
+    "albumId": albumId,
     "id": id,
     "title": title,
-    "body": body,
+    "url": url,
+    "thumbnailUrl": thumbnailUrl,
   };
 }
