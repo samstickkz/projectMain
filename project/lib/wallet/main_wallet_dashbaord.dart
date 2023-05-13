@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../payment/payment_page.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
@@ -44,7 +45,7 @@ class _SecondRouteState extends State<SecondRoute> {
       }
     } catch (e) {
       // handle the exception here
-      // print('Error fetching crypto prices: $e');
+      print('Error fetching crypto prices: $e');
     }
   }
 
@@ -301,7 +302,10 @@ class _SecondRouteState extends State<SecondRoute> {
                         content: Text('$e'),
                         actions: [
                           TextButton(
-                            onPressed: () => Navigator.pop(context),
+                            onPressed: () {
+                            Get.to(() => const PaymentPage());
+                              // Get.to(LoginPage()
+                            },
                             child: const Text('OK'),
                           ),
                         ],
@@ -605,7 +609,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   padding: const EdgeInsets.all(12.0),
                                   child: GestureDetector(
                                     onTap: () {
-
+                                      print('eth');
                                       Get.to(() => const Bbal());
                                     },
                                     child: Row(

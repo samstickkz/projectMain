@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../raflle/raffle.dart';
 import '../screens/nav.dart';
 
 class PaymentSuccess extends StatelessWidget {
@@ -68,7 +69,7 @@ class PaymentSuccess extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const NavPage(),
+                          builder: (context) => const SpinWheel(),
                         ),
                       );
                     },
