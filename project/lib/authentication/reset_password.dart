@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'login_main_to_dashboard.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -51,7 +55,8 @@ class _ResetPasswordState extends State<ResetPassword> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+
+                  Get.to(() => LoginPage());
                 },
                 child: Text('OK'),
               ),

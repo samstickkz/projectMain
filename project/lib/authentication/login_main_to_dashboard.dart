@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        _errorMessage = 'Egbon, goan create an app joh.';
+        _errorMessage = 'Egbon, goan create an account joh.';
       } else if (e.code == 'wrong-password') {
         _errorMessage = 'shey you no know your password ni ?';
       } else {
