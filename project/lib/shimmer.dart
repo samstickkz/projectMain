@@ -10,7 +10,7 @@ class skeleton extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white24.withOpacity(0.04),
         borderRadius: BorderRadius.circular(10),

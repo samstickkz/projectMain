@@ -5,8 +5,6 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:audioplayers/audioplayers.dart';
-
 import '../payment/payment_page.dart';
 
 
@@ -19,7 +17,7 @@ class SpinWheel extends StatefulWidget {
 
 class _SpinWheelState extends State<SpinWheel> {
   final _confettiController = ConfettiController();
-  final _audioPlayer = AudioPlayer();
+
 
 
   final selected = BehaviorSubject<int>();

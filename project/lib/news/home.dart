@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../shimmer.dart';
 
 // Define a model class for the data
 class Post {
@@ -28,6 +27,8 @@ class Post {
 class NewsPage extends StatelessWidget {
   final String apiUrl = "https://jsonplaceholder.typicode.com/posts";
 
+  const NewsPage({super.key});
+
   Future<List<Post>> fetchPosts() async {
     var result = await http.get(Uri.parse(apiUrl));
     if (result.statusCode == 200) {
@@ -45,7 +46,7 @@ class NewsPage extends StatelessWidget {
       title: 'News App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('News App'),
+          title: const Text('News App'),
         ),
         body:
 
@@ -73,7 +74,7 @@ class NewsPage extends StatelessWidget {
                   itemCount: posts!.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(posts[index].title,style: TextStyle(
+                      title: Text(posts[index].title,style: const TextStyle(
                         fontSize: 22, fontWeight: FontWeight.bold,
                       ),),
                       subtitle: Text(posts[index].body),
@@ -83,7 +84,7 @@ class NewsPage extends StatelessWidget {
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             },
           ),
         ),
@@ -93,5 +94,5 @@ class NewsPage extends StatelessWidget {
 }
 
 void main() {
-  runApp(NewsPage());
+  runApp(const NewsPage());
 }

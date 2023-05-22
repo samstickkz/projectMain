@@ -13,12 +13,12 @@ Widget customListTile(Article article, BuildContext context) {
               )));
     },
     child: Container(
-      margin: EdgeInsets.all(12.0),
-      padding: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 3.0,
@@ -39,28 +39,28 @@ Widget customListTile(Article article, BuildContext context) {
               borderRadius: BorderRadius.circular(12.0),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8.0,
           ),
           Container(
-            padding: EdgeInsets.all(6.0),
+            padding: const EdgeInsets.all(6.0),
             decoration: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Text(
               article.source.name,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8.0,
           ),
           Text(
             article.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),

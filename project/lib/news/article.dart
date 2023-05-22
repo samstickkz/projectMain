@@ -4,10 +4,10 @@ import 'models/article_model.dart';
 
 class ArticlePage extends StatelessWidget {
 
-  bool _isLoading = true;
+
   final Article article;
 
-  ArticlePage({required this.article});
+  const ArticlePage({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +32,16 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
             Container(
-              padding: EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(6.0),
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(30.0),
               ),
-              child: Text('sam',
+              child: const Text('sam',
                 // article.source.name,
 
                 style: TextStyle(
@@ -49,12 +49,12 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
             Text(
               article.description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),

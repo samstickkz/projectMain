@@ -1,8 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import '../authentication/login_main_to_dashboard.dart';
 import '../calculator/calculator.dart';
 import '../coinpage_api/coinpage.dart';
 import '../news/home.dart';
@@ -11,7 +13,6 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
-import '../payment/payment_page.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
@@ -24,6 +25,10 @@ class SecondRoute extends StatefulWidget {
 
 // final FirebaseAuth _auth = FirebaseAuth.instance;
 class _SecondRouteState extends State<SecondRoute> {
+  final currentUser = FirebaseAuth.instance.currentUser;
+  // late String uid;
+  //sing out
+
   late Timer _timer;
   Map<String, dynamic> _cryptoPriceData = {};
 
@@ -58,6 +63,7 @@ class _SecondRouteState extends State<SecondRoute> {
     // Set up a timer to refresh the crypto price data every 5 minutes
     _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       fetchCryptoPrice();
+      // uid = currentUser?.uid ?? '';
     });
   }
 
@@ -119,22 +125,49 @@ class _SecondRouteState extends State<SecondRoute> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
+                    children:  [
+                      const Text(
                         'Samuel Joseph',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
+
                       ),
-                      Text(
-                        'samstickkz@gmail.com',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                        ),
+
+                      const SizedBox(
+                        height: 5,
                       ),
+                      Text(currentUser?.email ?? 'Signin please', style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                      const SizedBox(
+                        height: 5,
+                      ),
+
+                      Text(currentUser?.uid ?? 'Sign in to enjoy this app', style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                      // InkWell(
+                      //   onTap: () {
+                      //     Clipboard.setData(ClipboardData(text: uid));
+                      //     ScaffoldMessenger.of(context).showSnackBar(
+                      //       SnackBar(content: Text('UID copied to clipboard')),
+                      //     );
+                      //   },
+                      //   child: Icon(
+                      //     Icons.copy,
+                      //     color: Colors.white,
+                      //     size: 16,
+                      //   ),
+                      // ),
+
+
                     ],
                   ),
                   //Profile ends here
@@ -204,7 +237,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                Get.to(() => NewsPage());
+                Get.to(() => const NewsPage());
 
                 // Get.to(NewsPage());
               },
@@ -293,6 +326,10 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () async {
                 try {
                   await FirebaseAuth.instance.signOut();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) => const LoginPage()),
+                  );
                 } catch (e) {
                   showDialog(
                     context: context,
@@ -303,8 +340,7 @@ class _SecondRouteState extends State<SecondRoute> {
                         actions: [
                           TextButton(
                             onPressed: () {
-                            Get.to(() => const PaymentPage());
-                              // Get.to(LoginPage()
+                              Navigator.pop(context);
                             },
                             child: const Text('OK'),
                           ),
@@ -314,6 +350,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   );
                 }
               },
+
             ),
           ],
         ), // Populate the Drawer in the next step.

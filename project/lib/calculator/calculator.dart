@@ -53,7 +53,7 @@ Future<String> fetchBitcoinPrice() async {
   if (response.statusCode == 200) {
     var json = jsonDecode(response.body);
     var price = json['bitcoin']['usd'].toString();
-    return '\$' + price;
+    return '\$$price';
   } else {
     return 'Error fetching price';
   }
