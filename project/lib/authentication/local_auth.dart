@@ -24,7 +24,7 @@ class LocalAuthAPI {
         ),
       );
     } catch (e) {
-      debugPrint('error Nla $e');
+      debugPrint('error $e');
       return false;
     }
   }
