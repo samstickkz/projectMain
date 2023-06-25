@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../notes/notes.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
@@ -125,7 +126,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       const Text(
                         'Samuel Joseph',
                         style: TextStyle(
@@ -133,41 +134,29 @@ class _SecondRouteState extends State<SecondRoute> {
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
-
                       ),
-
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(currentUser?.email ?? 'Signin please', style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),),
+                      Text(
+                        currentUser?.email ?? 'Signin please',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(
                         height: 5,
                       ),
-
-                      Text(currentUser?.uid ?? 'Sign in to enjoy this app', style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                      // InkWell(
-                      //   onTap: () {
-                      //     Clipboard.setData(ClipboardData(text: uid));
-                      //     ScaffoldMessenger.of(context).showSnackBar(
-                      //       SnackBar(content: Text('UID copied to clipboard')),
-                      //     );
-                      //   },
-                      //   child: Icon(
-                      //     Icons.copy,
-                      //     color: Colors.white,
-                      //     size: 16,
-                      //   ),
-                      // ),
-
-
+                      Text(
+                        currentUser?.uid ?? 'Sign in to enjoy this app',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   //Profile ends here
@@ -238,8 +227,6 @@ class _SecondRouteState extends State<SecondRoute> {
               ),
               onTap: () {
                 Get.to(() => const NewsPage());
-
-                // Get.to(NewsPage());
               },
             ),
             //Address
@@ -269,7 +256,9 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const NotesApp());
+              },
             ),
             //Payments
             ListTile(
@@ -326,7 +315,8 @@ class _SecondRouteState extends State<SecondRoute> {
                   await FirebaseAuth.instance.signOut();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (BuildContext context) => const LoginPage()),
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => const LoginPage()),
                   );
                 } catch (e) {
                   showDialog(
@@ -348,7 +338,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   );
                 }
               },
-
             ),
           ],
         ), // Populate the Drawer in the next step.
