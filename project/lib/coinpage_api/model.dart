@@ -2,7 +2,6 @@
 //
 //     final team = teamFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<Team> teamFromJson(String str) =>

@@ -40,7 +40,7 @@ class _BbalState extends State<Bbal> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => getTeams());
+    timer = Timer.periodic(const Duration(seconds: 5), (Timer t) => getTeams());
   }
 
   @override
@@ -53,7 +53,7 @@ class _BbalState extends State<Bbal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crypto Price'),
+        title: const Text('Crypto Price'),
       ),
       body: SafeArea(
 
@@ -63,7 +63,7 @@ class _BbalState extends State<Bbal> {
             if (snapshot.connectionState == ConnectionState.done) {
               return ListView.builder(
                 itemCount: teams.length,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -84,7 +84,7 @@ class _BbalState extends State<Bbal> {
                 },
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),

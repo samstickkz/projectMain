@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
 import 'dart:ui';
 
-
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);
 
@@ -17,7 +16,6 @@ class _GlassPageState extends State<GlassPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-
       children: [
         ///purple container
         Padding(

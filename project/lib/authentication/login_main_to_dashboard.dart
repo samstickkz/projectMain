@@ -200,7 +200,7 @@ bool authenticated = false;
                             MaterialPageRoute(
                                 builder: (context) => const ResetPassword()));
                       },
-                      child: Text(
+                      child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
                           color: Colors.white,

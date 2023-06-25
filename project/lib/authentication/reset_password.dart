@@ -31,7 +31,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Password reset email sent'),
+            title: const Text('Password reset email sent'),
             content: Text('An email has been sent to $email with instructions to reset your password.'),
             actions: [
               TextButton(
@@ -41,7 +41,7 @@ class _ResetPasswordState extends State<ResetPassword> {
 
                   Navigator.pop(context);
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           ),
@@ -50,15 +50,15 @@ class _ResetPasswordState extends State<ResetPassword> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Error resetting password'),
+            title: const Text('Error resetting password'),
             content: Text(e.toString()),
             actions: [
               TextButton(
                 onPressed: () {
 
-                  Get.to(() => LoginPage());
+                  Get.to(() => const LoginPage());
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           ),

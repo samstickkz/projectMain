@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../raflle/raffle.dart';
-import '../screens/nav.dart';
 
 class PaymentSuccess extends StatelessWidget {
   const PaymentSuccess({super.key, required this.message});
