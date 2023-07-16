@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../card/credit_card.dart';
 import '../profile/profile_page.dart';
 import '../wallet/main_wallet_dashbaord.dart';
+import '../wallet/wallet_deposit.dart';
 
 class NavPage extends StatefulWidget {
   const NavPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ int selectedIndex = 0;
 
 const List<Widget> _pageOptions = <Widget>[
   SecondRoute(),
-  MySample(),
+  WalletDeposit(),
   PortFolio(),
   ProfilePage(),
 ];

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 import 'package:project/authentication/reset_password.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/nav.dart';
 import 'local_auth.dart';
 import 'login_register_page.dart';
@@ -167,7 +168,12 @@ bool authenticated = false;
                         const CircularProgressIndicator()
                       else
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
+
+                            SharedPreferences pref = await SharedPreferences.getInstance();
+                            pref.setString('email', _emailController.text);
+                            pref.setString('password', _passwordController.text);
+
 
                             if (_formKey.currentState?.validate() ?? false) {
                               _login();

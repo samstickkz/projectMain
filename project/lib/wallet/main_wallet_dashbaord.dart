@@ -257,7 +257,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                Get.to(() => const NotesApp());
+                Get.to(() => WalletPage());
               },
             ),
             //Payments
@@ -633,7 +633,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                   padding: const EdgeInsets.all(12.0),
                                   child: GestureDetector(
                                     onTap: () {
-                                      print('eth');
                                       Get.to(() => const Bbal());
                                     },
                                     child: Row(

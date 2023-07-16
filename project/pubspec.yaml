@@ -64,6 +64,7 @@ dependencies:
   confetti: ^0.7.0
   audioplayers: ^4.0.1
   cloud_firestore: ^4.8.1
+  shared_preferences: ^2.2.0
 
 
 
