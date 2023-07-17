@@ -313,11 +313,13 @@ class _SecondRouteState extends State<SecondRoute> {
               onTap: () async {
                 try {
                   await FirebaseAuth.instance.signOut();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => const LoginPage()),
-                  );
+                  // login with getx
+                  Get.offAll(() => const LoginPage());
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (BuildContext context) => const LoginPage()),
+                  // );
                 } catch (e) {
                   showDialog(
                     context: context,
@@ -431,8 +433,7 @@ class _SecondRouteState extends State<SecondRoute> {
                         // buy button
                         GestureDetector(
                           onTap: () {
-                            // Get.to(const PaymentPage());
-                            // Get.to(const Bbal());
+
                             Get.to(() => const Bbal());
                           },
                           child: Container(
