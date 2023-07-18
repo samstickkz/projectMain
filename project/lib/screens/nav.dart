@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import '../card/credit_card.dart';
 import '../profile/profile_page.dart';
 import '../wallet/main_wallet_dashbaord.dart';
 import '../wallet/wallet_deposit.dart';

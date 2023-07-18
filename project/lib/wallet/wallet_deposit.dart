@@ -1,12 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:project/style.dart';
-
-import '../coinpage_api/coinpage.dart';
-import 'card_coin.dart';
+import 'package:http/http.dart' as http;
+import '../model/model.dart';
 
 class WalletDeposit extends StatefulWidget {
   const WalletDeposit({super.key});
@@ -16,6 +15,35 @@ class WalletDeposit extends StatefulWidget {
 }
 
 class _WalletDepositState extends State<WalletDeposit> {
+  String walletAddress = '';
+
+  Future<void> fetchWalletAddress() async {
+    const apiUrl =
+        'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+      if (response.statusCode == 200) {
+        print(response.body);
+        final decodedResponse = json.decode(response.body);
+        final welcome = Welcome.fromJson(decodedResponse);
+        setState(() {
+          walletAddress = welcome.data.address;
+        });
+      } else {
+        setState(() {
+          print(response.body);
+          walletAddress = 'Failed to fetch address.';
+        });
+      }
+    } catch (e) {
+      print(e);
+      setState(() {
+        walletAddress = 'Error: $e';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +63,7 @@ class _WalletDepositState extends State<WalletDeposit> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  children:  [
-
-                    CardCoin(),
-                    CardCoin(
-
-                    ),
+                  children: [
                     Container(
                         height: 100,
                         width: double.infinity,
@@ -59,7 +82,8 @@ class _WalletDepositState extends State<WalletDeposit> {
                                 width: 32,
                               ),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -73,6 +97,7 @@ class _WalletDepositState extends State<WalletDeposit> {
                                   //button
                                   ElevatedButton(
                                     onPressed: () {
+                                      fetchWalletAddress();
                                       //show modal bottom sheet
                                       showModalBottomSheet(
                                         context: context,
@@ -96,17 +121,13 @@ class _WalletDepositState extends State<WalletDeposit> {
                                               ),
                                               //textfield
                                               Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    horizontal: 20.0),
-                                                child: TextField(
-                                                  decoration: InputDecoration(
-                                                    hintText: 'Enter amount',
-                                                    hintStyle: TextStyle(
-                                                      color: HexColor('E4E4F0'),
-                                                    ),
-                                                    border: OutlineInputBorder(
-                                                      borderRadius: BorderRadius.circular(12),
-                                                    ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 20.0),
+                                                child: Text(
+                                                  walletAddress,
+                                                  style: TextStyle(
+                                                    color: HexColor('E4E4F0'),
                                                   ),
                                                 ),
                                               ),
@@ -116,19 +137,44 @@ class _WalletDepositState extends State<WalletDeposit> {
                                               //button
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  // Get.to(() => CoinPage());
+                                                  Clipboard.setData(
+                                                      ClipboardData(
+                                                          text: walletAddress));
+                                                  Get.snackbar(
+                                                    'Copied',
+                                                    'Address copied to clipboard',
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    colorText:
+                                                        HexColor('000000'),
+                                                  );
+
                                                 },
                                                 style: ElevatedButton.styleFrom(
-                                                  primary: HexColor('4A4A58'),
+                                                  backgroundColor:
+                                                      HexColor('4A4A58'),
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(12),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
                                                   ),
                                                 ),
-                                                child: Text(
-                                                  'Deposit',
-                                                  style: TextStyle(
-                                                    color: HexColor('E4E4F0'),
-                                                    fontSize: 17,
+                                                child: Container(
+                                                  width: 125,
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        'Copy Address',
+                                                        style: TextStyle(
+                                                          color: HexColor(
+                                                              'E4E4F0'),
+                                                          fontSize: 15,
+                                                        ),
+                                                      ),
+
+                                                      const SizedBox(width: 5,),
+                                                      const Icon(Icons.copy, size: 15,)
+                                                    ],
                                                   ),
                                                 ),
                                               ),
@@ -136,10 +182,9 @@ class _WalletDepositState extends State<WalletDeposit> {
                                           ),
                                         ),
                                       );
-                                      // Get.to(() => CoinPage());
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: HexColor('4A4A58'),
+                                      backgroundColor: HexColor('4A4A58'),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
@@ -159,7 +204,8 @@ class _WalletDepositState extends State<WalletDeposit> {
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'Balance: \$2000',
@@ -173,7 +219,7 @@ class _WalletDepositState extends State<WalletDeposit> {
                                       // Get.to(() => CoinPage());
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: HexColor('4A4A58'),
+                                      backgroundColor: HexColor('4A4A58'),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
@@ -191,7 +237,6 @@ class _WalletDepositState extends State<WalletDeposit> {
                             ],
                           ),
                         )),
-
                   ],
                 ),
               ),

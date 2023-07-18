@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../model/model.dart';
 
 class WalletPage extends StatefulWidget {
@@ -14,7 +13,7 @@ class _WalletPageState extends State<WalletPage> {
   String walletAddress = '';
 
   Future<void> fetchWalletAddress() async {
-    final apiUrl = 'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
+    const apiUrl = 'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
 
     try {
       final response = await http.get(Uri.parse(apiUrl));

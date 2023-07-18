@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../coinpage_api/coinpage.dart';
 
 //variables for items in the card
 class CardModel {
@@ -117,10 +112,10 @@ class _CardCoinState extends State<CardCoin> {
                                 //button
                                 ElevatedButton(
                                   onPressed: () {
-                                    // Get.to(() => CoinPage());
+
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: HexColor('4A4A58'),
+                                    backgroundColor: HexColor('4A4A58'),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -140,7 +135,7 @@ class _CardCoinState extends State<CardCoin> {
                         // Get.to(() => CoinPage());
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: HexColor('4A4A58'),
+                        backgroundColor: HexColor('4A4A58'),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -174,7 +169,7 @@ class _CardCoinState extends State<CardCoin> {
                         // Get.to(() => CoinPage());
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: HexColor('4A4A58'),
+                        backgroundColor: HexColor('4A4A58'),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),

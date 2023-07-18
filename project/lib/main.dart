@@ -4,7 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:project/onboarding/main_onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project/payment/model.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'authentication/login_main_to_dashboard.dart';
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
-            nextScreen: email == null ? LoginPage() : WalletHome(),
+            nextScreen: email == null ? const LoginPage() : const WalletHome(),
           ),
         );
       },

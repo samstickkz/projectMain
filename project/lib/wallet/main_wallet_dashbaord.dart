@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project/wallet/portfolio.dart';
@@ -12,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
-
 import '../notes/notes.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
