@@ -19,7 +19,6 @@ class _WalletDepositState extends State<WalletDeposit> {
   String walletAddress = '';
   bool isLoading = true;
 
-
   // Future<void> fetchWalletAddress() async {
   //   const apiUrl =
   //       'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
@@ -47,7 +46,8 @@ class _WalletDepositState extends State<WalletDeposit> {
   //   }
   // }
   Future<void> fetchWalletAddress() async {
-    const apiUrl = 'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
+    const apiUrl =
+        'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
@@ -166,26 +166,28 @@ class _WalletDepositState extends State<WalletDeposit> {
                                                   height: 100.0,
                                                   child:
 
-                                                  // Replace the existing Shimmer widget with this:
-                                                  isLoading
-                                                      ? Shimmer.fromColors(
-                                                    baseColor: Colors.grey, // Change to the desired shimmer base color
-                                                    highlightColor: Colors.blueGrey, // Change to the desired shimmer highlight color
-                                                    child: Container(
-                                                      height: 15,
-                                                      width: 100,
-                                                      color: Colors.white, // Change to the desired background color of the shimmer
-                                                    ),
-                                                  )
-                                                      : Text(
-                                                    walletAddress,
-                                                    style: TextStyle(
-                                                      color: HexColor('E4E4F0'),
-                                                      fontSize: 15,
-                                                    ),
-                                                  ),
-
-
+                                                      // Replace the existing Shimmer widget with this:
+                                                      isLoading
+                                                          ? Shimmer.fromColors(
+                                                              baseColor: Colors
+                                                                  .grey, // Change to the desired shimmer base color
+                                                              highlightColor: Colors
+                                                                  .blueGrey, // Change to the desired shimmer highlight color
+                                                              child: Container(
+                                                                height: 15,
+                                                                width: 100,
+                                                                color: Colors
+                                                                    .white, // Change to the desired background color of the shimmer
+                                                              ),
+                                                            )
+                                                          : Text(
+                                                              walletAddress,
+                                                              style: TextStyle(
+                                                                color: HexColor(
+                                                                    'E4E4F0'),
+                                                                fontSize: 15,
+                                                              ),
+                                                            ),
                                                 ),
                                               ),
                                               const SizedBox(
@@ -197,7 +199,7 @@ class _WalletDepositState extends State<WalletDeposit> {
                                                   Clipboard.setData(
                                                       ClipboardData(
                                                           text: walletAddress));
-                                                   Get.snackbar(
+                                                  Get.snackbar(
                                                     'Copied',
                                                     'Address copied to clipboard',
                                                     backgroundColor:
