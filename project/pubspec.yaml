@@ -66,6 +66,8 @@ dependencies:
   cloud_firestore: ^4.8.1
   shared_preferences: ^2.2.0
   shimmer: ^3.0.0
+  top_snackbar_flutter: ^3.1.0
+
 
 
 

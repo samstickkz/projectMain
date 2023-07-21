@@ -1,8 +1,11 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../authentication/login_main_to_dashboard.dart';
 import '../calculator/calculator.dart';
 import '../coinpage_api/coinpage.dart';
@@ -12,6 +15,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 import '../notes/notes.dart';
+import '../payment/payment_page.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
@@ -32,10 +36,16 @@ class _SecondRouteState extends State<SecondRoute> {
   Map<String, dynamic> _cryptoPriceData = {};
 
   bool _isLoading = true;
+  TextEditingController amountController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
+  String publicKey = 'pk_test_72e08d57e07a5fa900b5d4b536a677bb0c9e7a03';
+  final plugin = PaystackPlugin();
+  String message = '';
   // index for navbar
   Future<void> fetchCryptoPrice() async {
     try {
+      plugin.initialize(publicKey: publicKey);
       final response = await http.get(Uri.parse(
           'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum&vs_currencies=usd'));
 
@@ -62,8 +72,39 @@ class _SecondRouteState extends State<SecondRoute> {
     // Set up a timer to refresh the crypto price data every 5 minutes
     _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
       fetchCryptoPrice();
+      plugin.initialize(publicKey: publicKey);
       // uid = currentUser?.uid ?? '';
     });
+  }
+
+  void makePayment() async {
+    int price = int.parse(amountController.text) * 100;
+    Charge charge = Charge()
+      ..amount = price
+      ..reference = 'ref_${DateTime.now()}'
+      ..email = emailController.text
+      ..currency = 'NGN';
+
+    CheckoutResponse response = await plugin.checkout(
+      context,
+      method: CheckoutMethod.card,
+      charge: charge,
+    );
+
+    if (response.status == true) {
+      message = 'Payment was successful. Ref: ${response.reference}';
+      //pop
+      Navigator.pop(context);
+
+      showTopSnackBar(
+        Overlay.of(context)!,
+        const CustomSnackBar.success(
+          message: "Your payment was successful",
+        ),
+      );
+    } else {
+      print(response.message);
+    }
   }
 
   @override
@@ -396,7 +437,90 @@ class _SecondRouteState extends State<SecondRoute> {
                       children: [
                         /// top up button
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            //show bottom sheet
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  height: 300,
+                                  color: Colors.black,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.white,
+                                        ),
+                                        child: TextFormField(
+                                          keyboardType: TextInputType.number,
+                                          controller: amountController,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter the amount';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: const InputDecoration(
+                                            iconColor: Colors.white,
+                                            prefix: Text('NGN: '),
+                                            hintText: 'Enter Amount',
+                                            labelText: 'Amount',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 15.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white,
+                                          ),
+                                          child: TextFormField(
+                                            controller: emailController,
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'Please enter the email';
+                                              }
+                                              return null;
+                                            },
+                                            decoration: const InputDecoration(
+                                              hintText: 'example@gmail.com',
+                                              labelText: 'Email',
+                                              border: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                color: Colors.black12,
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 20.0),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            makePayment();
+                                          },
+                                          child: const Text('Make Payment'),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
@@ -431,7 +555,6 @@ class _SecondRouteState extends State<SecondRoute> {
                         // buy button
                         GestureDetector(
                           onTap: () {
-
                             Get.to(() => const Bbal());
                           },
                           child: Container(
@@ -595,11 +718,13 @@ class _SecondRouteState extends State<SecondRoute> {
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               '+0.65 ETH',
                                               style: TextStyle(
-                                                color: HexColor('E4E4F0'),
+                                                color: HexColor('A7A7CC'),
                                               ),
                                             ),
                                             _isLoading
@@ -610,6 +735,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                                 : Text(
                                                     '\$${_cryptoPriceData['ethereum']['usd'].toStringAsFixed(2)}',
                                                     style: const TextStyle(
+                                                        color: Colors.white,
                                                         fontSize: 12.0),
                                                   ),
                                           ],

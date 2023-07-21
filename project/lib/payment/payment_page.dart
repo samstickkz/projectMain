@@ -1,6 +1,8 @@
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:project/payment/payment%20success.dart';
 import 'package:flutter/material.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -41,12 +43,12 @@ class _PaymentPageState extends State<PaymentPage> {
     if (response.status == true) {
       message = 'Payment was successful. Ref: ${response.reference}';
 
-      if (mounted) {}
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (context) => PaymentSuccess(message: message)),
-          ModalRoute.withName('/'));
+      showTopSnackBar(
+        Overlay.of(context)!,
+        const CustomSnackBar.success(
+          message: "Good job, your release is successful. Have a nice day",
+        ),
+      );
     } else {
       print(response.message);
     }
@@ -55,7 +57,6 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: const Text('Payment Page'),
       ),
@@ -65,7 +66,9 @@ class _PaymentPageState extends State<PaymentPage> {
           key: _formKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 100),
-            child: Column(
+            child:
+
+            Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
