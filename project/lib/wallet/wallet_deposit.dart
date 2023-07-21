@@ -17,7 +17,7 @@ class WalletDeposit extends StatefulWidget {
 
 class _WalletDepositState extends State<WalletDeposit> {
   String walletAddress = '';
-  bool isLoading = true;
+  bool isLoading = false;
 
   // Future<void> fetchWalletAddress() async {
   //   const apiUrl =
@@ -31,20 +31,24 @@ class _WalletDepositState extends State<WalletDeposit> {
   //       final welcome = Welcome.fromJson(decodedResponse);
   //       setState(() {
   //         walletAddress = welcome.data.address;
+  //         isLoading = false; // Data has been fetched, set isLoading to false
   //       });
   //     } else {
   //       setState(() {
   //         print(response.body);
   //         walletAddress = 'Failed to fetch address.';
+  //         isLoading = false; // Error occurred, set isLoading to false
   //       });
   //     }
   //   } catch (e) {
   //     print(e);
   //     setState(() {
   //       walletAddress = 'Error: $e';
+  //       isLoading = false; // Error occurred, set isLoading to false
   //     });
   //   }
   // }
+
   Future<void> fetchWalletAddress() async {
     const apiUrl =
         'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
@@ -56,30 +60,28 @@ class _WalletDepositState extends State<WalletDeposit> {
         final decodedResponse = json.decode(response.body);
         final welcome = Welcome.fromJson(decodedResponse);
         setState(() {
+          isLoading = false;
+
           walletAddress = welcome.data.address;
-          isLoading = false; // Data has been fetched, set isLoading to false
         });
       } else {
         setState(() {
           print(response.body);
           walletAddress = 'Failed to fetch address.';
-          isLoading = false; // Error occurred, set isLoading to false
         });
       }
     } catch (e) {
       print(e);
       setState(() {
         walletAddress = 'Error: $e';
-        isLoading = false; // Error occurred, set isLoading to false
+      });
+    } finally {
+      setState(() {
+        isLoading =
+            false; // Set isLoading to false in both success and error cases
       });
     }
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   isLoading = true; // Initialize the variable
-  //   fetchWalletAddress();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -133,8 +135,11 @@ class _WalletDepositState extends State<WalletDeposit> {
 
                                   //button
                                   ElevatedButton(
-                                    onPressed: () {
-                                      fetchWalletAddress();
+                                    onPressed: () async {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      await fetchWalletAddress();
                                       //show modal bottom sheet
                                       showModalBottomSheet(
                                         context: context,
@@ -164,30 +169,16 @@ class _WalletDepositState extends State<WalletDeposit> {
                                                 child: SizedBox(
                                                   width: double.infinity,
                                                   height: 100.0,
-                                                  child:
-
-                                                      // Replace the existing Shimmer widget with this:
-                                                      isLoading
-                                                          ? Shimmer.fromColors(
-                                                              baseColor: Colors
-                                                                  .grey, // Change to the desired shimmer base color
-                                                              highlightColor: Colors
-                                                                  .blueGrey, // Change to the desired shimmer highlight color
-                                                              child: Container(
-                                                                height: 15,
-                                                                width: 100,
-                                                                color: Colors
-                                                                    .white, // Change to the desired background color of the shimmer
-                                                              ),
-                                                            )
-                                                          : Text(
-                                                              walletAddress,
-                                                              style: TextStyle(
-                                                                color: HexColor(
-                                                                    'E4E4F0'),
-                                                                fontSize: 15,
-                                                              ),
-                                                            ),
+                                                  child: isLoading
+                                                      ? const Text('loading')
+                                                      : Text(
+                                                          walletAddress,
+                                                          style: TextStyle(
+                                                            color: HexColor(
+                                                                'E4E4F0'),
+                                                            fontSize: 15,
+                                                          ),
+                                                        ),
                                                 ),
                                               ),
                                               const SizedBox(
