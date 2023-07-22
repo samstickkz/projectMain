@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-// import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+//firebase base cloud
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
-
-  // final VoidCallback showLoginPage;
-  // const RegisterPage({Key? key, required this.showLoginPage,}) : super(key: key);
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  //first name controller
+  final _firstnamecontroller = TextEditingController();
+  //last name controller
+  final _lastnamecontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
   final _confirmpasswordcontroller = TextEditingController();
@@ -23,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
+    _firstnamecontroller.dispose();
+    _lastnamecontroller.dispose();
     _passwordcontroller.dispose();
     _emailcontroller.dispose();
     _confirmpasswordcontroller.dispose();
@@ -31,32 +35,48 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future signUp() async {
+    print('sign up');
     Future<bool> passwordconfirmed() async {
-      if (_passwordcontroller.text.trim() == _confirmpasswordcontroller.text.trim()){
+      if (_passwordcontroller.text.trim() ==
+          _confirmpasswordcontroller.text.trim()) {
         User? user = FirebaseAuth.instance.currentUser;
 
-        if (user!= null && !user.emailVerified) {
+        if (user != null && !user.emailVerified) {
           await user.sendEmailVerification();
         }
         return true;
-      }else{
+      } else {
         return false;
       }
     }
 
-    if (await passwordconfirmed()){
+    if (await passwordconfirmed()) {
+
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
+
         email: _emailcontroller.text.trim(),
         password: _passwordcontroller.text.trim(),
       );
-
+      addUser();
     }
-
-
-
-
   }
 
+  // future add user to firestore
+  Future<void> addUser() {
+
+    // Call the user's CollectionReference to add a new user
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(_firstnamecontroller.text)
+        .set({
+      'firstname': _firstnamecontroller.text, // John Doe
+      'lastname': _lastnamecontroller.text, // Stokes and Sons
+      // 42
+    })
+
+        .then((value) => print("User Added Successfully"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +136,28 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ],
+                ),  TextField(
+                  controller: _firstnamecontroller,
+                  decoration: InputDecoration(
+                    fillColor: HexColor('A7A7CC'),
+                    filled: true,
+                    labelText: 'first name',
+                    border: const OutlineInputBorder(),
+                  ),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: _lastnamecontroller,
+                  decoration: InputDecoration(
+                    fillColor: HexColor('A7A7CC'),
+                    filled: true,
+                    labelText: 'Last name',
+                    border: const OutlineInputBorder(),
+                  ),
+                ),
+
                 const SizedBox(
                   height: 32,
                 ),
@@ -186,7 +227,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 //   },
                 // ),
 
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
@@ -202,7 +242,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
                 GestureDetector(
-                  // onTap: signIn,
+                  onTap: signUp,
+
                   child: Container(
                     width: double.infinity,
                     height: 56,
@@ -218,14 +259,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Center(
-                        child: GestureDetector(
-                      onTap: signUp,
-                      child: const Text(
-                        'Resgister',
+                    child: const Center(
+                      child: Text(
+                        'Sign Up',
                         style: TextStyle(color: Colors.white),
                       ),
-                    )),
+                    )
+
                   ),
                 ),
                 const SizedBox(

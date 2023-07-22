@@ -44,10 +44,13 @@ class _PaymentPageState extends State<PaymentPage> {
       message = 'Payment was successful. Ref: ${response.reference}';
 
       showTopSnackBar(
+
         Overlay.of(context)!,
         const CustomSnackBar.success(
           message: "Good job, your release is successful. Have a nice day",
         ),
+
+
       );
     } else {
       print(response.message);

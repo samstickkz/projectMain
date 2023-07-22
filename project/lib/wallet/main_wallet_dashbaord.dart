@@ -122,12 +122,17 @@ class _SecondRouteState extends State<SecondRoute> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title:  Row(mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const Text('Welcome, ', style: TextStyle(
+              fontSize: 12,
+            ),),
+            Text(currentUser?.email?? '', style: const TextStyle(
+              fontSize: 12,),
+            )],
+        ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0, right: 25),
-            child: Text(formattedDate),
-          )
+
         ],
       ),
       drawer: Drawer(
@@ -440,6 +445,16 @@ class _SecondRouteState extends State<SecondRoute> {
                           onTap: () {
                             //show bottom sheet
                             showModalBottomSheet(
+
+                              elevation: 2,
+                              isScrollControlled: true,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+
                               context: context,
                               builder: (context) {
                                 return Container(
