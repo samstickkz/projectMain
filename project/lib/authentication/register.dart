@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//firebase base cloud
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -14,9 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  //first name controller
   final _firstnamecontroller = TextEditingController();
-  //last name controller
   final _lastnamecontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
@@ -35,7 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future signUp() async {
-    print('sign up');
     Future<bool> passwordconfirmed() async {
       if (_passwordcontroller.text.trim() ==
           _confirmpasswordcontroller.text.trim()) {
@@ -51,9 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     if (await passwordconfirmed()) {
-
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-
         email: _emailcontroller.text.trim(),
         password: _passwordcontroller.text.trim(),
       );
@@ -63,20 +58,34 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // future add user to firestore
   Future<void> addUser() {
-
     // Call the user's CollectionReference to add a new user
     return FirebaseFirestore.instance
         .collection('users')
         .doc(_firstnamecontroller.text)
         .set({
-      'firstname': _firstnamecontroller.text, // John Doe
-      'lastname': _lastnamecontroller.text, // Stokes and Sons
-      // 42
-    })
+          'firstname': _firstnamecontroller.text, // John Doe
+          'lastname': _lastnamecontroller.text, // Stokes and Sons
+          // 42
+        })
+        .then(
+          (value) => showTopSnackBar(
+            Overlay.of(context)!,
+            const CustomSnackBar.success(
+              message: "Your payment was successful",
+            ),
+          ),
 
-        .then((value) => print("User Added Successfully"))
-        .catchError((error) => print("Failed to add user: $error"));
+        )
+        .catchError(
+          (error) => showTopSnackBar(
+            Overlay.of(context)!,
+            const CustomSnackBar.error(
+              message: "smh , nawa for you oh",
+            ),
+          ),
+        );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,10 +100,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()));
+                       //pop the current page
+                        Navigator.pop(context);
+
                       },
                       child: Container(
                         height: 41,
@@ -136,7 +144,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ],
-                ),  TextField(
+                ),
+                TextField(
                   controller: _firstnamecontroller,
                   decoration: InputDecoration(
                     fillColor: HexColor('A7A7CC'),
@@ -243,30 +252,27 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 GestureDetector(
                   onTap: signUp,
-
                   child: Container(
-                    width: double.infinity,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            HexColor('6262D9'),
-                            HexColor('9D62D9'),
-                          ]),
+                      width: double.infinity,
+                      height: 56,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              HexColor('6262D9'),
+                              HexColor('9D62D9'),
+                            ]),
 
-                      // color: HexColor('1E232C'),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(color: Colors.white),
+                        // color: HexColor('1E232C'),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    )
-
-                  ),
+                      child: const Center(
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )),
                 ),
                 const SizedBox(
                   height: 15,

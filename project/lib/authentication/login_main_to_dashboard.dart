@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:project/authentication/register.dart';
 import 'package:project/authentication/reset_password.dart';
+import 'package:project/authentication/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/nav.dart';
 import 'local_auth.dart';
@@ -275,7 +276,7 @@ bool authenticated = false;
                     child: Center(
                         child: GestureDetector(
                           onTap: (){
-                            // AuthService().singInWithGoogle();
+                            authService().signinWithGoogle();
                           },
                           child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
