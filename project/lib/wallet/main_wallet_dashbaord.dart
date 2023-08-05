@@ -183,7 +183,7 @@ class _SecondRouteState extends State<SecondRoute> {
                         height: 5,
                       ),
                       Text(
-                        currentUser?.email ?? 'Signin please',
+                        currentUser?.email ?? 'Sign in please',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,

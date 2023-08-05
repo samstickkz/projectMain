@@ -5,7 +5,6 @@ import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:get/get.dart';
 import 'package:project/style.dart';
 import 'package:http/http.dart' as http;
-import 'package:shimmer/shimmer.dart';
 import '../model/model.dart';
 
 class WalletDeposit extends StatefulWidget {
@@ -18,36 +17,6 @@ class WalletDeposit extends StatefulWidget {
 class _WalletDepositState extends State<WalletDeposit> {
   String walletAddress = '';
   bool isLoading = false;
-
-  // Future<void> fetchWalletAddress() async {
-  //   const apiUrl =
-  //       'https://projectx-anf9.onrender.com/api/addresses/createaddress/3';
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse(apiUrl));
-  //     if (response.statusCode == 200) {
-  //       print(response.body);
-  //       final decodedResponse = json.decode(response.body);
-  //       final welcome = Welcome.fromJson(decodedResponse);
-  //       setState(() {
-  //         walletAddress = welcome.data.address;
-  //         isLoading = false; // Data has been fetched, set isLoading to false
-  //       });
-  //     } else {
-  //       setState(() {
-  //         print(response.body);
-  //         walletAddress = 'Failed to fetch address.';
-  //         isLoading = false; // Error occurred, set isLoading to false
-  //       });
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //     setState(() {
-  //       walletAddress = 'Error: $e';
-  //       isLoading = false; // Error occurred, set isLoading to false
-  //     });
-  //   }
-  // }
 
   Future<void> fetchWalletAddress() async {
     const apiUrl =
@@ -87,6 +56,19 @@ class _WalletDepositState extends State<WalletDeposit> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppStyle.backgroundColor,
+        appBar: AppBar(
+          backgroundColor: Colors.white.withOpacity(0.1),
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: Column(
             children: [
