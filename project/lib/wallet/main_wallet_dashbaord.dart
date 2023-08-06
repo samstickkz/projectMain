@@ -93,7 +93,9 @@ class _SecondRouteState extends State<SecondRoute> {
     if (response.status == true) {
       message = 'Payment was successful. Ref: ${response.reference}';
       //pop
-      Navigator.pop(context);
+
+      //pop with getx
+      Get.back();
 
       showTopSnackBar(
         Overlay.of(context),
@@ -364,7 +366,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   await FirebaseAuth.instance.signOut();
                   // login with getx
                   Get.offAll(() => const LoginPage());
-
                 } catch (e) {
                   showDialog(
                     context: context,
