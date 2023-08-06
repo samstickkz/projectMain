@@ -11,7 +11,15 @@ import 'authentication/login_main_to_dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    print('Firebase initialization error: $e');
+    // Handle the error gracefully, you might want to show an error screen
+    // or fallback behavior to the user.
+  }
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString("email");
   runApp(MyApp(email: email)); // Pass the email to the MyApp widget

@@ -62,12 +62,13 @@ dependencies:
   flutter_fortune_wheel: ^1.2.0
   rxdart: ^0.27.7
   confetti: ^0.7.0
-  audioplayers: ^4.0.1
   cloud_firestore: ^4.8.1
   shared_preferences: ^2.2.0
   shimmer: ^3.0.0
   top_snackbar_flutter: ^3.1.0
   google_sign_in: ^6.1.4
+  firebase_core: ^2.15.0
+
 
 
 
@@ -86,7 +87,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
