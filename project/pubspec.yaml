@@ -31,6 +31,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^2.15.0
+  firebase_messaging:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -67,7 +69,7 @@ dependencies:
   shimmer: ^3.0.0
   top_snackbar_flutter: ^3.1.0
   google_sign_in: ^6.1.4
-  firebase_core: ^2.15.0
+
 
 
 

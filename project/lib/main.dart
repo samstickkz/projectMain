@@ -1,12 +1,11 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:project/onboarding/main_onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'authentication/login_main_to_dashboard.dart';
 
 void main() async {
@@ -29,8 +28,7 @@ class MyApp extends StatelessWidget {
   final String? email; // Declare the email variable in the MyApp class
 
   const MyApp({Key? key, this.email}) : super(key: key); // Use Key instead of super.key
-
-  // ...
+  
 
   @override
   Widget build(BuildContext context) {
