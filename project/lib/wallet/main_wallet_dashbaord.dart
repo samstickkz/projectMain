@@ -364,11 +364,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   await FirebaseAuth.instance.signOut();
                   // login with getx
                   Get.offAll(() => const LoginPage());
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (BuildContext context) => const LoginPage()),
-                  // );
+
                 } catch (e) {
                   showDialog(
                     context: context,

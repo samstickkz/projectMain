@@ -37,13 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text.trim(),
       );
 
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const NavPage()),
-      // );
-      //navigate to Navpage with getx
       Get.to(() => const NavPage());
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         _errorMessage = 'Egbon, goan create an account joh.';
@@ -55,7 +49,6 @@ class _LoginPageState extends State<LoginPage> {
     } catch (e) {
       _errorMessage = e.toString();
     }
-
     setState(() {
       _isLoading = false;
     });
