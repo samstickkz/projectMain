@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import 'login_main_to_dashboard.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -15,12 +13,7 @@ class ResetPassword extends StatefulWidget {
 final TextEditingController _emailController = TextEditingController();
 
 class _ResetPasswordState extends State<ResetPassword> {
-  // dispose method
-  // @override
-  // void dispose() {
-  //   _emailController.dispose();
-  //   super.dispose();
-  // }
+
 
   // reset password method
   void resetPassword() async {

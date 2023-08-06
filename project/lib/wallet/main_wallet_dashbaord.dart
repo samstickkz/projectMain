@@ -15,7 +15,6 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
 import '../notes/notes.dart';
-import '../payment/payment_page.dart';
 import '../raflle/raffle.dart';
 import '../shimmer.dart';
 
@@ -97,7 +96,7 @@ class _SecondRouteState extends State<SecondRoute> {
       Navigator.pop(context);
 
       showTopSnackBar(
-        Overlay.of(context)!,
+        Overlay.of(context),
         const CustomSnackBar.success(
           message: "Your payment was successful",
         ),
@@ -122,18 +121,24 @@ class _SecondRouteState extends State<SecondRoute> {
 
     return Scaffold(
       appBar: AppBar(
-        title:  Row(mainAxisAlignment: MainAxisAlignment.end,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Text('Welcome, ', style: TextStyle(
-              fontSize: 12,
-            ),),
-            Text(currentUser?.email?? '', style: const TextStyle(
-              fontSize: 12,),
-            )],
+            const Text(
+              'Welcome, ',
+              style: TextStyle(
+                fontSize: 12,
+              ),
+            ),
+            Text(
+              currentUser?.email ?? '',
+              style: const TextStyle(
+                fontSize: 12,
+              ),
+            )
+          ],
         ),
-        actions: [
-
-        ],
+        actions: const [],
       ),
       drawer: Drawer(
         backgroundColor: Colors.black,
@@ -445,7 +450,6 @@ class _SecondRouteState extends State<SecondRoute> {
                           onTap: () {
                             //show bottom sheet
                             showModalBottomSheet(
-
                               elevation: 2,
                               isScrollControlled: true,
                               shape: const RoundedRectangleBorder(
@@ -454,7 +458,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                   topRight: Radius.circular(20),
                                 ),
                               ),
-
                               context: context,
                               builder: (context) {
                                 return Container(

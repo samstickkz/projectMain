@@ -51,9 +51,9 @@ class MyApp extends StatelessWidget {
           home: AnimatedSplashScreen(
             duration: 2000,
             splashTransition: SplashTransition.fadeTransition,
-            splash: Center(
+            splash: const Center(
               child: Column(
-                children: const [
+                children: [
                   Icon(Icons.home),
                 ],
               ),

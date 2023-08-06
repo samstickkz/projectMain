@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Buttons extends StatelessWidget {
-  final color;
-  final textColor;
+  final Color color; // Added the type annotation 'Color'
+  final Color textColor; // Added the type annotation 'Color'
   final String buttonText;
-  final buttontapped;
+  final VoidCallback? buttontapped; // Used 'VoidCallback' for the function type
 
-  const Buttons(
-      {super.key,
-      required this.color,
-      required this.textColor,
-      required this.buttonText,
-        this.buttontapped});
+  const Buttons({
+    Key? key,
+    required this.color,
+    required this.textColor,
+    required this.buttonText,
+    this.buttontapped,
+  }) : super(key: key); // Moved 'key' to the constructor and added 'super'
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,10 @@ class Buttons extends StatelessWidget {
               child: Text(
                 buttonText,
                 style: TextStyle(
-                    color: textColor, fontWeight: FontWeight.bold, fontSize: 20),
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),

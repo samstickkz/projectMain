@@ -106,12 +106,12 @@ class _ProfilePageState extends State<ProfilePage> {
                             const SizedBox(
                               height: 20,
                             ),
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 /// built
                                 Column(
-                                  children: const [
+                                  children: [
                                     Text(
                                       'Applied',
                                       style: TextStyle(
@@ -133,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                                 /// review
                                 Column(
-                                  children: const [
+                                  children: [
                                     Text(
                                       'Reviewed',
                                       style: TextStyle(
@@ -155,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                                 /// collabo
                                 Column(
-                                  children: const [
+                                  children: [
                                     Text(
                                       'collabo',
                                       style: TextStyle(
@@ -193,11 +193,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               // complete profile
-                              Column(
+                              const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   Text(
                                     'Complete Profile',
                                     style: TextStyle(

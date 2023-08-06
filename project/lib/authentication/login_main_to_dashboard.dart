@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:get/get.dart';
 import 'package:project/authentication/register.dart';
 import 'package:project/authentication/reset_password.dart';
 import 'package:project/authentication/services.dart';
@@ -10,17 +11,13 @@ import 'local_auth.dart';
 import 'login_register_page.dart';
 
 class LoginPage extends StatefulWidget {
-
   const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
-
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -40,10 +37,13 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text.trim(),
       );
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const NavPage()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => const NavPage()),
+      // );
+      //navigate to Navpage with getx
+      Get.to(() => const NavPage());
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         _errorMessage = 'Egbon, goan create an account joh.';
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-bool authenticated = false;
+  bool authenticated = false;
 
   @override
   Widget build(BuildContext context) {
@@ -99,11 +99,11 @@ bool authenticated = false;
                 const SizedBox(
                   height: 28,
                 ),
-                Row(
+                const Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Welcome Boss! Glad',
                           style: TextStyle(
@@ -170,11 +170,11 @@ bool authenticated = false;
                       else
                         ElevatedButton(
                           onPressed: () async {
-
-                            SharedPreferences pref = await SharedPreferences.getInstance();
+                            SharedPreferences pref =
+                                await SharedPreferences.getInstance();
                             pref.setString('email', _emailController.text);
-                            pref.setString('password', _passwordController.text);
-
+                            pref.setString(
+                                'password', _passwordController.text);
 
                             if (_formKey.currentState?.validate() ?? false) {
                               _login();
@@ -198,10 +198,10 @@ bool authenticated = false;
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:  [
+                  children: [
                     GestureDetector(
                       //reset password wit firebase
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -236,8 +236,6 @@ bool authenticated = false;
                       // color: HexColor('1E232C'),
                       borderRadius: BorderRadius.circular(8),
                     ),
-
-
                     child: Center(
                         child: GestureDetector(
                       onTap: () {
@@ -275,12 +273,12 @@ bool authenticated = false;
                     ),
                     child: Center(
                         child: GestureDetector(
-                          onTap: (){
-                            authService().signinWithGoogle();
-                          },
-                          child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      onTap: () {
+                        authService().signinWithGoogle();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           Image.asset(
                             'images/Google.png',
                             width: 18,
@@ -293,9 +291,9 @@ bool authenticated = false;
                             'SignUp in Google ',
                             style: TextStyle(color: Colors.white),
                           ),
-                      ],
-                    ),
-                        )),
+                        ],
+                      ),
+                    )),
                   ),
                 ),
                 const SizedBox(
@@ -331,10 +329,7 @@ bool authenticated = false;
                           fontSize: 14,
                         ),
                       ),
-
-
                     ),
-
                   ],
                 ),
                 ElevatedButton(
@@ -343,8 +338,6 @@ bool authenticated = false;
                     setState(() {
                       authenticated = authenticate;
                     });
-
-
                   },
                   child: const Text('Auth'),
                 ),
@@ -356,5 +349,3 @@ bool authenticated = false;
     );
   }
 }
-
-

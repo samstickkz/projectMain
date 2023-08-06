@@ -1,5 +1,4 @@
 import 'package:flutter_paystack/flutter_paystack.dart';
-import 'package:project/payment/payment%20success.dart';
 import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -45,7 +44,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
       showTopSnackBar(
 
-        Overlay.of(context)!,
+        Overlay.of(context),
         const CustomSnackBar.success(
           message: "Good job, your release is successful. Have a nice day",
         ),

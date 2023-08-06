@@ -32,8 +32,8 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                     ),
                   );
                 },
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(
                       Icons.arrow_back,
                       color: Colors.white,
@@ -97,10 +97,10 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               'Job Description',
                               style: TextStyle(
@@ -138,10 +138,10 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               'Responsibilty',
                               style: TextStyle(
@@ -155,10 +155,10 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               'coorem Ipsum available, samuel',
                               style: TextStyle(
@@ -189,10 +189,10 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           // complete profile
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 'Earn Skill Badge',
                                 style: TextStyle(
@@ -262,11 +262,11 @@ class _FlutterDeveloperState extends State<FlutterDeveloper> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               // complete profile
-                              Column(
+                              const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   Text(
                                     'Earn Skill Badge',
                                     style: TextStyle(

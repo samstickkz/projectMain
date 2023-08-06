@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'login_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -69,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
         })
         .then(
           (value) => showTopSnackBar(
-            Overlay.of(context)!,
+            Overlay.of(context),
             const CustomSnackBar.success(
               message: "Your payment was successful",
             ),
@@ -78,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
         )
         .catchError(
           (error) => showTopSnackBar(
-            Overlay.of(context)!,
+            Overlay.of(context),
             const CustomSnackBar.error(
               message: "smh , nawa for you oh",
             ),
@@ -121,11 +120,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 28,
                 ),
-                Row(
+                const Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Welcome Boss! Glad',
                           style: TextStyle(
@@ -236,9 +235,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 //   },
                 // ),
 
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Text(
                       'Forgot Password?',
                       style: TextStyle(
