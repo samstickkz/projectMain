@@ -8,7 +8,6 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../authentication/login_main_to_dashboard.dart';
 import '../coinpage_api/coinpage.dart';
-
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
@@ -239,9 +238,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-
-              },
+              onTap: () {},
             ),
             //rewards
             ListTile(
@@ -270,7 +267,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-
             ),
             //Address
             ListTile(
@@ -299,7 +295,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-
             ),
             //Payments
             ListTile(
@@ -327,7 +322,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-
             ),
             const SizedBox(
               height: 280,

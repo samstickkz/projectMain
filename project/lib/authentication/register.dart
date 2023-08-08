@@ -209,32 +209,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
 
-                // FlutterPwValidator(
-                //   controller: _confirmpasswordcontroller,
-                //   minLength: 8,
-                //   uppercaseCharCount: 2,
-                //   numericCharCount: 3,
-                //   specialCharCount: 1,
-                //   normalCharCount: 3,
-                //   width: 400,
-                //   height: 150,
-                //   onSuccess: () {
-                //     setState(() {
-                //       success = true;
-                //     });
-                //     print("MATCHED");
-                //     ScaffoldMessenger.of(context).showSnackBar(
-                //         const SnackBar(
-                //             content: Text("Password is Strong")));
-                //   },
-                //   onFail: () {
-                //     setState(() {
-                //       success = false;
-                //     });
-                //     print("NOT MATCHED");
-                //   },
-                // ),
-
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
