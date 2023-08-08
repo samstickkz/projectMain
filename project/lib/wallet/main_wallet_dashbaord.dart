@@ -8,13 +8,12 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../authentication/login_main_to_dashboard.dart';
 import '../coinpage_api/coinpage.dart';
-import '../news/home.dart';
+
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
-import '../notes/notes.dart';
-import '../raflle/raffle.dart';
+
 import '../shimmer.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -271,9 +270,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => const NewsPage());
-              },
+
             ),
             //Address
             ListTile(
@@ -302,9 +299,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => WalletPage());
-              },
+
             ),
             //Payments
             ListTile(
@@ -332,9 +327,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => const SpinWheel());
-              },
+
             ),
             const SizedBox(
               height: 280,

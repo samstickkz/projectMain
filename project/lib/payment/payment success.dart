@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../raflle/raffle.dart';
 
 class PaymentSuccess extends StatelessWidget {
   const PaymentSuccess({super.key, required this.message});
@@ -65,12 +64,7 @@ class PaymentSuccess extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SpinWheel(),
-                        ),
-                      );
+
                     },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
