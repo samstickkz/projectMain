@@ -14,7 +14,7 @@ class LocalAuthAPI {
       return await _auth.authenticate(
         authMessages: [
           const IOSAuthMessages(
-            cancelButton: 'No thanks',
+            cancelButton: 'No thanks ',
           ),
         ],
         localizedReason: 'Please authenticate to show account balance',

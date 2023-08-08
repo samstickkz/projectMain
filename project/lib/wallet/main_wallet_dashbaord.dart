@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../authentication/login_main_to_dashboard.dart';
-import '../calculator/calculator.dart';
 import '../coinpage_api/coinpage.dart';
 import '../news/home.dart';
 import 'package:intl/intl.dart';
@@ -242,11 +241,7 @@ class _SecondRouteState extends State<SecondRoute> {
                 )),
               ),
               onTap: () {
-                // and update the UI
-                setState(() {
-                  Get.to(() => const CalculatorPage());
-                  // Get.to(CalculatorPage());
-                });
+
               },
             ),
             //rewards
