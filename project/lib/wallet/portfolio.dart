@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
-import '../card/credit_card.dart';
+
 
 class PortFolio extends StatefulWidget {
   const PortFolio({Key? key}) : super(key: key);
@@ -155,9 +155,7 @@ class _PortFolioState extends State<PortFolio> {
 
 
 
-                                onTap: () {
-                                  Get.to(const MySample());
-                                },
+
                                 child: Container(
                                     height: 73,
                                     width: double.infinity,
