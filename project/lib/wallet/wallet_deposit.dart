@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:get/get.dart';
-import 'package:project/style.dart';
 import 'package:http/http.dart' as http;
-import '../model/model.dart';
+
+import '../constants/reuseables.dart';
+import '../core/models/model.dart';
 
 class WalletDeposit extends StatefulWidget {
   const WalletDeposit({super.key});
