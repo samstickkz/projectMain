@@ -7,15 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../authentication/login_main_to_dashboard.dart';
-import '../calculator/calculator.dart';
 import '../coinpage_api/coinpage.dart';
-import '../news/home.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'dart:async';
-import '../notes/notes.dart';
-import '../raflle/raffle.dart';
+
 import '../shimmer.dart';
 
 class SecondRoute extends StatefulWidget {
@@ -93,7 +90,9 @@ class _SecondRouteState extends State<SecondRoute> {
     if (response.status == true) {
       message = 'Payment was successful. Ref: ${response.reference}';
       //pop
-      Navigator.pop(context);
+
+      //pop with getx
+      Get.back();
 
       showTopSnackBar(
         Overlay.of(context),
@@ -239,13 +238,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                // and update the UI
-                setState(() {
-                  Get.to(() => const CalculatorPage());
-                  // Get.to(CalculatorPage());
-                });
-              },
+              onTap: () {},
             ),
             //rewards
             ListTile(
@@ -274,9 +267,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => const NewsPage());
-              },
             ),
             //Address
             ListTile(
@@ -305,9 +295,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => WalletPage());
-              },
             ),
             //Payments
             ListTile(
@@ -335,9 +322,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   ),
                 )),
               ),
-              onTap: () {
-                Get.to(() => const SpinWheel());
-              },
             ),
             const SizedBox(
               height: 280,
@@ -364,7 +348,6 @@ class _SecondRouteState extends State<SecondRoute> {
                   await FirebaseAuth.instance.signOut();
                   // login with getx
                   Get.offAll(() => const LoginPage());
-
                 } catch (e) {
                   showDialog(
                     context: context,

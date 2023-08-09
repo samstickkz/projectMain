@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:project/wallet/portfolio.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import '../profile/profile_page.dart';
 import '../wallet/main_wallet_dashbaord.dart';
 import '../wallet/wallet_deposit.dart';
 
@@ -19,7 +18,6 @@ const List<Widget> _pageOptions = <Widget>[
   SecondRoute(),
   WalletDeposit(),
   PortFolio(),
-  ProfilePage(),
 ];
 
 class _NavPageState extends State<NavPage> {
@@ -58,13 +56,9 @@ class _NavPageState extends State<NavPage> {
                   GButton(
                     icon: LineIcons.barChart,
                   ),
-                  GButton(
-                    icon: LineIcons.user,
-                  )
                 ],
                 selectedIndex: selectedIndex,
                 onTabChange: (index) {
-
                   setState(() {
                     selectedIndex = index;
                   });
