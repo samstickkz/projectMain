@@ -656,7 +656,7 @@ class _SecondRouteState extends State<SecondRoute> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.to(const PortFolio());
+                                // Get.to(const PortFolio());
                               },
                               child: Container(
                                   height: 95,

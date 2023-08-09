@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 class AppStyle {
   static const double padding = 20;
@@ -12,7 +13,7 @@ class AppStyle {
   // card color
   static const Color cardColor = Color(0xFF4A4A58);
   // primary color
-  static const Color primaryColor = Color(0xFF4A4A58);
+  static  Color btncolor = HexColor('#FF9933');
 
   //card height
   static const double cardHeight = 70;

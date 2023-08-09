@@ -152,7 +152,7 @@ class _WalletDepositState extends State<WalletDeposit> {
                                                   width: double.infinity,
                                                   height: 100.0,
                                                   child: isLoading
-                                                      ? const Text('loading')
+                                                      ? const Text('loading....', style: TextStyle(color: AppStyle.textColorWhite),)
                                                       : Text(
                                                           walletAddress,
                                                           style: TextStyle(
