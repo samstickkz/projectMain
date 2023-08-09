@@ -77,15 +77,15 @@ class _SpinWheelState extends State<SpinWheel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Column(
+            Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding:const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children:[
                       Row(
-                        children: [
+                        children: const [
                           Text(
                             'Total balance: ',
                             style: TextStyle(
@@ -100,7 +100,7 @@ class _SpinWheelState extends State<SpinWheel> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'Total Wins: ',
                       style: TextStyle(
@@ -112,7 +112,7 @@ class _SpinWheelState extends State<SpinWheel> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children:const [
                     Text(
                       'Total Cash Out: ',
                       style: TextStyle(
@@ -210,10 +210,6 @@ class _SpinWheelState extends State<SpinWheel> {
                     onPressed: () {
                       //navigate to deposit page
                       Get.to(() => const PaymentPage());
-
-
-
-
                     },
                     child: const Text("Deposit"),
                   ),

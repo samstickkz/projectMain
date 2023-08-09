@@ -92,11 +92,11 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 28,
                 ),
-                const Row(
+                Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'Welcome Boss! Glad',
                           style: TextStyle(

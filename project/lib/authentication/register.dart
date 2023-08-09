@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 28,
                 ),
-                const Row(
+                 Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -235,7 +235,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //   },
                 // ),
 
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(

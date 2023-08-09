@@ -106,12 +106,12 @@ class _ProfilePageState extends State<ProfilePage> {
                             const SizedBox(
                               height: 20,
                             ),
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 /// built
                                 Column(
-                                  children: [
+                                  children: const [
                                     Text(
                                       'Applied',
                                       style: TextStyle(
@@ -193,11 +193,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               // complete profile
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: [
+                                children: const[
                                   Text(
                                     'Complete Profile',
                                     style: TextStyle(
