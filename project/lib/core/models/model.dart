@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Welcome {
   bool successful;
   Data data;
@@ -30,4 +32,20 @@ class Data {
       address: json["address"],
     );
   }
+}
+
+//class for card with all properties of the card
+class CardModel {
+  final String title;
+  final String subtitle;
+  final String amount;
+  final String icon;
+  final Color color;
+
+  CardModel(
+      {required this.title,
+        required this.subtitle,
+        required this.amount,
+        required this.icon,
+        required this.color});
 }
