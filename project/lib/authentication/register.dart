@@ -120,11 +120,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 28,
                 ),
-                const Row(
+                Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children:const [
                         Text(
                           'Welcome Boss! Glad',
                           style: TextStyle(
@@ -209,9 +209,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 15,
                 ),
 
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
+                  children: const [
                     Text(
                       'Forgot Password?',
                       style: TextStyle(
