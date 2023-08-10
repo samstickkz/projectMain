@@ -11,7 +11,7 @@ class Style {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         backgroundColor: Colors.black,
         indicatorColor: const Color(0xff0E1D36),
-        buttonColor: const Color.fromRGBO(0, 100, 229, 1),
+        // buttonColor: const Color.fromRGBO(0, 100, 229, 1),
         hintColor: const Color(0xff280C0B),
         highlightColor: AppColors.secondary.withOpacity(0.3),
         hoverColor: const Color(0xff3A3A3B),

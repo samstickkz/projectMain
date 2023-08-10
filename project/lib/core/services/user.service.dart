@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import '../../constants/constants.dart';
 import '../../locator.dart';
 import 'storage-service.dart';
