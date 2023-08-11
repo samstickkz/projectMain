@@ -1,8 +1,8 @@
 import 'package:flutter_hex_color/flutter_hex_color.dart';
-import 'package:project/authentication/register.dart';
+import 'package:project/ui/auth/register/register.dart';
 import 'package:flutter/material.dart';
-import '../button/login_button.dart';
-import '../screens/nav.dart';
+import '../../../button/login_button.dart';
+import '../../../screens/nav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

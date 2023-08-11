@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 import '../../../constants/constants.dart';
 import '../../../locator.dart';
-import '../../../ui/widgets/snack_message.dart';
+import '../../../utils/snack_message.dart';
 import '../storage-service.dart';
 import 'auth.api.dart';
 import 'nertwork_config.dart';

@@ -56,7 +56,7 @@ class Style {
           iconTheme: IconThemeData(color: Colors.grey.shade100),
         ),
         // scaffoldBackgroundColor:  const Color.fromRGBO(20, 20, 20, 1),
-        shadowColor: Colors.grey
+        shadowColor: Colors.grey,
 
       // Theme.of(context).buttonTheme.copyWith(
       //     colorScheme: isDarkTheme ? const ColorScheme.dark() : const ColorScheme.light()),

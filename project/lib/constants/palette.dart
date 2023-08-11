@@ -5,12 +5,13 @@ import '../locator.dart';
 
 UserService _initializer = locator<UserService>();
 
-Color primaryColor = _initializer.userType=="General User"?const Color(0xFF303030): _initializer.userType == "Investor"? const Color(0xFF515FDF) : _initializer.userType == "Service Provider"? const Color(0xFF009A49) : const Color(0xFFFFA500);
+Color primaryColor =const Color(0xFFFF9933);
 Color primaryDarkColor = const Color.fromRGBO(4, 6, 52, 1);
 Color primaryLight = const Color(0xFF2072B6);
 Color light = const Color(0xFF2072B6);
 Color limeLight = const Color(0xFFEAF4AB);
 Color greyText = const Color(0xFF55757C);
+Color textFieldFillColor = const Color(0xFF1b1b24);
 
 Color grey = const Color(0xFFCAD4DD);
 Color lightBgColor = const Color(0xFFF5F7E8);

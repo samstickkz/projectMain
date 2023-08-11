@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:project/ui/widgets/widget_extensions.dart';
+import 'package:project/utils/widget_extensions.dart';
 
 
 Widget toast(String message, {bool? success}) {
@@ -61,6 +61,5 @@ showCustomToast(String message, {bool success = false, num? time}) {
     toast(message, success: success),
     duration: const Duration(seconds: 3),
     onDismiss: () {},
-    position: ToastPosition.top
   );
 }

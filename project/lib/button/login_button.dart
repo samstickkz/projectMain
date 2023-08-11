@@ -1,6 +1,7 @@
 import 'package:project/authentication/login_main_to_dashboard.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
+import 'package:project/utils/widget_extensions.dart';
 
 class LoginButton extends StatefulWidget {
   const LoginButton({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _LoginButtonState extends State<LoginButton> {
 
       },
       child: Container(
-        width: 331,
+        width: width(context),
         height: 56,
         decoration: BoxDecoration(
           gradient: LinearGradient(
