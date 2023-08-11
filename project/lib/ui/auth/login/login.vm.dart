@@ -17,6 +17,8 @@ class LoginViewModel extends BaseViewModel{
     }
   }
 
+  // fixes
+
   resetPassword(BuildContext context){
     Navigator.push(
         context,
