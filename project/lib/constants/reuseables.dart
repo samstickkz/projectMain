@@ -68,7 +68,8 @@ const emailRegex = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+
 RegExp regEx = RegExp(r"(?=.*[a-z])(?=.*[0-9])\w+");
 
 class AppImages {
-  static const String userLock = "assets/svg/user-lock.svg";
+  static const String logo = "assets/svg/currxchange.svg";
+  static const String logoFull = "assets/svg/curry_full.svg";
 }
 
 class UrlPath {

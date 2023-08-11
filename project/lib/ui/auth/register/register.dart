@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:project/ui/widgets/text_field.dart';
+import 'package:project/utils/widget_extensions.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -126,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:const [
                         Text(
-                          'Welcome Boss! Glad',
+                          'Welcome Boss! No need',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 25,
@@ -144,6 +146,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
+                const AppTextField(
+                  hint: "first name",
+                ),
+                20.0.sbH,
                 TextField(
                   controller: _firstnamecontroller,
                   decoration: InputDecoration(
@@ -167,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
 
                 const SizedBox(
-                  height: 32,
+                  height: 20,
                 ),
                 TextField(
                   controller: _emailcontroller,
