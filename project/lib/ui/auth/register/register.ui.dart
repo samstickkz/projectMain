@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:project/ui/widgets/text_field.dart';
 import 'package:project/utils/widget_extensions.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../../constants/reuseables.dart';
+import '../../base.ui.dart';
+import '../../widgets/apptexts.dart';
+import 'register.vm.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -89,22 +95,18 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: HexColor('16171A'),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(22.0),
-          child: SingleChildScrollView(
+    return BaseView<RegisterViewModel>(
+      builder: (_, model, child)=> Scaffold(
+        appBar: AppBar(),
+        body: SafeArea(
+          child: Padding(
+            padding: 16.0.padH,
             child: Column(
               children: [
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {
-                       //pop the current page
-                        Navigator.pop(context);
-
-                      },
+                      onTap: navigationService.goBack,
                       child: Container(
                         height: 41,
                         width: 41,
@@ -119,31 +121,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 28,
-                ),
+                16.0.sbH,
+                SvgPicture.asset(AppImages.logoFull, height: 45, fit: BoxFit.contain,),
+                28.0.sbH,
                 Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children:const [
-                        Text(
-                          'Welcome Boss! No need',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Colors.white),
-                        ),
-                        Text(
-                          'to see you, Again!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                          ),
-                        ),
-                      ],
-                    ),
+                  children: const [
+                    Expanded(child: AppText("Create your account", isBold: true, align: TextAlign.center, size: 34,)),
                   ],
                 ),
                 const AppTextField(
@@ -275,22 +258,22 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     child: Center(
                         child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/Google.png',
-                          width: 18,
-                          height: 18,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'SignUp with Google ',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    )),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'images/Google.png',
+                              width: 18,
+                              height: 18,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            const Text(
+                              'SignUp with Google ',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        )),
                   ),
                 ),
                 const SizedBox(

@@ -4,7 +4,7 @@ import 'package:project/ui/base.vm.dart';
 import 'package:project/utils/snack_message.dart';
 
 import '../../../authentication/reset_password.dart';
-import '../register/register.dart';
+import '../register/register.ui.dart';
 
 class LoginViewModel extends BaseViewModel{
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/utils/widget_extensions.dart';
 
-import '../../authentication/login_main_to_dashboard.dart';
+import '../auth/login/login.ui.dart';
 import '../../constants/reuseables.dart';
 import '../../onboarding/main_onboarding.dart';
 

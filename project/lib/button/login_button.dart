@@ -1,4 +1,4 @@
-import 'package:project/authentication/login_main_to_dashboard.dart';
+import 'package:project/ui/auth/login/login.ui.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:project/utils/widget_extensions.dart';

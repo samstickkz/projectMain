@@ -12,7 +12,7 @@ import 'package:project/styles/app_style.dart';
 import 'package:project/ui/splash/spalsh_screen.dart';
 import 'package:project/utils/widget_extensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'authentication/login_main_to_dashboard.dart';
+import 'ui/auth/login/login.ui.dart';
 import 'constants/reuseables.dart';
 import 'core/services/navigation_services.dart';
 import 'locator.dart';
