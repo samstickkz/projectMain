@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../creditcard/chip.dart';
 import 'dart:ui';
 
+import '../style.dart';
+
 class GlassPage extends StatefulWidget {
   const GlassPage({Key? key}) : super(key: key);
 
@@ -169,7 +171,7 @@ class _GlassPageState extends State<GlassPage> {
                       child: TextLiquidFill(
                         text: 'Get Started',
                         waveColor: Colors.white,
-                        boxBackgroundColor: Colors.deepPurpleAccent,
+                        boxBackgroundColor: AppStyle.btncolor,
                         textStyle: const TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
