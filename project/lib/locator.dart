@@ -8,6 +8,7 @@ import 'core/services/user-enrollment-service.dart';
 import 'core/services/user.service.dart';
 import 'core/services/web-services/auth.api.dart';
 import 'ui/auth/login/login.vm.dart';
+import 'ui/auth/register/register.vm.dart';
 import 'ui/base.vm.dart';
 
 GetIt locator = GetIt.I;
@@ -22,6 +23,7 @@ void registerViewModels() {
   /* TODO Setup viewModels*/
   locator.registerFactory<BaseViewModel>(() => BaseViewModel());
   locator.registerFactory<LoginViewModel>(() => LoginViewModel());
+  locator.registerFactory<RegisterViewModel>(() => RegisterViewModel());
 
 
 }

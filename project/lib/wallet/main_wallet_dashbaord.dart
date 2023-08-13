@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import '../authentication/login_main_to_dashboard.dart';
+import '../ui/auth/login/login.ui.dart';
 import '../coinpage_api/coinpage.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';

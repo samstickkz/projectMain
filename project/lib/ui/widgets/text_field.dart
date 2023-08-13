@@ -108,7 +108,11 @@ class _AppTextFieldState extends State<AppTextField> {
             maxLines: 1,
             focusNode: _focusNode,
             maxLength: widget.maxLength,
-            onChanged: widget.onChanged,
+            onChanged: (val){
+              if(widget.onChanged!=null){
+                widget.onChanged!(val);
+              }
+            },
             onTap: widget.onTap,
             readOnly: widget.readonly,
             obscureText: widget.isPassword? !isVisible :false,
@@ -130,7 +134,7 @@ class _AppTextFieldState extends State<AppTextField> {
               fillColor: _isFocused ? Colors.white.withOpacity(0.3):textFieldFillColor,
               hintStyle: appStyle,
               isDense: true,
-              contentPadding: widget.contentPadding?? const EdgeInsets.symmetric(horizontal: 23, vertical: 23),
+              contentPadding: widget.contentPadding?? const EdgeInsets.symmetric(horizontal: 23, vertical: 18),
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.transparent)),
               enabledBorder: const OutlineInputBorder(

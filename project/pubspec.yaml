@@ -114,6 +114,8 @@ flutter:
   assets:
   - images/
   - assets/svg/
+  - assets/image/
+  - assets/font/
   - .env
   #   - images/a_dot_ham.jpeg
 
@@ -128,6 +130,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Space-Grotesk
+      fonts:
+        - asset: assets/font/SpaceGrotesk-Regular.ttf
+        - asset: assets/font/SpaceGrotesk-SemiBold.ttf
+          weight: 700
+        - asset: assets/font/SpaceGrotesk-Bold.ttf
+          weight: 900
   # fonts:
   #   - family: Schyler
   #     fonts:

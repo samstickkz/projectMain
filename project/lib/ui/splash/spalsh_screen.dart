@@ -2,14 +2,34 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/utils/widget_extensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../authentication/login_main_to_dashboard.dart';
+import '../../routes/routes.dart';
+import '../auth/login/login.ui.dart';
 import '../../constants/reuseables.dart';
 import '../../onboarding/main_onboarding.dart';
+import '../onboarding/onboarding.ui.dart';
 
-class SplashScreen extends StatelessWidget {
-  final String? email;
-  const SplashScreen({Key? key, required this.email}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key,}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  String? email;
+
+  @override
+  void initState() {
+   init();
+    super.initState();
+  }
+
+  init()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString("email");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +48,8 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
         ),
-        nextScreen: email == null ? const LoginPage() : const WalletHome(),
+        nextScreen: email == null ? const OnBoardingScreen() : const WalletHome(),
+        // nextRoute: email == null ? onBoardingScreen :walletHomeRoute ,
       ),
     );
   }
