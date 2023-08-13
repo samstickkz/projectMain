@@ -8,6 +8,8 @@ import 'package:oktoast/oktoast.dart';
 import 'package:project/onboarding/main_onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:project/routes/router.dart';
+import 'package:project/routes/routes.dart';
 import 'package:project/styles/app_style.dart';
 import 'package:project/ui/splash/spalsh_screen.dart';
 import 'package:project/utils/widget_extensions.dart';
@@ -31,8 +33,6 @@ void main() async {
   // Use environment variable
   // await dotenv.load(fileName: ".env");
 
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-
   // set up locator services
   setupLocator();
 
@@ -42,14 +42,12 @@ void main() async {
     statusBarIconBrightness: Brightness.light,
   ));
 
-  var email = prefs.getString("email");
-  runApp(MyApp(email: email)); // Pass the email to the MyApp widget
+  runApp(MyApp()); // Pass the email to the MyApp widget
 }
 
 class MyApp extends StatelessWidget {
-  final String? email; // Declare the email variable in the MyApp class
 
-  const MyApp({Key? key, this.email}) : super(key: key); // Use Key instead of super.key
+  const MyApp({Key? key}) : super(key: key); // Use Key instead of super.key
 
 
   @override
@@ -65,7 +63,8 @@ class MyApp extends StatelessWidget {
             scaffoldMessengerKey: locator<NavigationService>().snackBarKey,
             theme: Style.darkTheme(),
             debugShowCheckedModeBanner: false,
-            home: SplashScreen(email: email??"",),
+            onGenerateRoute: Routers.generateRoute,
+            initialRoute: splashScreenRoute,
             navigatorObservers: [FlutterSmartDialog.observer],
             // here
             builder: FlutterSmartDialog.init(),

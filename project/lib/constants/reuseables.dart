@@ -48,6 +48,23 @@ class AppFontSizes {
   static double textCaptionSize10 = 10.0;
 }
 
+var onBoarding = {
+  "data": [
+    {
+      "content": "Spend, save, and send money securely",
+      "svg": AppImages.wallet
+    },
+    {
+      "content": "Take charge of your finances now",
+      "svg": AppImages.growth
+    },
+    {
+      "content": "Pay for anything on the go with crypto",
+      "svg": AppImages.cards
+    }
+  ]
+};
+
 class Sized16Container extends StatelessWidget {
   final Widget? child;
   final Decoration? decoration;
@@ -70,6 +87,9 @@ RegExp regEx = RegExp(r"(?=.*[a-z])(?=.*[0-9])\w+");
 class AppImages {
   static const String logo = "assets/svg/currxchange.svg";
   static const String logoFull = "assets/svg/curry_full.svg";
+  static const String cards = "assets/image/card.png";
+  static const String wallet = "assets/image/wallet.png";
+  static const String growth = "assets/image/grow.png";
 }
 
 class UrlPath {

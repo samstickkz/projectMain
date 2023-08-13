@@ -92,3 +92,20 @@ String? Function(String?)? emailValidator = (String? val) {
   }
   return null; // Return null for valid input
 };
+
+String? Function(String?)? passwordValidator = (String? val) {
+  RegExp regEx = RegExp(r"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\w+");
+  if(val!.length<6){
+    return "Enter a password of more than 6 characters";
+  }else if(regEx.hasMatch(val)==false){
+    return "Your Password must have a capital letter small letter and number";
+  }
+};
+
+bool validateFullName(String input) {
+  // Regular expression pattern
+  RegExp regex = RegExp(r'^[A-Za-z]{2,}(?:\s[A-Za-z]{2,})+$');
+
+  // Test the input against the pattern
+  return regex.hasMatch(input);
+}

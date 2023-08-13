@@ -11,7 +11,7 @@ Color primaryLight = const Color(0xFF2072B6);
 Color light = const Color(0xFF2072B6);
 Color limeLight = const Color(0xFFEAF4AB);
 Color greyText = const Color(0xFF55757C);
-Color textFieldFillColor = const Color(0xFF1b1b24);
+Color textFieldFillColor = const Color(0xFF262320);
 
 Color grey = const Color(0xFFCAD4DD);
 Color lightBgColor = const Color(0xFFF5F7E8);

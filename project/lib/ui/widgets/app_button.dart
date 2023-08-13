@@ -42,8 +42,6 @@ class AppButton extends StatelessWidget {
       ),
       child: InkWell(
         onTap: isLoading==true?null: onTap,
-        splashColor: Colors.black,
-        highlightColor: Colors.red,
         borderRadius: BorderRadius.circular(20),
         child: SizedBox(
           width: width(context),
