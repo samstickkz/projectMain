@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import '../constants/palette.dart';
+import '../constants/reuseables.dart';
 import '../ui/auth/login/login.ui.dart';
 import '../coinpage_api/coinpage.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +16,7 @@ import 'dart:convert';
 import 'dart:async';
 
 import '../shimmer.dart';
+import '../ui/widgets/apptexts.dart';
 
 class SecondRoute extends StatefulWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -120,24 +123,10 @@ class _SecondRouteState extends State<SecondRoute> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const Text(
-              'Welcome, ',
-              style: TextStyle(
-                fontSize: 12,
-              ),
-            ),
-            Text(
-              currentUser?.email ?? '',
-              style: const TextStyle(
-                fontSize: 12,
-              ),
-            )
-          ],
+        title: AppText(
+          'Welcome ${userService.userCredentials.name??""}',
         ),
-        actions: const [],
+        centerTitle: true,
       ),
       drawer: Drawer(
         backgroundColor: Colors.black,
@@ -379,11 +368,10 @@ class _SecondRouteState extends State<SecondRoute> {
             Container(
               height: 231,
               width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(32),
                     bottomRight: Radius.circular(32)),
-                color: Colors.deepPurpleAccent.shade200,
               ),
               child: Padding(
                 padding: const EdgeInsets.only(
@@ -392,13 +380,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          'Your Balance',
-                          style: TextStyle(
-                            color: HexColor('D5D5E0'),
-                            fontSize: 22,
-                          ),
-                        ),
+                        AppText('Your Balance', size: 22,)
                       ],
                     ),
                     const SizedBox(

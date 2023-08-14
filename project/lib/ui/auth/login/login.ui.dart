@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:project/constants/palette.dart';
-import 'package:project/ui/auth/register/register.ui.dart';
-import 'package:project/authentication/reset_password.dart';
-import 'package:project/authentication/services.dart';
 import 'package:project/ui/widgets/apptexts.dart';
 import 'package:project/utils/widget_extensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants/reuseables.dart';
-import '../../../screens/nav.dart';
 import 'login.vm.dart';
 import '../../base.ui.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/text_field.dart';
 import '../../../utils/string-extensions.dart';
 import '../../../authentication/local_auth.dart';
-import '../../../authentication/login.start.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -85,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               GestureDetector(
                                 //reset password wit firebase
-                                onTap: ()=> model.resetPassword(context),
+                                onTap: model.resetPassword,
                                 child: const AppText('Forgot Password?'),
                               ),
                             ],
@@ -152,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   InkWell(
-                    onTap: ()=> model.goToRegister(context),
+                    onTap: model.register,
                     child: AppText(
                       '  click here to register', isBold: true, size: 14,
                       color: primaryColor,
@@ -160,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              30.0.sbH
+              50.0.sbH
             ],
           ),
         ),

@@ -16,6 +16,7 @@ class AppTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final EdgeInsets? contentPadding;
   final Widget? label;
+  final Widget? prefix;
   final double? textSize;
   final VoidCallback? onTap;
   final int? maxLength;
@@ -48,7 +49,7 @@ class AppTextField extends StatefulWidget {
         this.haveText,
         this.maxLength,
         this.labelText,
-        this.label, this.contentPadding
+        this.label, this.contentPadding, this.prefix
       })
       : super(key: key);
 
@@ -121,6 +122,7 @@ class _AppTextFieldState extends State<AppTextField> {
             decoration: InputDecoration(
               errorMaxLines: 3,
               hintText: widget.hint,
+              prefixIcon: widget.prefix,
               suffixIcon: widget.isPassword ? IconButton(
                 onPressed: (){
                   setState(() {
@@ -132,7 +134,7 @@ class _AppTextFieldState extends State<AppTextField> {
               label: widget.label,
               labelText: widget.labelText,
               fillColor: _isFocused ? Colors.white.withOpacity(0.3):textFieldFillColor,
-              hintStyle: appStyle,
+              hintStyle: hintStyle,
               isDense: true,
               contentPadding: widget.contentPadding?? const EdgeInsets.symmetric(horizontal: 23, vertical: 18),
               focusedBorder: const OutlineInputBorder(

@@ -113,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  cupertino_modal_sheet:
+    dependency: "direct main"
+    description:
+      name: cupertino_modal_sheet
+      sha256: "50cc00a18d01f62172bf1584d5efde1fc7a644db50d40865529dbf8f90c26587"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   dio:
     dependency: "direct main"
     description:

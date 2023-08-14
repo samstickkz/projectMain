@@ -1,7 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/constants/palette.dart';
-import 'package:project/ui/widgets/app_button.dart';
+import 'package:project/routes/routes.dart';
 import 'package:project/ui/widgets/apptexts.dart';
 import 'package:project/utils/widget_extensions.dart';
 
@@ -32,11 +33,27 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 56,
-                child: i==2?AppButton(
-                  onTap: (){}, isGradient: true,
-                  text: "Get Started",
+                child: i==2?InkWell(
+                  borderRadius: BorderRadius.circular(30),
+                  onTap: ()=> navigationService.navigateToAndRemoveUntil(loginRoute),
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: TextLiquidFill(
+                        text: 'Get Started',
+                        waveColor: Colors.white,
+                        boxBackgroundColor: primaryColor,
+                        textStyle: const TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        boxHeight: 50.0,
+                        loadDuration: const Duration(seconds: 10000),
+                      ),
+                    ),
+                  ),
                 ):IndicatorView(index: i),
-              )
+              ),
             ],
           ),
         )

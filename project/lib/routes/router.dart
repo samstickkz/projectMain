@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:project/routes/routes.dart';
 import 'package:project/ui/onboarding/onboarding.ui.dart';
 
+import '../authentication/reset_password.dart';
 import '../onboarding/main_onboarding.dart';
+import '../ui/auth/login/login.ui.dart';
+import '../ui/auth/register/register.ui.dart';
+import '../ui/home/bottom_navigation.ui.dart';
 import '../ui/splash/spalsh_screen.dart';
 
 class Routers {
@@ -17,7 +21,14 @@ class Routers {
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case splashScreenRoute:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-
+      case loginRoute:
+        return MaterialPageRoute(builder: (_) => const LoginPage());
+      case resetPasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ResetPassword());
+      case registerRoute:
+        return MaterialPageRoute(builder: (_) => const RegisterPage());
+      case bottomNavigationRoute:
+        return MaterialPageRoute(builder: (_) => const BottomNavigationScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

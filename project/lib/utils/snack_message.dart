@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:project/constants/palette.dart';
 import 'package:project/utils/widget_extensions.dart';
 
 
@@ -16,7 +17,7 @@ Widget toast(String message, {bool? success}) {
           width: double.infinity,
           height: 60.0,
           color:
-          !success! ? Colors.red : Colors.white,
+          !success! ? Colors.red : primaryColor,
           child: Column(
             children: [
               Expanded(

@@ -3,7 +3,9 @@
 import 'package:project/core/services/storage-service.dart';
 import 'package:project/core/services/user.service.dart';
 import 'package:project/core/services/web-services/base-api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../constants/constants.dart';
 import '../../locator.dart';
 
 class Initializer {
@@ -32,17 +34,16 @@ class Initializer {
   }
 
   init() async {
-    // await checkForCachedUserData();
-    await userService.getUserType();
+    await checkForCachedUserData();
   }
 
-  // checkForCachedUserData() async {
-  //   String? value = await storageService.readItem(key: accessToken);
-  //   if (value != null && value.isNotEmpty) {
-  //     isLoggedIn = true;
-  //     await locator<UserService>().getLocalUser();
-  //   }
-  // }
+  checkForCachedUserData() async {
+    String? value = await storageService.readItem(key: accessToken);
+    if (value != null && value.isNotEmpty) {
+      isLoggedIn = true;
+      await locator<UserService>().getLocalUser();
+    }
+  }
 
   Future getRemoteSettings() async {
     // await getIt<UserApiService>().getSettings();
