@@ -1,11 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:project/utils/widget_extensions.dart';
 
+import '../../../../coinpage_api/coinpage.dart';
 import '../../../../constants/palette.dart';
+import '../../../../shimmer.dart';
 import '../../../base.ui.dart';
 import '../../../widgets/apptexts.dart';
+import 'drawer/drawer.ui.dart';
 import 'home.vm.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,7 +35,9 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        drawer: Drawer(),
+        drawer: const Drawer(
+          child: DrawerScreen(),
+        ),
         body: ListView(
           children: [
             Container(
@@ -63,198 +71,21 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         /// top up button
-                        GestureDetector(
-                          onTap: () {
-                            model.popBuyToken(context);
-                            //show bottom sheet
-                            // showModalBottomSheet(
-                            //   elevation: 2,
-                            //   isScrollControlled: true,
-                            //   shape: const RoundedRectangleBorder(
-                            //     borderRadius: BorderRadius.only(
-                            //       topLeft: Radius.circular(20),
-                            //       topRight: Radius.circular(20),
-                            //     ),
-                            //   ),
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return Container(
-                            //       height: 300,
-                            //       color: Colors.black,
-                            //       child: Column(
-                            //         children: [
-                            //           Container(
-                            //             decoration: BoxDecoration(
-                            //               borderRadius:
-                            //               BorderRadius.circular(10),
-                            //               color: Colors.white,
-                            //             ),
-                            //             child: TextFormField(
-                            //               keyboardType: TextInputType.number,
-                            //               controller: ,
-                            //               autovalidateMode: AutovalidateMode
-                            //                   .onUserInteraction,
-                            //               validator: (value) {
-                            //                 if (value == null ||
-                            //                     value.isEmpty) {
-                            //                   return 'Please enter the amount';
-                            //                 }
-                            //                 return null;
-                            //               },
-                            //               decoration: const InputDecoration(
-                            //                 iconColor: Colors.white,
-                            //                 prefix: Text('NGN: '),
-                            //                 hintText: 'Enter Amount',
-                            //                 labelText: 'Amount',
-                            //                 border: OutlineInputBorder(),
-                            //               ),
-                            //             ),
-                            //           ),
-                            //           Padding(
-                            //             padding:
-                            //             const EdgeInsets.only(top: 15.0),
-                            //             child: Container(
-                            //               decoration: BoxDecoration(
-                            //                 borderRadius:
-                            //                 BorderRadius.circular(10),
-                            //                 color: Colors.white,
-                            //               ),
-                            //               child: TextFormField(
-                            //                 controller: model.emailController,
-                            //                 autovalidateMode: AutovalidateMode
-                            //                     .onUserInteraction,
-                            //                 validator: (value) {
-                            //                   if (value == null ||
-                            //                       value.isEmpty) {
-                            //                     return 'Please enter the email';
-                            //                   }
-                            //                   return null;
-                            //                 },
-                            //                 decoration: const InputDecoration(
-                            //                   hintText: 'example@gmail.com',
-                            //                   labelText: 'Email',
-                            //                   border: OutlineInputBorder(
-                            //                       borderSide: BorderSide(
-                            //                         color: Colors.black12,
-                            //                       )),
-                            //                 ),
-                            //               ),
-                            //             ),
-                            //           ),
-                            //           Padding(
-                            //             padding:
-                            //             const EdgeInsets.only(top: 20.0),
-                            //             child: ElevatedButton(
-                            //               onPressed: () {
-                            //                 model.makePayment(context);
-                            //               },
-                            //               child: const Text('Make Payment'),
-                            //             ),
-                            //           )
-                            //         ],
-                            //       ),
-                            //     );
-                            //   },
-                            // );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white.withOpacity(0.3),
-                            ),
-                            width: 98.33,
-                            height: 101,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 21.0, vertical: 21),
-                              child: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.arrow_upward_outlined,
-                                    color: HexColor('F2F2FA'),
-                                  ),
-                                  Text(
-                                    'Buy',
-                                    style: TextStyle(
-                                      color: HexColor('F2F2FA'),
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-
                         // buy button
-                        GestureDetector(
-                          onTap: () {
-                            // Get.to(() => const Bbal());
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white.withOpacity(0.3),
-                            ),
-                            width: 98.33,
-                            height: 101,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 21.0, vertical: 21),
-                              child: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.add,
-                                    color: HexColor('F2F2FA'),
-                                  ),
-                                  Text(
-                                    'Sell',
-                                    style: TextStyle(
-                                      color: HexColor('F2F2FA'),
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                        HomeButtons(
+                          onTap:  () => model.popBuyToken(context),
+                          icon: Icons.arrow_upward_outlined,
+                          title: 'Buy',
                         ),
-
-                        /// top ip button
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white.withOpacity(0.3),
-                          ),
-                          width: 98.33,
-                          height: 101,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 21.0, vertical: 21),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.minimize_rounded,
-                                  color: HexColor('F2F2FA'),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  'Top Up',
-                                  style: TextStyle(
-                                    color: HexColor('F2F2FA'),
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                        HomeButtons(
+                          onTap:  () => Get.to(() => const Bbal()),
+                          icon: Icons.add,
+                          title: 'Sell',
+                        ),
+                        HomeButtons(
+                          onTap:  () {},
+                          icon: Icons.minimize_rounded,
+                          title: 'Top Up',
                         ),
                       ],
                     ),
@@ -265,14 +96,179 @@ class HomePage extends StatelessWidget {
               ),
             ),
             20.0.sbH,
+            Padding(
+              padding: 16.0.padH,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const AppText("Transactions", isBold: true,),
+                  InkWell(
+                    onTap: (){},
+                    child: AppText("see all", isBold: true, color: primaryColor, size: 13,)
+                  ),
+                ],
+              ),
+            ),
+            10.0.sbH,
             Container(
+              height: 70,
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
               padding: 16.0.padA,
               decoration: BoxDecoration(
-                color: textFieldFillColor,
-                borderRadius: BorderRadius.circular(12)
+                  color: textFieldFillColor,
+                  borderRadius: BorderRadius.circular(12)
               ),
+              child: Row(
+                children: [
+                  Image.asset('images/Ethereum icon.png', height: 26, width: 26,),
+                  12.0.sbW,
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppText("Ethereum", family: 'Inter'),
+                            AppText('ETH'.toUpperCase(), weight: FontWeight.w100, color: AppColors.descriptionTextColor, family: 'Inter'),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            AppText('+0.54%', family: 'Inter', weight: FontWeight.w500, size: 17,),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            30.0.sbH,
+            Padding(
+              padding: 16.0.padH,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const AppText("WatchList", isBold: true,),
+                  InkWell(
+                    onTap: (){},
+                    child: AppText("see more", isBold: true, color: primaryColor, size: 13,)
+                  ),
+                ],
+              ),
+            ),
+            10.0.sbH,
+            StreamBuilder(
+              stream: model.fetchCryptoPrice(),
+              builder: (context, snapshot) {
+                List<Map<String, dynamic>> coins = snapshot.data??[];
+                return snapshot.data==null? ListLoader(height: 100,): ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (_,i){
+                    Map<String, dynamic> coin = coins[i];
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                      padding: 16.0.padA,
+                      decoration: BoxDecoration(
+                          color: textFieldFillColor,
+                          borderRadius: BorderRadius.circular(12)
+                      ),
+                      child: Row(
+                        children: [
+                          Image.network(coin["image"], height: 26, width: 26,),
+                          12.0.sbW,
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AppText(coin["name"], family: 'Inter'),
+                                    AppText('${coin["symbol"]}'.toUpperCase(), weight: FontWeight.w100, color: AppColors.descriptionTextColor, family: 'Inter'),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    AppText('\$${NumberFormat.decimalPattern().format(coin["current_price"])}', family: 'Inter', weight: FontWeight.w500, size: 17,),
+                                    AppText("${coin['price_change_percentage_24h'].toStringAsFixed(2)}%".toUpperCase(), color: primaryColor, family: 'Inter'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                );
+              }
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ListLoader extends StatelessWidget {
+  final double? height;
+  final int? count;
+  const ListLoader({
+    super.key, this.height, this.count,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemCount: count ?? 10, physics: const NeverScrollableScrollPhysics(), shrinkWrap: true, itemBuilder: (_,i)=> Column(children: [Container(height: height?? 130 , child: ShimmerCard()), 16.0.sbH],));
+  }
+}
+
+
+class HomeButtons extends StatelessWidget {
+  final VoidCallback onTap;
+  final IconData icon;
+  final String title;
+  const HomeButtons({
+    super.key, required this.onTap, required this.icon, required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white.withOpacity(0.3),
+        ),
+        width: 98.33,
+        height: 101,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: 21.0, vertical: 21),
+          child: Column(
+            mainAxisAlignment:
+            MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                icon,
+                color: HexColor('F2F2FA'),
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                  color: HexColor('F2F2FA'),
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
