@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/ui/widgets/text_field.dart';
 import 'package:project/utils/widget_extensions.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../../authentication/services.dart';
 import '../../../constants/palette.dart';
 import '../../../constants/reuseables.dart';
 import '../../../utils/string-extensions.dart';
@@ -116,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: navigationService.goBack,
                             child: AppText(
                               ' Sign in instead', isBold: true, size: 14,
                               color: primaryColor,
@@ -138,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     16.0.sbH,
                     AppButton(
-                      onTap: authService().signinWithGoogle,
+                      onTap: model.authApi.signinWithGoogle,
                       isTransparent: true,
                       child: Row(
                         children: [
@@ -154,9 +147,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         ],
                       ),
                     ),
+                    40.0.sbH
                   ],
                 ),
-                30.0.sbH
               ],
             ),
           ),

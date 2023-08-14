@@ -13,4 +13,6 @@ const String currentUser = 'currentUser';
 const String settings = 'settings';
 const String imagePath = "assets/images/";
 String get baseUrl => dotenv.env['BASE_URL']!;
+String get publicKey => dotenv.env['PAYSTACK_PUBLIC_URL']!;
+String get priceUrl => dotenv.env['CRYPTO_PRICE_URL']!;
 Initializer initializer = locator<Initializer>();

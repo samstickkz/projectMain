@@ -1,5 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,6 +16,7 @@ import 'package:project/styles/app_style.dart';
 import 'package:project/ui/splash/spalsh_screen.dart';
 import 'package:project/utils/widget_extensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'core/services/initializer.dart';
 import 'ui/auth/login/login.ui.dart';
 import 'constants/reuseables.dart';
 import 'core/services/navigation_services.dart';
@@ -31,10 +34,12 @@ void main() async {
   }
 
   // Use environment variable
-  // await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env");
 
   // set up locator services
   setupLocator();
+
+  await locator<Initializer>().init();
 
   // Change status bar theme based on theme of app
   SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(

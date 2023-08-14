@@ -1,33 +1,23 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:project/core/models/loggedi_in_user.dart';
+import 'package:project/core/models/loggedi_in_user.dart';
+import 'package:project/core/models/loggedi_in_user.dart';
 import '../../constants/constants.dart';
 import '../../locator.dart';
 import 'storage-service.dart';
 
-class User {
-  String? profile;
-
-  User({
-    this.profile,
-  });
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      profile: json["profile"],
-    );
-  }
-}
 
 class UserService {
   late Locale myLocale;
-  User userCredentials = User();
+  SaveUser userCredentials = SaveUser();
   StorageService storageService = locator<StorageService>();
   bool? _token;
   String userType = "";
 
   //get the user object
-  getLocalUser({User? user}) async {
-    print(userCredentials.profile);
+  getLocalUser({SaveUser? user}) async {
+    print(userCredentials.email);
     if (user != null) {
       userCredentials = user;
     } else {
@@ -35,7 +25,7 @@ class UserService {
       if(userVal == null || userVal == "null"){
 
       }else{
-        userCredentials = User.fromJson(jsonDecode(userVal));
+        userCredentials = SaveUser.fromJson(jsonDecode(userVal));
       }
     }
     String? value = await storageService.readItem(key: token);
@@ -43,23 +33,12 @@ class UserService {
     _token = value != null ? true : false;
   }
 
-  storeUser(User? response) async {
+  storeUser(SaveUser? response) async {
     print("store user");
     await getLocalUser(user: response);
     storageService.storeItem(
         key: currentUser,
         value: jsonEncode(response));
-  }
-
-  setUserType({String? type})async{
-    storageService.storeItem(key: userTypeData, value: type);
-    await getUserType();
-  }
-
-  getUserType()async{
-    String? response = await storageService.readItem(key: userTypeData);
-    userType = response??"";
-    print(userType);
   }
 
   //check if a user has a token
@@ -78,7 +57,7 @@ class UserService {
   resetAllCredentials() {
     storageService.deleteItem(key: currentUser);
     storageService.deleteItem(key: token);
-    userCredentials = User();
+    userCredentials = SaveUser();
     _token = null;
   }
 }

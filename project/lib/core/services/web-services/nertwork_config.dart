@@ -7,5 +7,7 @@ import '../../../constants/constants.dart';
  */
 class NetworkConfig {
   static String BASE_URL = baseUrl;
+  static String cryptoPrice = priceUrl;
+  static String paystackPublicKey = publicKey;
   static String FLUTTERWAVE_BASEURL = dotenv.env['FLUTTERWAVE_URL'] ?? "";
 }

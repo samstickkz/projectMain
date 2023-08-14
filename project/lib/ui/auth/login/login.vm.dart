@@ -1,13 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:project/routes/routes.dart';
 import 'package:project/ui/base.vm.dart';
 import 'package:project/utils/snack_message.dart';
-
-import '../../../authentication/reset_password.dart';
-import '../../../authentication/services.dart';
-import '../../../screens/nav.dart';
-import '../register/register.ui.dart';
 
 class LoginViewModel extends BaseViewModel{
 
@@ -22,26 +17,18 @@ class LoginViewModel extends BaseViewModel{
 
   // fixes made
 
-  resetPassword(BuildContext context){
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const ResetPassword()));
+  resetPassword(){
+    navigationService.navigateTo(resetPasswordRoute);
   }
 
-  goToRegister(BuildContext context)async{
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RegisterPage(),
-      ),
-    );
+  register(){
+    navigationService.navigateTo(registerRoute);
   }
 
   Future<OAuthCredential?> signInWithGoogle() async {
     startLoader();
     try{
-      OAuthCredential response = await authService().signinWithGoogle();
+      OAuthCredential response = await authApi.signinWithGoogle();
       stopLoader();
       await signInWithCredential(response);
       notifyListeners();
@@ -56,10 +43,10 @@ class LoginViewModel extends BaseViewModel{
   Future<UserCredential?> signInWithCredential(OAuthCredential credential) async {
     startLoader();
     try{
-      UserCredential response = await authService().signInWithCredential(credential);
+      UserCredential response = await authApi.signInWithCredential(credential);
       stopLoader();
       showCustomToast("Login Successful", success: true);
-      Get.to(() => const NavPage());
+      navigationService.navigateToAndRemoveUntil(bottomNavigationRoute);
       notifyListeners();
       return response;
     }catch(err){

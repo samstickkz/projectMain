@@ -22,6 +22,13 @@ TextStyle appStyle = const TextStyle(
   fontWeight: FontWeight.w400,
 );
 
+TextStyle hintStyle = TextStyle(
+  color: Color(0xFFF0E9E4).withOpacity(0.7),
+  fontSize: 16,
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w400,
+);
+
 extension StringCasingExtension on String {
   String? camelCase() => toBeginningOfSentenceCase(this);
 
@@ -99,6 +106,13 @@ String? Function(String?)? passwordValidator = (String? val) {
     return "Enter a password of more than 6 characters";
   }else if(regEx.hasMatch(val)==false){
     return "Your Password must have a capital letter small letter and number";
+  }
+};
+
+String? Function(String?)? emptyValidator = (String? val) {
+  String value = val??"";
+  if(value.trim().isEmpty){
+    return "value cannot be empty";
   }
 };
 
