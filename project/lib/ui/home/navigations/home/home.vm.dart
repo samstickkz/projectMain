@@ -40,9 +40,10 @@ class HomePageViewModel extends BaseViewModel{
     notifyListeners();
   }
 
-  Stream<List<CryptoResponse>> fetchCryptoPrice() async*{
+  Stream<List<Map<String, dynamic>>?> fetchCryptoPrice() async*{
     final response = await api.fetchCryptoPrice();
-    yield response;
+    List<Map<String, dynamic>> mappedList = convertToMaps(response);
+    yield mappedList;
   }
 
   ScrollController scrollController = ScrollController();
@@ -63,16 +64,45 @@ class HomePageViewModel extends BaseViewModel{
     );
   }
 
-  // Future<void> fetchCryptoPrice() async {
+  // Future<List<dynamic>?> fetchCryptoPrice() async {
   //   final plugin = PaystackPlugin();
   //   startLoader();
   //   try {
   //     plugin.initialize(publicKey: NetworkConfig.paystackPublicKey);
-  //     List<CryptoResponse> response = await api.fetchCryptoPrice();
+  //     var response = await api.fetchCryptoPrice();
+  //     List<Map<String, dynamic>> mappedList = convertToMaps(response);
+  //     print(mappedList);
   //     stopLoader();
   //   } catch (e) {
   //     print('Error fetching crypto prices: $e');
   //     stopLoader();
   //   }
   // }
+
+  String toTitleCase(String text) {
+    return text.split(' ').map((word) {
+      if (word.isEmpty) {
+        return '';
+      }
+      return '${word[0].toUpperCase()}${word.substring(1)}';
+    }).join(' ');
+  }
+
+  List<Map<String, dynamic>> convertToMaps(List<dynamic> originalList) {
+    List<Map<String, dynamic>> resultList = [];
+
+    for (dynamic item in originalList) {
+      if (item is Map<String, dynamic>) {
+        resultList.add(item);
+      } else {
+        // Handle cases where the item is not a map
+        // For example, you might create a default map with some values
+        Map<String, dynamic> defaultMap = {'defaultKey': 'defaultValue'};
+        resultList.add(defaultMap);
+      }
+    }
+
+    return resultList;
+  }
+
 }

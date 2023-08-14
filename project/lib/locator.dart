@@ -13,6 +13,7 @@ import 'ui/auth/register/register.vm.dart';
 import 'ui/base.vm.dart';
 import 'ui/home/bottom_navigation.vm.dart';
 import 'ui/home/navigations/home/buy_token/buy.token.vm.dart';
+import 'ui/home/navigations/home/drawer/drawer.vm.dart';
 import 'ui/home/navigations/home/home.vm.dart';
 
 GetIt locator = GetIt.I;
@@ -31,6 +32,7 @@ void registerViewModels() {
   locator.registerFactory<BottomNavigationViewModel>(() => BottomNavigationViewModel());
   locator.registerFactory<HomePageViewModel>(() => HomePageViewModel());
   locator.registerFactory<BuyTokenViewModel>(() => BuyTokenViewModel());
+  locator.registerFactory<DrawerViewModel>(() => DrawerViewModel());
 
 
 }

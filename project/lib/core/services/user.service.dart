@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project/core/models/loggedi_in_user.dart';
-import 'package:project/core/models/loggedi_in_user.dart';
-import 'package:project/core/models/loggedi_in_user.dart';
 import '../../constants/constants.dart';
 import '../../locator.dart';
 import 'storage-service.dart';
@@ -35,6 +33,9 @@ class UserService {
 
   storeUser(SaveUser? response) async {
     print("store user");
+    if(response==null){
+      storageService.deleteItem(key: currentUser);
+    }
     await getLocalUser(user: response);
     storageService.storeItem(
         key: currentUser,

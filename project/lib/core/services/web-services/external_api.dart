@@ -7,12 +7,12 @@ import 'package:project/core/services/web-services/nertwork_config.dart';
 import '../../models/crypto_response.dart';
 
 class ExternalApiServices {
-  Future<List<CryptoResponse>> fetchCryptoPrice()async{
+  Future<List<dynamic>> fetchCryptoPrice()async{
     try{
       Dio dio = Dio();
       var response = await dio.get(NetworkConfig.cryptoPrice);
-      List<Map<String, dynamic>> crypto = convertToDesiredList(response.data);
-      List<CryptoResponse> responseData = getCryptoPriceListFromJson(jsonEncode(crypto));
+      List<dynamic> responseData = response.data;
+      print(responseData.length);
       return responseData;
     }catch(err){
       handleError(err);
