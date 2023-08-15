@@ -20,6 +20,20 @@ class Welcome {
   }
 }
 
+class ProfileButtonModel {
+  String? title;
+  String? svgImage;
+  VoidCallback? onTap;
+  bool? isLogout;
+
+  ProfileButtonModel({
+    this.title,
+    this.svgImage,
+    this.onTap,
+    this.isLogout,
+  });
+}
+
 class Data {
   String address;
 

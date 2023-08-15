@@ -37,9 +37,9 @@ class AppText extends StatelessWidget {
     return Text(
       text,
       style: style??TextStyle(
-        color: color,
+        color: color??const Color(0xFFF2F2FA),
         fontSize: size ?? 15,
-        fontFamily: family ?? 'Raleway',
+        fontFamily: family ?? 'Inter',
         height: height,
         fontWeight: weight ?? (isBold==true? FontWeight.w700:null),
       ),

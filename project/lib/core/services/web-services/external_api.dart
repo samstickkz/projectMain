@@ -12,7 +12,6 @@ class ExternalApiServices {
       Dio dio = Dio();
       var response = await dio.get(NetworkConfig.cryptoPrice);
       List<dynamic> responseData = response.data;
-      print(responseData.length);
       return responseData;
     }catch(err){
       handleError(err);
@@ -24,7 +23,6 @@ class ExternalApiServices {
 
   List<Map<String, dynamic>> convertToDesiredList(Map<String, dynamic> data) {
     List<Map<String, dynamic>> resultList = [];
-    print(data);
 
     data.forEach((type, values) {
       Map<String, dynamic> entry = {
@@ -34,8 +32,6 @@ class ExternalApiServices {
       resultList.add(entry);
     });
 
-    print(jsonEncode(resultList));
-    print(resultList);
     return resultList;
   }
 }
