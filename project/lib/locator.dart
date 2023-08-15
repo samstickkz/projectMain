@@ -15,6 +15,7 @@ import 'ui/home/bottom_navigation.vm.dart';
 import 'ui/home/navigations/home/buy_token/buy.token.vm.dart';
 import 'ui/home/navigations/home/drawer/drawer.vm.dart';
 import 'ui/home/navigations/home/home.vm.dart';
+import 'ui/home/navigations/profile/profile.home.vm.dart';
 
 GetIt locator = GetIt.I;
 
@@ -33,6 +34,7 @@ void registerViewModels() {
   locator.registerFactory<HomePageViewModel>(() => HomePageViewModel());
   locator.registerFactory<BuyTokenViewModel>(() => BuyTokenViewModel());
   locator.registerFactory<DrawerViewModel>(() => DrawerViewModel());
+  locator.registerFactory<ProfileHomeViewModel>(() => ProfileHomeViewModel());
 
 
 }

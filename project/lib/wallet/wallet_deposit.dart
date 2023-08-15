@@ -146,20 +146,6 @@ class _WalletDepositState extends State<WalletDeposit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppStyle.backgroundColor,
-        appBar: AppBar(
-          backgroundColor: Colors.white.withOpacity(0.1),
-          elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            ),
-          ),
-        ),
         body: SafeArea(
           child: Column(
             children: [

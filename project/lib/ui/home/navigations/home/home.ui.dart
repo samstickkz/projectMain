@@ -164,7 +164,7 @@ class HomePage extends StatelessWidget {
               stream: model.fetchCryptoPrice(),
               builder: (context, snapshot) {
                 List<Map<String, dynamic>> coins = snapshot.data??[];
-                return snapshot.data==null? ListLoader(height: 100,): ListView.builder(
+                return snapshot.data==null? const ListLoader(height: 70,): ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 10,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../wallet/main_wallet_dashbaord.dart';
+
 import '../../wallet/portfolio.dart';
 import '../../wallet/wallet_deposit.dart';
 import '../base.vm.dart';
 import 'navigations/home/home.ui.dart';
+import 'navigations/profile/profile.home.ui.dart';
 
 class BottomNavigationViewModel extends BaseViewModel{
 
@@ -23,7 +24,7 @@ class BottomNavigationViewModel extends BaseViewModel{
     HomePage(),
     WalletDeposit(),
     PortFolio(),
-    Scaffold()
+    ProfileHomeScreen()
   ];
 
   void refreshAllInfo() async {
