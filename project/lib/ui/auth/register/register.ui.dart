@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       20.0.sbH,
                       AppTextField(
-                        hint: "First name",
+                        hint: "Full name",
                         keyboardType: TextInputType.visiblePassword,
                         controller: model.fullNameController,
                         autofillHints: const [AutofillHints.givenName, AutofillHints.middleName, AutofillHints.familyName],
@@ -125,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Column(
                   children: [
                     AppButton(
-                      onTap: model.signUp,
+                      onTap: model.register,
                       isGradient: true,
                       text: 'Register',
                     ),

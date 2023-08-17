@@ -1,36 +1,56 @@
 class SaveUser {
-  String? name;
-  String? email;
-  String? phoneNumber;
-  String? uuid;
-  String? profilePhoto;
-  String? token;
-  String? refreshToken;
   bool? isHidden;
+  String? password;
+  double? balance;
+  String? phoneNumber;
+  String? profilePhoto;
+  String? walletAddress;
+  String? uuid;
+  String? email;
+  String? token;
+  String? name;
+  String? appPassword;
 
-  SaveUser({this.name, this.email, this.phoneNumber, this.uuid, this.profilePhoto, this.token, this.refreshToken, this.isHidden});
+  SaveUser(
+      {this.isHidden,
+        this.password,
+        this.balance,
+        this.phoneNumber,
+        this.profilePhoto,
+        this.walletAddress,
+        this.uuid,
+        this.email,
+        this.token,
+        this.name,
+        this.appPassword});
 
   SaveUser.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    email = json['email'];
-    phoneNumber = json['phoneNumber'];
-    uuid = json['uuid'];
-    profilePhoto = json['profilePhoto'];
-    token = json['token'];
-    refreshToken = json['refreshToken'];
     isHidden = json['isHidden'];
+    password = json['password'];
+    balance = json['balance'];
+    phoneNumber = json['phoneNumber'];
+    profilePhoto = json['profile_photo'];
+    walletAddress = json['wallet_address'];
+    uuid = json['uuid'];
+    email = json['email'];
+    token = json['token'];
+    name = json['name'];
+    appPassword = json['app_password'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phoneNumber'] = this.phoneNumber;
-    data['uuid'] = this.uuid;
-    data['profilePhoto'] = this.profilePhoto;
-    data['token'] = this.token;
-    data['refreshToken'] = this.refreshToken;
     data['isHidden'] = this.isHidden;
+    data['password'] = this.password;
+    data['balance'] = this.balance;
+    data['phoneNumber'] = this.phoneNumber;
+    data['profile_photo'] = this.profilePhoto;
+    data['wallet_address'] = this.walletAddress;
+    data['uuid'] = this.uuid;
+    data['email'] = this.email;
+    data['token'] = this.token;
+    data['name'] = this.name;
+    data['app_password'] = this.appPassword;
     return data;
   }
 }

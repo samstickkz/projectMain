@@ -63,4 +63,20 @@ class BaseViewModel extends ChangeNotifier {
         ));
   }
 
+  String addDigits(String input) {
+    StringBuffer result = StringBuffer();
+    for (int i = 0; i < input.length; i++) {
+      result.write(input[i] + '08642');
+    }
+    return result.toString();
+  }
+
+  String removeDigits(String modifiedInput) {
+    StringBuffer result = StringBuffer();
+    for (int i = 0; i < modifiedInput.length; i += 6) {
+      result.write(modifiedInput[i]);
+    }
+    return result.toString();
+  }
+
 }
