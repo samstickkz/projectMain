@@ -28,9 +28,9 @@ class LoginViewModel extends BaseViewModel{
   Future<OAuthCredential?> signInWithGoogle() async {
     startLoader();
     try{
-      OAuthCredential response = await authApi.signinWithGoogle();
+      OAuthCredential? response = await authApi.signinWithGoogle();
       stopLoader();
-      await signInWithCredential(response);
+      // await signInWithCredential(response);
       notifyListeners();
       return response;
     }catch(err){
@@ -40,31 +40,28 @@ class LoginViewModel extends BaseViewModel{
     }
   }
 
-  Future<UserCredential?> signInWithCredential(OAuthCredential credential) async {
-    startLoader();
-    try{
-      UserCredential response = await authApi.signInWithCredential(credential);
-      stopLoader();
-      showCustomToast("Login Successful", success: true);
-      navigationService.navigateToAndRemoveUntil(bottomNavigationRoute);
-      notifyListeners();
-      return response;
-    }catch(err){
-      stopLoader();
-      notifyListeners();
-      return null;
-    }
-  }
+  // Future<UserCredential?> signInWithCredential(OAuthCredential credential) async {
+  //   startLoader();
+  //   try{
+  //     UserCredential response = await authApi.signInWithCredential(credential);
+  //     stopLoader();
+  //     showCustomToast("Login Successful", success: true);
+  //     navigationService.navigateToAndRemoveUntil(bottomNavigationRoute);
+  //     notifyListeners();
+  //     return response;
+  //   }catch(err){
+  //     stopLoader();
+  //     notifyListeners();
+  //     return null;
+  //   }
+  // }
 
   Future<void> login() async {
-    startLoader();
 
     try {
-      UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      startLoader();
+      var response = await authApi.signInWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim()).then((value) => print(value.email));
+      stopLoader();
       notifyListeners();
 
 
@@ -73,16 +70,20 @@ class LoginViewModel extends BaseViewModel{
       notifyListeners();
       if (e.code == 'user-not-found') {
         notifyListeners();
+        stopLoader();
         showCustomToast('Egbon, goan create an account joh.');
       } else if (e.code == 'wrong-password') {
         notifyListeners();
+        stopLoader();
         showCustomToast('shey you no know your password ni ?');
       } else {
+        stopLoader();
         notifyListeners();
         showCustomToast(e.message??"");
       }
     } catch (e) {
       notifyListeners();
+      stopLoader();
       showCustomToast(e.toString());
     }
   }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project/routes/routes.dart';
 import 'package:project/utils/snack_message.dart';
 
 import '../../base.vm.dart';
@@ -21,6 +22,28 @@ class RegisterViewModel extends BaseViewModel {
     confirmPasswordController.dispose();
 
     super.dispose();
+  }
+  
+  register()async{
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (formKey.currentState!.validate()){
+      startLoader();
+      try{
+        var response = await authApi.register(emailController.text, passwordController.text.trim(), fullNameController.text.trim());
+        if(response){
+          showCustomToast("account created successfully", success: true);
+          navigationService.navigateTo(loginRoute);
+        }else{
+          showCustomToast("Error creating account");
+        }
+        stopLoader();
+        notifyListeners();
+      }catch(err){
+        showCustomToast("$err");
+        stopLoader();
+        notifyListeners();
+      }
+    }
   }
 
 

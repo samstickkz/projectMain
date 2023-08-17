@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project/constants/palette.dart';
 import 'package:project/constants/reuseables.dart';
 import 'package:project/ui/widgets/apptexts.dart';
 import 'package:project/utils/widget_extensions.dart';
