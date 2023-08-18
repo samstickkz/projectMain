@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project/core/models/loggedi_in_user.dart';
 import 'package:project/routes/routes.dart';
 import 'package:project/ui/base.vm.dart';
 import 'package:project/utils/snack_message.dart';
@@ -25,12 +26,19 @@ class LoginViewModel extends BaseViewModel{
     navigationService.navigateTo(registerRoute);
   }
 
-  Future<OAuthCredential?> signInWithGoogle() async {
+  Future<SaveUser?> signInWithGoogle() async {
     startLoader();
     try{
-      OAuthCredential? response = await authApi.signinWithGoogle();
+      SaveUser? response = await authApi.signinWithGoogle();
       stopLoader();
-      // await signInWithCredential(response);
+      if(response?.appPassword==""||response?.appPassword==null){
+        appCache.user = response??SaveUser();
+        print("""here""");
+        await navigationService.navigateToAndRemoveUntil(createPinRouteOne);
+      }
+      await userService.storeUser(response);
+      await authApi.storeToken(response?.uuid);
+      stopLoader();
       notifyListeners();
       return response;
     }catch(err){
@@ -60,27 +68,18 @@ class LoginViewModel extends BaseViewModel{
 
     try {
       startLoader();
-      var response = await authApi.signInWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim()).then((value) => print(value.email));
-      stopLoader();
-      notifyListeners();
-
-
-      // Get.to(() => const NavPage());
-    } on FirebaseAuthException catch (e) {
-      notifyListeners();
-      if (e.code == 'user-not-found') {
-        notifyListeners();
-        stopLoader();
-        showCustomToast('Egbon, goan create an account joh.');
-      } else if (e.code == 'wrong-password') {
-        notifyListeners();
-        stopLoader();
-        showCustomToast('shey you no know your password ni ?');
-      } else {
-        stopLoader();
-        notifyListeners();
-        showCustomToast(e.message??"");
+      var response = await authApi.signInWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
+      if(response.appPassword==""||response.appPassword==null){
+        appCache.user = response;
+        print("""here""");
+        await navigationService.navigateToAndRemoveUntil(createPinRouteOne);
       }
+      await userService.storeUser(response);
+      await authApi.storeToken(response.uuid);
+      stopLoader();
+      showCustomToast("Login Successful", success: true);
+      navigationService.navigateTo(bottomNavigationRoute);
+      notifyListeners();
     } catch (e) {
       notifyListeners();
       stopLoader();

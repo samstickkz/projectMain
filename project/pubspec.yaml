@@ -80,6 +80,7 @@ dependencies:
   cupertino_modal_sheet: ^1.1.0
   cached_network_image: ^3.2.3
   flutter_shimmer: ^2.1.2
+  pin_code_fields: ^8.0.1
 
 
 

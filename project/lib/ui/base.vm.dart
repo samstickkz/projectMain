@@ -1,4 +1,5 @@
 import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/services/initializer.dart';
 import 'package:project/core/services/initializer.dart';
@@ -16,6 +17,8 @@ import '../core/services/navigation_services.dart';
 import '../core/services/storage-service.dart';
 import '../core/services/user.service.dart';
 import '../core/services/web-services/auth.api.dart';
+import '../routes/routes.dart';
+import '../utils/snack_message.dart';
 import 'widgets/action_dialog.dart';
 
 class BaseViewModel extends ChangeNotifier {
@@ -26,6 +29,29 @@ class BaseViewModel extends ChangeNotifier {
   Initializer initializer = locator<Initializer>();
   AuthenticationApiService authApi = locator<AuthenticationApiService>();
   StorageService storageService = locator<StorageService>();
+
+  logout()async{
+    try {
+      await FirebaseAuth.instance.signOut();
+      storageService.deleteAllItems();
+      userService.storeUser(null);
+      await initializer.init();
+      notifyListeners();
+      // login with getx
+      navigationService.navigateToAndRemoveUntil(loginRoute);
+    } catch (e) {
+      showCustomToast("Error signing out");
+    }
+  }
+
+  popLogout(BuildContext context){
+    showCupertinoModalSheet<Widget>(
+        context: context,
+        builder: (BuildContext context) => ActionBottomSheet(
+          onTap:logout,
+          title: "Logout",
+        ));
+  }
 
   final formKey = GlobalKey<FormState>();
 
