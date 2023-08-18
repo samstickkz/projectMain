@@ -17,7 +17,7 @@ class ProfileHomeViewModel extends BaseViewModel{
 
   init(){
     account = [
-      ProfileButtonModel(title: "Logout", svgImage: AppImages.logoutIcon, onTap:popLogout),
+      ProfileButtonModel(title: "Logout", svgImage: AppImages.logoutIcon, onTap:popLogout(context)),
       ProfileButtonModel(title: "Deactivate Account", svgImage: AppImages.delete, isLogout: true),
     ];
   }
@@ -47,28 +47,7 @@ class ProfileHomeViewModel extends BaseViewModel{
 
   List<ProfileButtonModel> account = [];
 
-  logout()async{
-    try {
-      await FirebaseAuth.instance.signOut();
-      storageService.deleteAllItems();
-      userService.storeUser(null);
-      await initializer.init();
-      notifyListeners();
-      // login with getx
-      navigationService.navigateToAndRemoveUntil(loginRoute);
-    } catch (e) {
-      showCustomToast("Error signing out");
-    }
-  }
 
-  popLogout(){
-    showCupertinoModalSheet<Widget>(
-        context: context,
-        builder: (BuildContext context) => ActionBottomSheet(
-          onTap:logout,
-          title: "Logout",
-        ));
-  }
 
 
 }

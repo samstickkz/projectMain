@@ -24,7 +24,10 @@ class DrawerScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network(model.userService.userCredentials.profilePhoto??"", height: 120, width: 120, fit: BoxFit.contain,),
+                  CircleAvatar(
+                    backgroundImage: CachedNetworkImageProvider("${userService.userCredentials.profilePhoto}"),
+                    radius: 60,
+                  )
                 ],
               ),
               16.0.sbH,

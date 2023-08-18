@@ -18,33 +18,39 @@ class HomePageViewModel extends BaseViewModel{
   }
 
   init()async{
-    // await fetchCryptoPrice();
+    await fetchCryptoPrice();
   }
 
   ExternalApiServices api = locator<ExternalApiServices>();
 
 
-  setAsHidden(){
+  setAsHidden() async {
     bool changedValue = userService.userCredentials.isHidden==null?false:userService.userCredentials.isHidden==true?false:true;
-    SaveUser user = SaveUser(
-      name: userService.userCredentials.name,
-      email: userService.userCredentials.email,
-      phoneNumber: userService.userCredentials.phoneNumber,
-      profilePhoto: userService.userCredentials.profilePhoto,
-      uuid: userService.userCredentials.uuid,
-      token: userService.userCredentials.token,
-      isHidden: changedValue,
-    );
-    userService.storeUser(user);
-    initializer.init();
+    startLoader();
+    try{
+      var response = await authApi.updateUser(isHidden: changedValue);
+      if(response){
+        await authApi.getUser();
+        initializer.init();
+      }
+      stopLoader();
+      notifyListeners();
+    }catch(err){
+      stopLoader();
+      notifyListeners();
+    }
+
+    // initializer.init();
     notifyListeners();
   }
 
-  Stream<List<Map<String, dynamic>>?> fetchCryptoPrice() async*{
-    final response = await api.fetchCryptoPrice();
-    List<Map<String, dynamic>> mappedList = convertToMaps(response);
-    yield mappedList;
-  }
+  // Stream<List<Map<String, dynamic>>?> fetchCryptoPrice() async*{
+  //   while(true){
+  //     final response = await api.fetchCryptoPrice();
+  //     List<Map<String, dynamic>> mappedList = convertToMaps(response);
+  //     yield mappedList;
+  //   }
+  // }
 
   ScrollController scrollController = ScrollController();
 
@@ -64,20 +70,22 @@ class HomePageViewModel extends BaseViewModel{
     );
   }
 
-  // Future<List<dynamic>?> fetchCryptoPrice() async {
-  //   final plugin = PaystackPlugin();
-  //   startLoader();
-  //   try {
-  //     plugin.initialize(publicKey: NetworkConfig.paystackPublicKey);
-  //     var response = await api.fetchCryptoPrice();
-  //     List<Map<String, dynamic>> mappedList = convertToMaps(response);
-  //     print(mappedList);
-  //     stopLoader();
-  //   } catch (e) {
-  //     print('Error fetching crypto prices: $e');
-  //     stopLoader();
-  //   }
-  // }
+  Future<List<dynamic>?> fetchCryptoPrice() async {
+    final plugin = PaystackPlugin();
+    startLoader();
+    try {
+      plugin.initialize(publicKey: NetworkConfig.paystackPublicKey);
+      var response = await api.fetchCryptoPrice();
+      List<Map<String, dynamic>> mappedList = convertToMaps(response);
+      cryptoList = mappedList;
+      stopLoader();
+    } catch (e) {
+      print('Error fetching crypto prices: $e');
+      stopLoader();
+    }
+  }
+
+  List<Map<String, dynamic>> cryptoList = [];
 
   String toTitleCase(String text) {
     return text.split(' ').map((word) {

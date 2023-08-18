@@ -8,7 +8,10 @@ import 'core/services/user-enrollment-service.dart';
 import 'core/services/user.service.dart';
 import 'core/services/web-services/auth.api.dart';
 import 'core/services/web-services/external_api.dart';
+import 'ui/auth/checkPin/check.pin.vm.dart';
 import 'ui/auth/login/login.vm.dart';
+import 'ui/auth/pin_code/create.pin.vm.dart';
+import 'ui/auth/pin_code/finish_pin.vm.dart';
 import 'ui/auth/register/register.vm.dart';
 import 'ui/base.vm.dart';
 import 'ui/home/bottom_navigation.vm.dart';
@@ -35,6 +38,9 @@ void registerViewModels() {
   locator.registerFactory<BuyTokenViewModel>(() => BuyTokenViewModel());
   locator.registerFactory<DrawerViewModel>(() => DrawerViewModel());
   locator.registerFactory<ProfileHomeViewModel>(() => ProfileHomeViewModel());
+  locator.registerFactory<CreatePinViewModel>(() => CreatePinViewModel());
+  locator.registerFactory<FinishPinViewModel>(() => FinishPinViewModel());
+  locator.registerFactory<CheckPinViewModel>(() => CheckPinViewModel());
 
 
 }

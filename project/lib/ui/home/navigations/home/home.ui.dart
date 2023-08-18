@@ -160,55 +160,98 @@ class HomePage extends StatelessWidget {
               ),
             ),
             10.0.sbH,
-            StreamBuilder(
-              stream: model.fetchCryptoPrice(),
-              builder: (context, snapshot) {
-                List<Map<String, dynamic>> coins = snapshot.data??[];
-                return snapshot.data==null? const ListLoader(height: 70,): ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (_,i){
-                    Map<String, dynamic> coin = coins[i];
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
-                      padding: 16.0.padA,
-                      decoration: BoxDecoration(
-                          color: textFieldFillColor,
-                          borderRadius: BorderRadius.circular(12)
-                      ),
-                      child: Row(
-                        children: [
-                          Image.network(coin["image"], height: 26, width: 26,),
-                          12.0.sbW,
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AppText(coin["name"], family: 'Inter'),
-                                    AppText('${coin["symbol"]}'.toUpperCase(), weight: FontWeight.w100, color: AppColors.descriptionTextColor, family: 'Inter'),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    AppText('\$${NumberFormat.decimalPattern().format(coin["current_price"])}', family: 'Inter', weight: FontWeight.w500, size: 17,),
-                                    AppText("${coin['price_change_percentage_24h'].toStringAsFixed(2)}%".toUpperCase(), color: primaryColor, family: 'Inter'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  }
-                );
-              }
+            ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (_,i){
+                  Map<String, dynamic> coin = model.cryptoList[i];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                    padding: 16.0.padA,
+                    decoration: BoxDecoration(
+                        color: textFieldFillColor,
+                        borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: Row(
+                      children: [
+                        Image.network(coin["image"], height: 26, width: 26,),
+                        12.0.sbW,
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppText(coin["name"], family: 'Inter'),
+                                  AppText('${coin["symbol"]}'.toUpperCase(), weight: FontWeight.w100, color: AppColors.descriptionTextColor, family: 'Inter'),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  AppText('\$${NumberFormat.decimalPattern().format(coin["current_price"])}', family: 'Inter', weight: FontWeight.w500, size: 17,),
+                                  AppText("${coin['price_change_percentage_24h'].toStringAsFixed(2)}%".toUpperCase(), color: primaryColor, family: 'Inter'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }
             )
+            // StreamBuilder(
+            //   stream: model.fetchCryptoPrice(),
+            //   builder: (context, snapshot) {
+            //     List<Map<String, dynamic>> coins = snapshot.data??[];
+            //     return snapshot.data==null? coins.length ==0? AppText("No Data"): const ListLoader(height: 70,): ListView.builder(
+            //       shrinkWrap: true,
+            //       physics: const NeverScrollableScrollPhysics(),
+            //       itemCount: 10,
+            //       itemBuilder: (_,i){
+            //         Map<String, dynamic> coin = coins[i];
+            //         return Container(
+            //           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+            //           padding: 16.0.padA,
+            //           decoration: BoxDecoration(
+            //               color: textFieldFillColor,
+            //               borderRadius: BorderRadius.circular(12)
+            //           ),
+            //           child: Row(
+            //             children: [
+            //               Image.network(coin["image"], height: 26, width: 26,),
+            //               12.0.sbW,
+            //               Expanded(
+            //                 child: Row(
+            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //                   children: [
+            //                     Column(
+            //                       crossAxisAlignment: CrossAxisAlignment.start,
+            //                       children: [
+            //                         AppText(coin["name"], family: 'Inter'),
+            //                         AppText('${coin["symbol"]}'.toUpperCase(), weight: FontWeight.w100, color: AppColors.descriptionTextColor, family: 'Inter'),
+            //                       ],
+            //                     ),
+            //                     Column(
+            //                       crossAxisAlignment: CrossAxisAlignment.end,
+            //                       children: [
+            //                         AppText('\$${NumberFormat.decimalPattern().format(coin["current_price"])}', family: 'Inter', weight: FontWeight.w500, size: 17,),
+            //                         AppText("${coin['price_change_percentage_24h'].toStringAsFixed(2)}%".toUpperCase(), color: primaryColor, family: 'Inter'),
+            //                       ],
+            //                     ),
+            //                   ],
+            //                 ),
+            //               )
+            //             ],
+            //           ),
+            //         );
+            //       }
+            //     );
+            //   }
+            // )
           ],
         ),
       ),

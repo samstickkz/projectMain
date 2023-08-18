@@ -25,7 +25,7 @@ class _NavigationsState extends State<Navigations> {
   init(){
     bool isLoggedin = locator<Initializer>().isLoggedIn;
     Timer(const Duration(seconds: 0), () {
-      isLoggedin?navigationService.navigateToAndRemoveUntil(bottomNavigationRoute):
+      isLoggedin?navigationService.navigateToAndRemoveUntil(loginWithPinRoute):
       navigationService.navigateToAndRemoveUntil(onBoardingScreen);
     });
   }

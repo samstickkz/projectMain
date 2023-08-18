@@ -9,8 +9,9 @@ import 'base.vm.dart';
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget? child)? builder;
   final Function(T)? onModelReady;
+  final Function(T)? onDisposeReady;
 
-  const BaseView({Key? key, this.builder, this.onModelReady}) : super(key: key);
+  const BaseView({Key? key, this.builder, this.onModelReady, this.onDisposeReady}) : super(key: key);
 
   @override
   _BaseViewState<T> createState() => _BaseViewState<T>();
@@ -25,6 +26,14 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
     if (widget.onModelReady != null) {
       widget.onModelReady!(model);
     }
+  }
+
+  @override
+  void dispose() {
+    if (widget.onDisposeReady != null) {
+      widget.onDisposeReady!(model);
+    }
+    super.dispose();
   }
 
   @override
