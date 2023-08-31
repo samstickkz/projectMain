@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
+import '../../routes/routes.dart';
 import '../../wallet/portfolio.dart';
 import '../../wallet/wallet_deposit.dart';
 import '../base.vm.dart';
@@ -9,6 +10,9 @@ import 'navigations/home/home.ui.dart';
 import 'navigations/profile/profile.home.ui.dart';
 
 class BottomNavigationViewModel extends BaseViewModel{
+
+  late AnimationController controller;
+  late Animation<double> animation;
 
   ValueNotifier<int>pageIndex = ValueNotifier(0);
 
@@ -31,6 +35,10 @@ class BottomNavigationViewModel extends BaseViewModel{
     await initializer.init();
     refresh();
     notifyListeners();
+  }
+
+  navigateToDraw(){
+    navigationService.navigateTo(drawEntryPointRoute);
   }
 
   void refresh() {

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../core/services/user.service.dart';
 import '../locator.dart';
 
-UserService _initializer = locator<UserService>();
-
 Color primaryColor =const Color(0xFFFF9933);
 Color primaryDarkColor = const Color.fromRGBO(4, 6, 52, 1);
 Color primaryLight = const Color(0xFF2072B6);

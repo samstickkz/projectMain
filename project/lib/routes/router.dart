@@ -11,6 +11,7 @@ import '../ui/auth/login/login.ui.dart';
 import '../ui/auth/pin_code/create.pin.ui.dart';
 import '../ui/auth/register/register.ui.dart';
 import '../ui/home/bottom_navigation.ui.dart';
+import '../ui/home/navigations/draw/draw_entry_point.dart';
 import '../ui/splash/spalsh_screen.dart';
 
 class Routers {
@@ -36,6 +37,8 @@ class Routers {
         return MaterialPageRoute(builder: (_) => const BottomNavigationScreen());
       case loginWithPinRoute:
         return MaterialPageRoute(builder: (_) => const CheckPinScreen());
+      case drawEntryPointRoute:
+        return MaterialPageRoute(builder: (_) => const DrawEntryPointScreen());
       case createPinRouteOne:
         return MaterialPageRoute(builder: (_) => CreatePinScreen(
           user: cache.user,

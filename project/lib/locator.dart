@@ -15,6 +15,7 @@ import 'ui/auth/pin_code/finish_pin.vm.dart';
 import 'ui/auth/register/register.vm.dart';
 import 'ui/base.vm.dart';
 import 'ui/home/bottom_navigation.vm.dart';
+import 'ui/home/navigations/draw/draw_entry_point.vm.dart';
 import 'ui/home/navigations/home/buy_token/buy.token.vm.dart';
 import 'ui/home/navigations/home/drawer/drawer.vm.dart';
 import 'ui/home/navigations/home/home.vm.dart';
@@ -41,6 +42,7 @@ void registerViewModels() {
   locator.registerFactory<CreatePinViewModel>(() => CreatePinViewModel());
   locator.registerFactory<FinishPinViewModel>(() => FinishPinViewModel());
   locator.registerFactory<CheckPinViewModel>(() => CheckPinViewModel());
+  locator.registerFactory<DrawEntryPointViewModel>(() => DrawEntryPointViewModel());
 
 
 }
