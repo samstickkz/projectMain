@@ -11,10 +11,6 @@ import '../../../widgets/action_dialog.dart';
 
 class ProfileHomeViewModel extends BaseViewModel{
 
-  ProfileHomeViewModel(){
-    init();
-  }
-
   init(){
     account = [
       ProfileButtonModel(title: "Logout", svgImage: AppImages.logoutIcon, onTap:popLogout(context)),
@@ -24,6 +20,7 @@ class ProfileHomeViewModel extends BaseViewModel{
 
   addContext(BuildContext contexts)async {
     context = contexts;
+    await init();
     notifyListeners();
   }
 

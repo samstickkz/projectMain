@@ -90,7 +90,9 @@ class AppImages {
   static const String pen = "assets/svg/edit_pen.svg";
   static const String twoFa = "assets/svg/2fa.svg";
   static const String delete = "assets/svg/bin.svg";
+  static const String stars = "assets/svg/star.svg";
   static const String theme = "assets/svg/change_theme_icon.svg";
+  static const String dollarBag = "assets/svg/dollar_money_bag.svg";
   static const String language = "assets/svg/language.svg";
   static const String logoutIcon = "assets/svg/logout_icon.svg";
   static const String passwordIcon = "assets/svg/passwordIcon.svg";
@@ -101,6 +103,7 @@ class AppImages {
   static const String supportIcon = "assets/svg/support_icon.svg";
   static const String verificationIcon = "assets/svg/verification_icon.svg";
   static const String cards = "assets/image/card.png";
+  static const String dollarBags = "assets/image/dollar.png";
   static const String wallet = "assets/image/wallet.png";
   static const String growth = "assets/image/grow.png";
 }

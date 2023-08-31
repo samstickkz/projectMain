@@ -1,18 +1,40 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:project/constants/reuseables.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/palette.dart';
 import '../base.ui.dart';
 import 'bottom_navigation.vm.dart';
 
-class BottomNavigationScreen extends StatelessWidget {
+class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);
 
+  @override
+  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+}
+
+class _BottomNavigationScreenState extends State<BottomNavigationScreen>  with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BaseView<BottomNavigationViewModel>(
       onModelReady: (m) async {
+
+        m.controller = AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 500),
+        );
+
+        m.animation = Tween(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: m.controller,
+            curve: Curves.easeInOutBack, // Choose an appropriate curve for bouncing
+          ),
+        );
+        m.controller.repeat(reverse: true);
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
         m.appCache.firstTimeKYC = true;
@@ -20,11 +42,35 @@ class BottomNavigationScreen extends StatelessWidget {
       builder: (_, model, child) {
         return WillPopScope(
           onWillPop:()=> model.willPop(context),
-          child: Scaffold(
-              body: model.pages[model.currentIndex],
-              bottomNavigationBar: _BottomNavigationBar(
-                onItemSelected: model.changePage,
-              )
+          child: Stack(
+            children: [
+              Scaffold(
+                  body: model.pages[model.currentIndex],
+                  bottomNavigationBar: _BottomNavigationBar(
+                    onItemSelected: model.changePage,
+                  ),
+              ),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                      padding: const EdgeInsets.only(bottom: 60),
+                      child: AnimatedBuilder(
+                        animation: model.animation,
+                        builder: (context, child) {
+                          return Transform.translate(
+                            offset: Offset(0.0, -6 * model.animation.value), // Adjust the offset value
+                            child: child,
+                          );
+                        },
+                        child: FloatingActionButton(
+                        onPressed: model.navigateToDraw,
+                        backgroundColor: primaryColor,
+                        child: SvgPicture.asset(AppImages.stars, height: 24, width: 24, color: AppColors.black, fit: BoxFit.cover,),
+                        ),
+                      )
+                  )
+              ),
+            ],
           ),
         );
       },

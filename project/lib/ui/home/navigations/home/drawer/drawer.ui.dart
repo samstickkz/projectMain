@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project/constants/palette.dart';
 import 'package:project/ui/home/navigations/home/drawer/drawer.vm.dart';
 import 'package:project/ui/widgets/apptexts.dart';
@@ -8,6 +10,7 @@ import 'package:project/utils/widget_extensions.dart';
 
 import '../../../../../constants/reuseables.dart';
 import '../../../../base.ui.dart';
+import 'raffle/raflle.ui.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({Key? key}) : super(key: key);
@@ -123,30 +126,35 @@ class DrawerScreen extends StatelessWidget {
                 ),
               ),
               //Payments
-              ListTile(
-                leading: const Icon(
-                  Icons.wind_power,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  'Raffle',
-                  style: TextStyle(
+              InkWell(
+                onTap: () {
+                  Get.to(() => const SpinWheel());
+                },
+                child: ListTile(
+                  leading: const Icon(
+                    Icons.wind_power,
                     color: Colors.white,
                   ),
-                ),
-                trailing: Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3),
+                  title: const Text(
+                    'Raffle',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
-                  child: const Center(
-                      child: Text(
-                        '22',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      )),
+                  trailing: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    child: const Center(
+                        child: Text(
+                          '22',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        )),
+                  ),
                 ),
               ),
             ],

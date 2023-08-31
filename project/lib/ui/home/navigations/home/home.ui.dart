@@ -288,7 +288,7 @@ class HomeButtons extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Colors.white.withOpacity(0.3),
+          color: textFieldFillColor,
         ),
         width: 98.33,
         height: 101,
