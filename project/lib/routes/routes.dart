@@ -7,3 +7,4 @@ const String resetPasswordRoute = '/reset_your_password_route';
 const String bottomNavigationRoute = '/bottom_nav_route';
 const String createPinRouteOne = '/create_pin_route_one_route';
 const String loginWithPinRoute = '/login_with_pin_route_one_route';
+const String drawEntryPointRoute = '/draw_entry_with_route';
