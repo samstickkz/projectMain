@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
     return BaseView<HomePageViewModel>(
       builder: (_, model, child)=> Scaffold(
         appBar: AppBar(
+          backgroundColor: primaryColor,
           actions: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,10 +43,14 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
+
                     bottomLeft: Radius.circular(32),
-                    bottomRight: Radius.circular(32)),
+                    bottomRight: Radius.circular(32),
+
+                ),
+                color: primaryColor,
               ),
               child: Padding(
                 padding: const EdgeInsets.only(
@@ -95,6 +100,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+
             20.0.sbH,
             Padding(
               padding: 16.0.padH,
@@ -109,6 +116,8 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+
+
             10.0.sbH,
             Container(
               height: 70,

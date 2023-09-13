@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../core/services/user.service.dart';
 import '../locator.dart';
 
-Color primaryColor =const Color(0xFFFF9933);
+// Color primaryColor =const Color(0xFF7878FA);
 Color primaryDarkColor = const Color.fromRGBO(4, 6, 52, 1);
 Color primaryLight = const Color(0xFF2072B6);
 Color light = const Color(0xFF2072B6);
 Color limeLight = const Color(0xFFEAF4AB);
 Color greyText = const Color(0xFF55757C);
-Color textFieldFillColor = const Color(0xFF262320);
+Color textFieldFillColor = const Color(0xFF1A1A24);
 
 Color grey = const Color(0xFFCAD4DD);
 Color lightBgColor = const Color(0xFFF5F7E8);
@@ -23,7 +23,7 @@ Color green = const Color(0xFF009639);
 Color blue = const Color(0xFF2072B6);
 Color textLight = const Color(0xFF8D94A2);
 Color inputFocus = const Color(0xFFF7FAFA);
-Color drawerColor = const Color(0xFF005262);
+
 
 Color redAccent = const Color(0XFFE86F6F);
 Color greenAccent = const Color(0XFF20B590);
@@ -36,6 +36,15 @@ Color customTextColor = const Color(0xFF150439);
 Color redColor = const Color(0xFFD0021B);
 Color white = const Color(0xFFFFFFFF);
 Color authBtnColor = const Color(0xFFFAFBFC);
+
+
+const LinearGradient primaryGradient = LinearGradient(
+  colors: [Color(0xFF6262D9), Color(0xFF9D62D9)],
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+);
+
+final Color primaryColor = primaryGradient.colors[0]; // Extract the first color
 
 
 class AppColors {
